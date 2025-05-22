@@ -32,19 +32,19 @@
             --clr-text-secondary: #a0aec0;
             --clr-icon: #c0d0e0;
             --clr-icon-hover: #ffffff;
-            --clr-button-bg: rgba(29, 233, 182, 0.2); /* Teal accent */
+            --clr-button-bg: rgba(29, 233, 182, 0.2);
             --clr-button-hover-bg: rgba(29, 233, 182, 0.4);
             --clr-button-border: rgba(29, 233, 182, 0.4);
             --clr-tab-active-bg: transparent;
             --clr-shadow: rgba(0, 0, 0, 0.6);
-            --clr-accent: #1de9b6; /* Teal */
+            --clr-accent: #1de9b6;
             --clr-accent-rgb: 29, 233, 182;
             --clr-accent-glow: rgba(var(--clr-accent-rgb), 0.35);
-            --clr-secondary-accent: #7e57c2; /* Deep Purple */
+            --clr-secondary-accent: #7e57c2;
             --clr-secondary-accent-rgb: 126, 87, 194;
-            --clr-highlight: #ffab00; /* Amber/Gold */
+            --clr-highlight: #ffab00;
             --clr-highlight-rgb: 255, 171, 0;
-            --clr-success: #00c853; /* Green A700 */
+            --clr-success: #00c853;
 
             --radius-card: 10px;
             --radius-button: 6px;
@@ -112,8 +112,8 @@
         main {
             display: flex;
             width: 100%;
-            min-height: 100vh; /* Changed from min-height to ensure it takes at least full viewport */
-            align-items: center; /* Changed from flex-start to center to vertically center content */
+            min-height: 100vh;
+            align-items: center;
             justify-content: center;
             padding: var(--spacing-lg) var(--spacing-sm);
             z-index: 1;
@@ -306,7 +306,7 @@
             transition: color 0.2s ease;
         }
         .info-section li::before {
-            content: '\\2023'; /* Bullet character */
+            content: '\\2023';
             position: absolute; left: 0.2em; color: var(--clr-accent);
             font-weight: bold; font-size: 1.1em;
             transition: transform 0.2s ease;
@@ -347,14 +347,14 @@
             font-size: 1rem; font-weight: 600;
             color: var(--clr-text-primary); margin-bottom: 0;
             display: flex; align-items: center; gap: var(--spacing-xs);
-            line-height: 1.4; min-height: 2.8em; /* For 2 lines */
+            line-height: 1.4; min-height: 2.8em;
         }
         .product-card h4 i { color: var(--clr-accent); font-size: 0.9rem; min-width: 1em; text-align: center;}
         .product-card.is-pinned h4 i { color: var(--clr-highlight); }
         .product-card p {
             font-size: 0.82rem; color: var(--clr-text-secondary);
             flex-grow: 1; margin-bottom: var(--spacing-xs);
-            min-height: 3.2em; /* approx 2-3 lines */
+            min-height: 3.2em;
             line-height: 1.6;
         }
         .product-card .price-tag {
@@ -414,6 +414,51 @@
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 230px;
         }
         .hidden-audio-player { display: none; }
+
+        .code-template {
+            background-color: rgba(var(--clr-bg-rgb), 0.4);
+            border: 1px solid var(--clr-panel-border);
+            border-left: 3px solid var(--clr-secondary-accent);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-xs);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--clr-text-secondary);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: var(--spacing-sm);
+        }
+        .code-template code { font-family: inherit; }
+        
+        .tab-content .info-section h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--clr-text-primary);
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 1px solid var(--clr-panel-border);
+            position: relative;
+        }
+        .tab-content .info-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            height: 2px;
+            width: 30px;
+            background: var(--clr-secondary-accent);
+            border-radius: 2px;
+        }
+        .tab-content .info-section h4 i {
+            color: var(--clr-secondary-accent);
+            font-size: 0.9rem;
+        }
 
         footer {
             padding: var(--spacing-md); text-align: center; font-size: 0.75rem;
@@ -476,6 +521,7 @@
                     <button class="tab-button" data-tab="other">Other</button>
                     <button class="tab-button" data-tab="fastsell">FastSell</button>
                     <button class="tab-button" data-tab="searchbuy">Search/Buy</button>
+                    <button class="tab-button" data-tab="help">Help</button>
                 </div>
 
                 <div id="bio-content" class="tab-content active">
@@ -494,44 +540,84 @@
                 </div>
 
                 <div id="minecraft-content" class="tab-content">
-                    <p class="tab-description">Аккаунты и услуги для Minecraft. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <p class="tab-description">Аккаунты Minecraft и связанные товары. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card"><h4><i class="fas fa-server"></i> FunTime Аккаунт</h4><p>Привилегии/ресурсы на FunTime. Детали в ЛС.</p><div class="price-tag">от 150₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
-                        <div class="product-card"><h4><i class="fas fa-server"></i> HolyWorld Услуги</h4><p>Прокачка, ресурсы, донат-валюта для HolyWorld.</p><div class="price-tag">Договорная</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a></div>
-                        <div class="product-card"><h4><i class="fas fa-server"></i> ReallyWorld Аккаунт</h4><p>Готовые аккаунты для ReallyWorld.</p><div class="price-tag">от 100₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-cube"></i> Minecraft Аккаунт</h4>
+                            <p>Скупаем и продаем аккаунты Minecraft (Java/Bedrock). Лицензии, полный доступ. Обсудим ваши предложения.</p>
+                            <div class="price-tag">Договорная</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-server"></i> Аккаунт Minecraft Сервера</h4>
+                            <p>Аккаунты для различных Minecraft серверов (например, FunTime, HolyWorld). Привилегии, ресурсы. Детали в ЛС.</p>
+                            <div class="price-tag">от 100₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-gem"></i> Minecraft Предметы/Услуги</h4>
+                            <p>Продажа игровой валюты, предметов, услуг прокачки на различных серверах Minecraft. Также скупаем.</p>
+                            <div class="price-tag">Договорная</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div id="steam-content" class="tab-content">
-                    <p class="tab-description">Игровые аккаунты Steam. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <p class="tab-description">Игровые аккаунты Steam. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card"><h4><i class="fab fa-steam"></i> Steam (CS2 Prime)</h4><p>CS2 Prime статус, возможны скины.</p><div class="price-tag">от 500₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
-                        <div class="product-card"><h4><i class="fab fa-steam"></i> Steam (PUBG)</h4><p>Аккаунт с PUBG и инвентарем.</p><div class="price-tag">от 300₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
-                        <div class="product-card"><h4><i class="fab fa-steam"></i> Steam (Жирный)</h4><p>Много игр, высокий уровень, редкие значки.</p><div class="price-tag">Договорная</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a></div>
+                        <div class="product-card">
+                            <h4><i class="fab fa-steam"></i> Steam Аккаунт (С Играми)</h4>
+                            <p>Аккаунты с популярными играми (CS2 Prime, PUBG, Rust и др.). Возможен инвентарь. Покупаем ваши аккаунты.</p>
+                            <div class="price-tag">от 300₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fab fa-steam"></i> Steam Аккаунт (Личный/Жирный)</h4>
+                            <p>Скупка и продажа "жирных" аккаунтов Steam с большой библиотекой игр, высоким уровнем, значками и инвентарем.</p>
+                            <div class="price-tag">Договорная</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fab fa-steam"></i> Steam Аккаунт (Баланс/Ключи)</h4>
+                            <p>Продажа аккаунтов с балансом кошелька Steam или активированными ключами игр. Также скупаем.</p>
+                            <div class="price-tag">Договорная</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
+                        </div>
                     </div>
                 </div>
 
                 <div id="epic-content" class="tab-content">
-                    <p class="tab-description">Аккаунты Epic Games Store. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <p class="tab-description">Аккаунты Epic Games Store. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card"><h4><i class="fas fa-gamepad"></i> Epic (Fortnite)</h4><p>Редкие скины Fortnite, V-Bucks.</p><div class="price-tag">от 400₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
-                        <div class="product-card"><h4><i class="fas fa-gamepad"></i> Epic (GTA V)</h4><p>GTA V и другие игры по раздаче.</p><div class="price-tag">от 200₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-gamepad"></i> Epic Games (С Играми)</h4>
+                            <p>Аккаунты с играми, полученными по раздаче (GTA V и др.) или купленными. В том числе Fortnite с предметами.</p>
+                            <div class="price-tag">от 200₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-gamepad"></i> Epic Games (Личный)</h4>
+                            <p>Скупка и продажа личных аккаунтов Epic Games с обширной библиотекой, редкими скинами Fortnite и другими ценностями.</p>
+                            <div class="price-tag">Договорная</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
+                        </div>
                     </div>
                 </div>
 
                 <div id="telegram-content" class="tab-content">
-                    <p class="tab-description">Аккаунты Telegram. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <p class="tab-description">Аккаунты Telegram. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card"><h4><i class="fab fa-telegram"></i> Telegram Автореги</h4><p>Формат TData/Session+JSON.</p><div class="price-tag">45-85₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
-                        <div class="product-card"><h4><i class="fab fa-telegram"></i> Telegram Физ. (Отлега/Траст)</h4><p>Регистрация на физ. SIM, отлега, траст.</p><div class="price-tag">115-315₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fab fa-telegram"></i> Telegram Автореги</h4><p>Формат TData/Session+JSON. Покупаем и продаем.</p><div class="price-tag">45-85₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fab fa-telegram"></i> Telegram Физ. (Отлега/Траст)</h4><p>Регистрация на физ. SIM, отлега, траст. Покупаем и продаем.</p><div class="price-tag">115-315₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
                     </div>
                 </div>
                 
                 <div id="discord-content" class="tab-content">
-                    <p class="tab-description">Discord аккаунты. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <p class="tab-description">Discord аккаунты. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card"><h4><i class="fab fa-discord"></i> Discord (Отлега)</h4><p>Аккаунты с отлежкой. Email+Pass / Token.</p><div class="price-tag">50₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
-                        <div class="product-card"><h4><i class="fab fa-discord"></i> Discord (Nitro)</h4><p>Активная подписка Nitro (Classic/Full).</p><div class="price-tag">от 200₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fab fa-discord"></i> Discord (Отлега)</h4><p>Аккаунты с отлежкой. Email+Pass / Token. Покупаем и продаем.</p><div class="price-tag">от 50₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fab fa-discord"></i> Discord (Nitro)</h4><p>Активная подписка Nitro (Classic/Full). Покупаем и продаем.</p><div class="price-tag">от 200₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
                     </div>
                 </div>
 
@@ -546,10 +632,10 @@
                 </div>
                 
                 <div id="other-content" class="tab-content">
-                    <p class="tab-description">Различные цифровые товары и услуги. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <p class="tab-description">Различные цифровые товары и услуги. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
                         <div class="product-card is-pinned"><i class="fas fa-thumbtack pin-icon"></i><h4><i class="fas fa-id-card"></i> YooMoney Верификация</h4><p>Полностью верифицированный кошелек (Паспорт+ИНН).</p><div class="price-tag">1500+₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a></div>
-                        <div class="product-card"><h4><i class="fas fa-sim-card"></i> Номера для Сервисов</h4><p>Вирт. номера для 50+ сервисов. Уточняйте.</p><div class="price-tag">5-300₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Запросить</a></div>
+                        <div class="product-card"><h4><i class="fas fa-sim-card"></i> Номера для Сервисов</h4><p>Вирт. номера для 50+ сервисов. Уточняйте. Скупаем оптом.</p><div class="price-tag">5-300₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Запросить</a></div>
                         <div class="product-card"><h4><i class="fas fa-credit-card"></i> YooMoney Номер</h4><p>Номер для привязки к YooMoney.</p><div class="price-tag">25₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
                         <div class="product-card"><h4><i class="fas fa-cash-register"></i> Номера для FunPay</h4><p>Номера для верификации FunPay.</p><div class="price-tag">50₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
                     </div>
@@ -563,9 +649,9 @@
                         <ul>
                             <li>Ликвидные игровые аккаунты (Steam, Epic, Minecraft сервера).</li>
                             <li>Telegram/Discord аккаунты с хорошей историей/отлегой.</li>
-                            <li>Подписки на популярные сервисы/читы.</li>
+                            <li>Подписки на популярные сервисы.</li>
                         </ul>
-                        <p>Свяжитесь с нами в Telegram с пометкой "FastSell" и вашим предложением. Мы оперативно его оценим и предложим условия.</p>
+                        <p>Свяжитесь с нами в Telegram с пометкой "FastSell" и вашим предложением. Мы оперативно его оценим и предложим условия. Используйте шаблон из вкладки <button class="tab-button-link" data-tab-link="help">Help</button> для удобства.</p>
                         <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details" style="display: block; max-width: 250px; margin: var(--spacing-md) auto 0;">Предложить для FastSell</a>
                     </div>
                 </div>
@@ -581,9 +667,57 @@
                             <li>Мы используем наши ресурсы и контакты для поиска или предлагаем варианты из наших запасов/скупки.</li>
                         </ul>
                         <p>Эта услуга также подразумевает, что мы активно скупаем различные цифровые активы. Если у вас есть что предложить на продажу – смело пишите!</p>
-                        <p>Свяжитесь с нами в Telegram, чтобы обсудить ваш запрос на поиск, покупку или предложение о продаже вашего товара.</p>
+                        <p>Свяжитесь с нами в Telegram, чтобы обсудить ваш запрос на поиск, покупку или предложение о продаже вашего товара. Используйте шаблон из вкладки <button class="tab-button-link" data-tab-link="help">Help</button> для удобства.</p>
                          <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details" style="display: block; max-width: 250px; margin: var(--spacing-md) auto 0;">Сделать запрос / Предложить товар</a>
                     </div>
+                </div>
+                
+                <div id="help-content" class="tab-content">
+                    <div class="info-section">
+                        <h3><i class="fas fa-question-circle"></i> Помощь по сделкам</h3>
+                        <p>Чтобы ускорить процесс, используйте следующие шаблоны при обращении в Telegram <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">@smsgetter</a>.</ Скопируйте нужный шаблон и заполните своими данными.</p>
+                    </div>
+
+                    <div class="info-section">
+                        <h4><i class="fas fa-bolt"></i> Шаблон для FastSell (Быстрая продажа)</h4>
+                        <p>Если хотите быстро продать свой товар по цене ниже рыночной:</p>
+                        <pre class="code-template"><code>#FastSell
+Тип товара: (например, Аккаунт Steam)
+Описание: (ключевые особенности, игры, скины, отлега и т.д.)
+Желаемая цена: [ВАША ЦЕНА] рублей
+Дополнительно: (скриншоты, ссылки - по возможности)</code></pre>
+                    </div>
+
+                    <div class="info-section">
+                        <h4><i class="fas fa-search-dollar"></i> Шаблон для Search/Buy (Поиск и Покупка)</h4>
+                        <p>Если ищете конкретный товар, которого нет в списке, или хотите заказать поиск:</p>
+                        <pre class="code-template"><code>#SearchBuy
+Тип товара: (например, Аккаунт Fortnite с редким скином)
+Описание/Требования: (конкретные игры, предметы, характеристики)
+Ваш бюджет: до [ВАШ БЮДЖЕТ] рублей
+Дополнительно: (любая важная информация)</code></pre>
+                    </div>
+
+                    <div class="info-section">
+                        <h4><i class="fas fa-hand-holding-usd"></i> Шаблон для Продажи (Общее)</h4>
+                        <p>Если хотите предложить свой товар на продажу (не срочно):</p>
+                        <pre class="code-template"><code>#sell
+Тип товара: (например, Telegram авторег)
+Описание: (характеристики, количество, формат)
+Ваша цена: [ВАША ЦЕНА] за единицу/партию
+Дополнительно: </code></pre>
+                    </div>
+
+                    <div class="info-section">
+                        <h4><i class="fas fa-shopping-cart"></i> Шаблон для Покупки (Общее)</h4>
+                        <p>Если хотите купить товар из имеющихся или уточнить наличие:</p>
+                        <pre class="code-template"><code>#buy
+Тип товара: (например, Discord с Nitro)
+Количество: (если нужно несколько)
+Вопросы: (если есть)</code></pre>
+                        <p>Или просто напишите, какой товар из каталога вас интересует.</p>
+                    </div>
+                     <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details" style="display: block; max-width: 250px; margin: var(--spacing-lg) auto 0;">Связаться в Telegram</a>
                 </div>
 
 
@@ -613,18 +747,44 @@
             const nowPlayingText = document.getElementById('now-playing-text');
             const defaultTrackName = 'DVRST - Close Eyes';
             
-            const bioContentTab = document.querySelector('.tab-button[data-tab="bio"]');
+            function setActiveTab(tabId) {
+                const targetTabButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                const targetContent = document.getElementById(tabId + '-content');
+
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                if (targetTabButton) targetTabButton.classList.add('active');
+                if (targetContent) targetContent.classList.add('active');
+            }
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     const targetTabId = tab.getAttribute('data-tab');
-                    const targetContent = document.getElementById(targetTabId + '-content');
-                    tabs.forEach(t => t.classList.remove('active'));
-                    contents.forEach(c => c.classList.remove('active'));
-                    tab.classList.add('active');
-                    if (targetContent) targetContent.classList.add('active');
+                    setActiveTab(targetTabId);
                 });
             });
+
+            document.querySelectorAll('.tab-button-link').forEach(link => {
+                link.style.background = 'none';
+                link.style.border = 'none';
+                link.style.padding = '0';
+                link.style.fontFamily = 'inherit';
+                link.style.fontSize = 'inherit';
+                link.style.color = 'var(--clr-accent)';
+                link.style.cursor = 'pointer';
+                link.style.textDecoration = 'underline';
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetTabId = link.getAttribute('data-tab-link');
+                    setActiveTab(targetTabId);
+                    const targetElement = document.getElementById(targetTabId + '-content');
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                });
+            });
+
 
             if(nowPlayingText) nowPlayingText.textContent = defaultTrackName;
             if(audioPlayer && audioPlayer.querySelector('source')) audioPlayer.querySelector('source').src = "https://raw.githubusercontent.com/smsgetter/smsgetter.github.io/main/DVRST%20-%20Close%20Eyes.mp3";
