@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index,follow">
-    <meta name="theme-color" content="#0d1117">
+    <meta name="theme-color" content="#0c0f1a">
     <meta property="og:title" content="ResellWindow">
     <meta property="og:url" content="https://your-domain.com/ResellWindow/">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630/0d1117/00aeff?text=ResellWindow+Market">
-    <meta property="og:site_name" content="ResellWindow Market">
-    <meta name="description" content="ResellWindow - Продажа и скупка игровых аккаунтов, подписок, Telegram/Discord товаров и инструментов.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/0c0f1a/1de9b6?text=ResellWindow+Marketplace">
+    <meta property="og:site_name" content="ResellWindow Marketplace">
+    <meta name="description" content="ResellWindow - Продажа и скупка цифровых товаров: аккаунты, подписки, инструменты. Быстро, надежно, выгодно.">
     <link rel="canonical" href="https://your-domain.com/ResellWindow/">
     <title>ResellWindow</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -18,60 +18,61 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
-            --clr-bg: #0d1117;
-            --clr-bg-rgb: 13, 17, 23;
-            --clr-panel-bg: rgba(20, 25, 40, 0.85);
-            --clr-panel-bg-alt: rgba(25, 30, 50, 0.9);
-            --clr-panel-border: rgba(100, 180, 255, 0.15);
-            --clr-text-primary: #e6f1ff;
-            --clr-text-secondary: #a0b0c0;
-            --clr-icon: #b0c8e0;
+            --clr-bg: #0c0f1a;
+            --clr-bg-rgb: 12, 15, 26;
+            --clr-panel-bg: rgba(18, 22, 38, 0.88);
+            --clr-panel-bg-alt: rgba(22, 28, 48, 0.92);
+            --clr-panel-border: rgba(60, 80, 150, 0.25);
+            --clr-text-primary: #e8efff;
+            --clr-text-secondary: #a0aec0;
+            --clr-icon: #c0d0e0;
             --clr-icon-hover: #ffffff;
-            --clr-button-bg: rgba(0, 120, 200, 0.4);
-            --clr-button-hover-bg: rgba(0, 174, 255, 0.7);
-            --clr-button-border: rgba(0, 174, 255, 0.3);
+            --clr-button-bg: rgba(29, 233, 182, 0.2); /* Teal accent */
+            --clr-button-hover-bg: rgba(29, 233, 182, 0.4);
+            --clr-button-border: rgba(29, 233, 182, 0.4);
             --clr-tab-active-bg: transparent;
-            --clr-shadow: rgba(0, 0, 0, 0.5);
-            --clr-accent: #00aeff; /* Electric Blue */
-            --clr-accent-rgb: 0, 174, 255;
-            --clr-accent-glow: rgba(var(--clr-accent-rgb), 0.4);
-            --clr-secondary-accent: #00e0ff; /* Cyan/Teal */
-            --clr-secondary-accent-rgb: 0, 224, 255;
-            --clr-highlight: #ffd700; /* Gold */
-            --clr-highlight-rgb: 255, 215, 0;
-            --clr-success: #4CAF50;
-            --clr-star: rgba(var(--clr-accent-rgb), 0.5);
+            --clr-shadow: rgba(0, 0, 0, 0.6);
+            --clr-accent: #1de9b6; /* Teal */
+            --clr-accent-rgb: 29, 233, 182;
+            --clr-accent-glow: rgba(var(--clr-accent-rgb), 0.35);
+            --clr-secondary-accent: #7e57c2; /* Deep Purple */
+            --clr-secondary-accent-rgb: 126, 87, 194;
+            --clr-highlight: #ffab00; /* Amber/Gold */
+            --clr-highlight-rgb: 255, 171, 0;
+            --clr-success: #00c853; /* Green A700 */
 
-            --radius-card: 12px;
-            --radius-button: 8px;
-            --radius-full: 9999px;
+            --radius-card: 10px;
+            --radius-button: 6px;
+            --radius-full: 50px;
             --radius-xs: 4px;
-            --radius-item: 6px;
+            --radius-item: 8px;
 
-            --spacing-xs: 0.4rem;
-            --spacing-sm: 0.8rem;
-            --spacing-md: 1.3rem;
-            --spacing-lg: 1.9rem;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.9rem;
+            --spacing-md: 1.4rem;
+            --spacing-lg: 2.0rem;
 
-            --transition-speed: 0.35s;
-            --transition-speed-fast: 0.25s;
-            --transition-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-speed: 0.3s;
+            --transition-speed-fast: 0.2s;
+            --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+            --font-primary: 'Inter', sans-serif;
+            --font-display: 'Orbitron', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { scroll-behavior: smooth; font-size: 16px; }
 
         body {
-            font-family: 'Inter', 'Poppins', sans-serif;
+            font-family: var(--font-primary);
             background-color: var(--clr-bg);
             color: var(--clr-text-primary);
-            line-height: 1.65;
+            line-height: 1.7;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
@@ -79,7 +80,6 @@
             align-items: center;
             justify-content: center;
             padding: var(--spacing-md);
-            cursor: default;
         }
 
         body::before {
@@ -87,23 +87,17 @@
             position: fixed;
             inset: 0;
             z-index: -5;
-            background: linear-gradient(160deg,
-                rgba(var(--clr-accent-rgb), 0.15) 0%,
-                rgba(var(--clr-secondary-accent-rgb), 0.1) 30%,
-                rgba(var(--clr-bg-rgb), 0.7) 60%,
-                rgba(var(--clr-secondary-accent-rgb), 0.05) 85%,
-                rgba(var(--clr-accent-rgb), 0.1) 100%
-            );
-            background-size: 300% 300%;
-            animation: gradientFlow 20s ease infinite;
-            filter: blur(2px);
-            transform: scale(1.05);
+            background:
+                radial-gradient(ellipse at 70% 20%, rgba(var(--clr-accent-rgb), 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 80%, rgba(var(--clr-secondary-accent-rgb), 0.1) 0%, transparent 50%),
+                linear-gradient(170deg, rgba(var(--clr-bg-rgb),0.95) 30%, rgba(var(--clr-secondary-accent-rgb), 0.05) 100%);
+            background-size: 200% 200%;
+            animation: subtleGradientShift 25s ease infinite;
         }
-
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes subtleGradientShift {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
         }
 
         body::after {
@@ -111,770 +105,495 @@
             position: fixed;
             inset: 0;
             z-index: -4;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.07'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             pointer-events: none;
-        }
-        
-        body.easter-egg-bg::before {
-             filter: blur(8px) brightness(0.8) saturate(1.5) hue-rotate(180deg);
-             transition: filter 0.6s cubic-bezier(0.68, -0.6, 0.265, 1.6);
         }
 
         main {
             display: flex;
             width: 100%;
-            min-height: 100vh;
-            align-items: center;
+            min-height: 100vh; /* Changed from min-height to ensure it takes at least full viewport */
+            align-items: center; /* Changed from flex-start to center to vertically center content */
             justify-content: center;
-            padding: var(--spacing-lg) var(--spacing-md);
+            padding: var(--spacing-lg) var(--spacing-sm);
             z-index: 1;
         }
 
         .card-wrapper {
-            max-width: 55rem; /* Increased width */
+            max-width: 60rem;
             width: 100%;
             margin: auto;
             position: relative;
-        }
-
-        .particles-container {
-            position: absolute;
-            inset: -70px;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 1;
-            border-radius: var(--radius-card);
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.1; transform: scale(0.6); }
-            50% { opacity: 0.8; transform: scale(1.0); }
-        }
-
-        .particles-container::before,
-        .particles-container::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 2px; height: 2px;
-            border-radius: 50%;
-            box-shadow:
-                5vw 15vh 1px var(--clr-star), 30vw 8vh 0px var(--clr-star), 55vw 30vh 1px var(--clr-star),
-                80vw 22vh 1px var(--clr-star), 12vw 80vh 0px var(--clr-star), 38vw 65vh 1px var(--clr-star),
-                70vw 50vh 0px var(--clr-star), 90vw 88vh 1px var(--clr-star), 22vw 38vh 1px var(--clr-star),
-                65vw 10vh 0px var(--clr-star), 48vw 92vh 1px var(--clr-star), 8vw 60vh 0px var(--clr-star);
-             animation: twinkle 9s infinite ease-in-out alternate;
-        }
-        .particles-container::after {
-            box-shadow:
-                10vw 6vh 0px var(--clr-star), 35vw 45vh 1px var(--clr-star), 58vw 12vh 1px var(--clr-star),
-                78vw 70vh 0px var(--clr-star), 18vw 88vh 1px var(--clr-star), 49vw 25vh 0px var(--clr-star),
-                68vw 85vh 1px var(--clr-star), 95vw 15vh 1px var(--clr-star), 26vw 75vh 0px var(--clr-star),
-                53vw 55vh 1px var(--clr-star), 85vw_40vh 0px var(--clr-star), 4vw 30vh 1px var(--clr-star);
-            animation: twinkle 11s infinite ease-in-out alternate;
-            animation-delay: -3s;
         }
 
         .profile-card {
             display: flex;
             flex-direction: column;
             position: relative;
-            backdrop-filter: blur(25px) saturate(120%);
-            -webkit-backdrop-filter: blur(25px) saturate(120%);
+            backdrop-filter: blur(20px) saturate(110%);
+            -webkit-backdrop-filter: blur(20px) saturate(110%);
             border-radius: var(--radius-card);
-            background: linear-gradient(155deg, var(--clr-panel-bg), var(--clr-panel-bg-alt));
+            background: linear-gradient(160deg, var(--clr-panel-bg), var(--clr-panel-bg-alt));
             border: 1px solid var(--clr-panel-border);
-            box-shadow: 0 10px 40px var(--clr-shadow), inset 0 0 0 1px rgba(var(--clr-accent-rgb),0.08);
+            box-shadow: 0 12px 45px var(--clr-shadow), inset 0 0 0 1.5px rgba(var(--clr-accent-rgb),0.1);
             overflow: hidden;
             opacity: 0;
-            transform: translateY(30px) scale(0.98);
-            animation: card-fade-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            transform: translateY(25px) scale(0.985);
+            animation: card-fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
             z-index: 2;
         }
         @keyframes card-fade-in { to { opacity: 1; transform: translateY(0) scale(1); } }
 
         .card-banner {
             width: 100%;
-            height: 10rem; /* Slightly taller banner */
-            background: linear-gradient(45deg, rgba(var(--clr-accent-rgb), 0.1), rgba(var(--clr-secondary-accent-rgb),0.15)),
-                        url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') center/cover no-repeat;
-            background-blend-mode: overlay;
+            height: 12rem;
+            background: linear-gradient(rgba(var(--clr-bg-rgb), 0.5), rgba(var(--clr-bg-rgb), 0.8)),
+                        url('https://images.unsplash.com/photo-1604079628040-94301bb21b91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
             border-bottom: 1px solid var(--clr-panel-border);
             position: relative;
-            overflow: hidden;
-        }
-         .card-banner::after {
-            content: '';
-            position: absolute;
-            bottom: -1px; left: 0;
-            width: 100%; height: 3px;
-            background: linear-gradient(90deg, transparent, var(--clr-accent), var(--clr-accent-glow), var(--clr-accent), transparent);
-            opacity: 0.6;
-            animation: banner-glow-line 7s infinite linear;
-        }
-        @keyframes banner-glow-line {
-            0% { transform: translateX(-100%) scaleX(0.4); }
-            50% { transform: translateX(0) scaleX(1); }
-            100% { transform: translateX(100%) scaleX(0.4); }
-        }
-
-        .card-header {
-            position: relative;
-            padding-top: calc(65px + var(--spacing-sm)); /* Adjusted for avatar */
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-bottom: var(--spacing-md);
+            justify-content: center;
+            padding: var(--spacing-md);
             text-align: center;
         }
-
-        .avatar-container {
-            position: absolute;
-            width: 130px; height: 130px; /* Slightly larger avatar */
-            left: 50%; top: 0;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .avatar-image {
-            display: block; width: 100%; height: 100%;
-            border-radius: 50%;
-            border: 5px solid var(--clr-bg);
-            object-fit: cover;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 0 2px rgba(var(--clr-accent-rgb),0.2), 0 0 30px -5px var(--clr-accent-glow);
-            transition: transform 0.3s var(--transition-ease);
-        }
-        .avatar-image.clicked { transform: scale(0.9) rotate(6deg); }
-
-        .username-container {
-            display: flex; flex-direction: column;
-            align-items: center;
-            gap: var(--spacing-xs);
-            margin-top: var(--spacing-xs);
-        }
-        .username {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.4rem; font-weight: 700;
+        .site-title {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 700;
             color: var(--clr-text-primary);
-            text-shadow: 0 2px 8px rgba(0,0,0,0.7), 0 0 15px rgba(var(--clr-accent-rgb), 0.2);
+            text-shadow: 0 0 15px rgba(var(--clr-accent-rgb), 0.5), 0 0 5px rgba(var(--clr-accent-rgb),0.7);
+            margin-bottom: var(--spacing-xs);
         }
-        .username-alias {
-            font-size: 0.9rem; font-weight: 500;
+        .site-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
             color: var(--clr-text-secondary);
-            opacity: 0.85;
-            margin-top: -2px;
+            opacity: 0.9;
         }
-        .copy-button {
-            background: none; border: none;
-            color: var(--clr-icon);
-            font-size: 0.9rem; cursor: pointer;
-            padding: var(--spacing-xs);
-            border-radius: var(--radius-xs);
-            transition: all var(--transition-speed-fast);
-            position: relative;
-            margin-top: var(--spacing-xs);
+
+        .card-header {
+            padding: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-bottom: 1px solid var(--clr-panel-border);
         }
-        .copy-button:hover, .copy-button:focus-visible {
+        .contact-info {
+            font-family: var(--font-mono);
+            font-size: 1rem;
             color: var(--clr-accent);
-            background-color: rgba(var(--clr-accent-rgb), 0.15);
-            transform: scale(1.1);
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background-color: rgba(var(--clr-accent-rgb),0.08);
+            border-radius: var(--radius-xs);
+            border: 1px solid rgba(var(--clr-accent-rgb),0.15);
         }
-        .copy-button .tooltip {
-             bottom: 100%; left: 50%;
-             transform: translateX(-50%) translateY(calc(-1 * var(--spacing-xs) - 2px));
-             font-size: 0.75rem; opacity: 0; visibility: hidden;
-             transition: opacity var(--transition-speed), visibility var(--transition-speed), background-color var(--transition-speed-fast);
-        }
-        .copy-button:hover .tooltip { opacity: 1; visibility: visible; }
-        .copy-button .tooltip.copied { background-color: var(--clr-success); color: #fff; }
+        .contact-info i { margin-right: var(--spacing-xs); }
 
         .availability-status {
-            font-size: 0.85rem; color: var(--clr-text-secondary);
-            margin-top: var(--spacing-sm);
+            font-size: 0.8rem; color: var(--clr-text-secondary);
+            margin-bottom: var(--spacing-md);
             padding: var(--spacing-xs) var(--spacing-md);
-            background-color: rgba(var(--clr-accent-rgb), 0.08);
+            background-color: rgba(var(--clr-bg-rgb), 0.3);
             border-radius: var(--radius-full);
             display: inline-flex; align-items: center; gap: var(--spacing-sm);
-            border: 1px solid rgba(var(--clr-accent-rgb),0.15);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 1px solid var(--clr-panel-border);
         }
          .availability-status .status-icon {
-             color: var(--clr-success); font-size: 0.65rem;
-             animation: pulse-status 2.5s infinite ease-in-out;
+             color: var(--clr-success); font-size: 0.6rem;
+             animation: pulse-status 2.2s infinite ease-in-out;
          }
         @keyframes pulse-status {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-            70% { box-shadow: 0 0 0 6px rgba(76, 175, 80, 0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(var(--clr-success), 0.5); }
+            70% { box-shadow: 0 0 0 5px rgba(var(--clr-success), 0); }
         }
 
         .social-links {
             display: flex; flex-wrap: wrap; justify-content: center;
             gap: var(--spacing-md); list-style: none; padding: 0;
-            margin-top: var(--spacing-lg);
         }
-        .social-links li { position: relative; opacity: 0; transform: translateY(25px); animation: link-fade-in 0.7s var(--transition-ease) forwards; }
-        .social-links li:nth-child(1) { animation-delay: 0.45s; }
-        .social-links li:nth-child(2) { animation-delay: 0.5s; }
-        .social-links li:nth-child(3) { animation-delay: 0.55s; }
-        @keyframes link-fade-in { to { opacity: 1; transform: translateY(0); } }
-
         .social-icon {
             display: flex; align-items: center; justify-content: center;
-            width: 48px; height: 48px;
-            background-color: rgba(var(--clr-accent-rgb), 0.07);
-            border: 1px solid rgba(var(--clr-accent-rgb), 0.12);
+            width: 44px; height: 44px;
+            background-color: rgba(var(--clr-secondary-accent-rgb), 0.1);
+            border: 1px solid rgba(var(--clr-secondary-accent-rgb), 0.2);
             border-radius: var(--radius-full); color: var(--clr-icon);
-            font-size: 1.3rem; text-decoration: none;
+            font-size: 1.2rem; text-decoration: none;
             transition: all var(--transition-speed) var(--transition-ease);
-            position: relative; overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
         .social-icon:hover, .social-icon:focus-visible {
-            background-color: var(--clr-accent);
-            border-color: var(--clr-accent);
-            transform: translateY(-4px) scale(1.1);
-            box-shadow: 0 7px 18px rgba(0,0,0,0.4), 0 0 20px var(--clr-accent-glow);
+            background-color: var(--clr-secondary-accent);
+            border-color: var(--clr-secondary-accent);
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 6px 15px rgba(var(--clr-secondary-accent-rgb),0.3);
             color: var(--clr-icon-hover); outline: none;
         }
-        .social-icon i { transition: transform var(--transition-speed) var(--transition-ease); }
-        .social-icon:hover i, .social-icon:focus-visible i { transform: scale(1.1); }
-
-        .tooltip {
-            position: absolute; bottom: 100%; left: 50%;
-            transform: translateX(-50%) translateY(calc(-1 * var(--spacing-sm) - 3px));
-            background-color: rgba(var(--clr-bg-rgb), 0.95);
-            color: var(--clr-text-primary);
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--radius-xs);
-            font-size: 0.8rem; font-weight: 600; white-space: nowrap;
-            z-index: 20; opacity: 0; visibility: hidden; pointer-events: none;
-            transition: all var(--transition-speed) var(--transition-ease);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-            border: 1px solid var(--clr-panel-border);
-        }
-        .social-links li:hover .tooltip {
-            opacity: 1; visibility: visible;
-            transform: translateX(-50%) translateY(calc(-1 * var(--spacing-sm) - 8px));
-        }
-
+        
         .tabs {
             display: flex;
             border-bottom: 1px solid var(--clr-panel-border);
-            border-top: 1px solid var(--clr-panel-border);
-            background: rgba(var(--clr-bg-rgb),0.2);
-            opacity: 0; transform: translateY(15px);
-            animation: section-fade-in 0.8s var(--transition-ease) 0.55s forwards;
-            overflow-x: auto; /* For many tabs on small screens */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            background: rgba(var(--clr-bg-rgb),0.15);
+            overflow-x: auto;
+            -ms-overflow-style: none; scrollbar-width: none;
         }
-        .tabs::-webkit-scrollbar { display: none; } /* Chrome, Safari, Opera */
+        .tabs::-webkit-scrollbar { display: none; }
 
         .tab-button {
-            flex-shrink: 0; /* Prevent shrinking on many tabs */
+            flex-shrink: 0;
             padding: var(--spacing-sm) var(--spacing-md);
-            font-size: 0.9rem; font-weight: 600;
+            font-size: 0.85rem; font-weight: 600; font-family: var(--font-mono);
             color: var(--clr-text-secondary);
             background: none; border: none;
             border-right: 1px solid var(--clr-panel-border);
             cursor: pointer;
-            transition: all var(--transition-speed);
-            text-align: center; position: relative;
-            white-space: nowrap;
+            transition: all var(--transition-speed-fast);
+            text-align: center; position: relative; white-space: nowrap;
+            text-transform: uppercase; letter-spacing: 0.5px;
         }
         .tab-button:last-child { border-right: none; }
         .tab-button:hover, .tab-button:focus-visible {
             background-color: rgba(var(--clr-accent-rgb),0.1);
-            color: var(--clr-text-primary); outline: none;
+            color: var(--clr-accent); outline: none;
         }
         .tab-button.active {
-            background-color: var(--clr-tab-active-bg);
             color: var(--clr-accent);
-            box-shadow: inset 0 -3px 0px var(--clr-accent), 0 0 15px -5px var(--clr-accent-glow);
+            box-shadow: inset 0 -2.5px 0px var(--clr-accent);
          }
 
         .tab-content { display: none; padding: var(--spacing-lg); }
         .tab-content.active {
             display: block;
-            animation: content-fade-in 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+            animation: content-fade-in 0.6s var(--transition-ease) forwards;
         }
-        @keyframes content-fade-in {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes content-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .tab-description {
+            font-size: 0.9rem; color: var(--clr-text-secondary);
+            margin-bottom: var(--spacing-md); text-align: center;
+            padding: var(--spacing-sm);
+            background-color: rgba(var(--clr-bg-rgb),0.2);
+            border-radius: var(--radius-xs);
+            border: 1px solid var(--clr-panel-border);
         }
+        .tab-description a { color: var(--clr-accent); font-weight: 600; }
 
         .info-section { margin-bottom: var(--spacing-lg); }
         .info-section:last-child { margin-bottom: 0; }
         .info-section h3 {
-            font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700;
-            color: var(--clr-text-primary);
-            margin-bottom: var(--spacing-md);
-            text-transform: uppercase; letter-spacing: 1.5px;
+            font-family: var(--font-display); font-size: 1.2rem; font-weight: 500;
+            color: var(--clr-text-primary); margin-bottom: var(--spacing-md);
+            text-transform: uppercase; letter-spacing: 1px;
             display: flex; align-items: center; gap: var(--spacing-sm);
             border-bottom: 1px solid var(--clr-panel-border);
             padding-bottom: var(--spacing-sm); position: relative;
         }
          .info-section h3::after {
-             content: ''; position: absolute; bottom: -1.5px; left: 0;
-             height: 3px; width: 50px;
-             background: var(--clr-accent);
-             border-radius: 3px; opacity: 0.8;
+             content: ''; position: absolute; bottom: -1px; left: 0;
+             height: 2px; width: 40px; background: var(--clr-accent);
+             border-radius: 2px;
          }
-        .info-section h3 i { color: var(--clr-accent); font-size: 1rem; opacity: 0.9; margin-right: var(--spacing-xs); }
+        .info-section h3 i { color: var(--clr-accent); font-size: 1rem; }
         .info-section p, .info-section ul {
-            font-size: 0.92rem; color: var(--clr-text-secondary);
-            line-height: 1.75; margin-bottom: var(--spacing-sm);
+            font-size: 0.9rem; color: var(--clr-text-secondary);
+            line-height: 1.8; margin-bottom: var(--spacing-sm);
         }
-        .info-section ul { list-style: none; padding-left: 0; }
+        .info-section ul { list-style-type: none; padding-left: 0;}
         .info-section li {
-            margin-bottom: var(--spacing-xs); position: relative;
-            padding-left: 1.6em;
-            transition: transform var(--transition-speed-fast) var(--transition-ease), color var(--transition-speed-fast);
+            padding-left: 1.5em; margin-bottom: var(--spacing-xs); position: relative;
+            transition: color 0.2s ease;
         }
         .info-section li::before {
-            content: '›'; position: absolute; left: 0.3em;
-            color: var(--clr-accent); opacity: 0.9;
-            font-size: 1.2em; font-weight: bold;
-            transition: color var(--transition-speed-fast), transform var(--transition-speed-fast);
+            content: '\\2023'; /* Bullet character */
+            position: absolute; left: 0.2em; color: var(--clr-accent);
+            font-weight: bold; font-size: 1.1em;
+            transition: transform 0.2s ease;
         }
-         .info-section li:hover { transform: translateX(5px); color: var(--clr-text-primary); }
-         .info-section li:hover::before { color: var(--clr-accent); transform: scale(1.3) rotate(10deg); }
-        .info-section strong { color: var(--clr-text-primary); font-weight: 600; }
-        .info-section a {
-            color: var(--clr-accent); text-decoration: none;
-            border-bottom: 1px dashed rgba(var(--clr-accent-rgb), 0.5);
-            transition: color var(--transition-speed), border-color var(--transition-speed);
-            font-weight: 500;
-        }
-        .info-section a:hover, .info-section a:focus-visible {
-            color: var(--clr-text-primary);
-            border-color: rgba(var(--clr-text-primary), 0.7);
-            outline: none;
-        }
+        .info-section li:hover { color: var(--clr-text-primary); }
+        .info-section li:hover::before { transform: scale(1.3); }
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: var(--spacing-md);
-        }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: var(--spacing-md); }
         .product-card {
-            background-color: rgba(var(--clr-bg-rgb),0.25);
+            background-color: rgba(var(--clr-bg-rgb),0.3);
             border: 1px solid var(--clr-panel-border);
             border-radius: var(--radius-item);
             padding: var(--spacing-md);
             display: flex; flex-direction: column; gap: var(--spacing-sm);
             transition: all var(--transition-speed) var(--transition-ease);
-            position: relative;
-            overflow: hidden; /* For pin glow to not be clipped by other cards, parent needs overflow visible */
+            position: relative; overflow: hidden;
         }
         .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 0 0 2px rgba(var(--clr-accent-rgb), 0.2);
-            border-color: rgba(var(--clr-accent-rgb),0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.35), 0 0 0 1.5px rgba(var(--clr-accent-rgb), 0.25);
+            border-color: rgba(var(--clr-accent-rgb),0.35);
         }
         .product-card.is-pinned {
-            border-left: 3px solid var(--clr-highlight);
-            box-shadow: -3px 0 12px -2px var(--clr-highlight), 0 5px 15px rgba(0,0,0,0.25);
+            border-left: 4px solid var(--clr-highlight);
+            box-shadow: -4px 0 15px -3px rgba(var(--clr-highlight-rgb),0.5), 0 6px 18px rgba(0,0,0,0.3);
         }
-        .product-card.is-pinned:hover {
-             box-shadow: -3px 0 18px 0px var(--clr-highlight), 0 8px 20px rgba(0,0,0,0.3), 0 0 0 2px rgba(var(--clr-highlight-rgb), 0.2);
+         .product-card.is-pinned:hover {
+             box-shadow: -4px 0 20px 0px rgba(var(--clr-highlight-rgb),0.6), 0 10px 25px rgba(0,0,0,0.35), 0 0 0 1.5px rgba(var(--clr-highlight-rgb), 0.3);
         }
         .pin-icon {
-            position: absolute;
-            top: var(--spacing-sm);
-            right: var(--spacing-sm);
-            font-size: 1rem;
-            color: var(--clr-highlight);
-            background-color: rgba(var(--clr-bg-rgb), 0.7);
-            padding: 0.3em 0.4em;
-            border-radius: 50%;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-            z-index: 1;
+            position: absolute; top: var(--spacing-sm); right: var(--spacing-sm);
+            font-size: 0.9rem; color: var(--clr-highlight);
+            background-color: rgba(var(--clr-bg-rgb), 0.8);
+            padding: 0.35em 0.5em; border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.6); z-index: 1;
         }
         .product-card h4 {
-            font-size: 1.05rem; font-weight: 600;
-            color: var(--clr-text-primary);
-            margin-bottom: var(--spacing-xs);
-            display: flex; align-items: center; gap: var(--spacing-sm);
-            line-height: 1.3;
+            font-size: 1rem; font-weight: 600;
+            color: var(--clr-text-primary); margin-bottom: 0;
+            display: flex; align-items: center; gap: var(--spacing-xs);
+            line-height: 1.4; min-height: 2.8em; /* For 2 lines */
         }
-        .product-card h4 i { color: var(--clr-accent); font-size: 0.95rem; }
+        .product-card h4 i { color: var(--clr-accent); font-size: 0.9rem; min-width: 1em; text-align: center;}
+        .product-card.is-pinned h4 i { color: var(--clr-highlight); }
         .product-card p {
-            font-size: 0.85rem; color: var(--clr-text-secondary);
-            flex-grow: 1; margin-bottom: var(--spacing-sm);
-            min-height: 3.5em; /* approx 2-3 lines */
+            font-size: 0.82rem; color: var(--clr-text-secondary);
+            flex-grow: 1; margin-bottom: var(--spacing-xs);
+            min-height: 3.2em; /* approx 2-3 lines */
             line-height: 1.6;
         }
         .product-card .price-tag {
-            font-size: 1.2rem; font-weight: 700;
-            color: var(--clr-accent);
-            text-align: right; margin-top: auto;
-            padding-top: var(--spacing-xs);
+            font-family: var(--font-mono); font-size: 1.25rem; font-weight: 500;
+            color: var(--clr-accent); text-align: right; margin-top: auto;
+            padding-top: var(--spacing-sm);
             border-top: 1px solid var(--clr-panel-border);
             margin-bottom: var(--spacing-sm);
         }
         .product-card.is-pinned .price-tag { color: var(--clr-highlight); }
-
         .product-card .btn-details {
-            display: inline-block;
-            background-color: var(--clr-button-bg);
-            color: var(--clr-text-primary);
-            padding: var(--spacing-sm) var(--spacing-md);
-            border-radius: var(--radius-button);
-            text-decoration: none; text-align: center; font-weight: 600;
-            transition: background-color var(--transition-speed) var(--transition-ease), transform var(--transition-speed-fast);
-            border: 1px solid var(--clr-button-border);
-            font-size: 0.9rem;
+            display: inline-block; background-color: var(--clr-button-bg);
+            color: var(--clr-text-primary); padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-button); text-decoration: none; text-align: center; font-weight: 600;
+            transition: all var(--transition-speed-fast);
+            border: 1px solid var(--clr-button-border); font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 0.5px;
         }
         .product-card .btn-details:hover {
             background-color: var(--clr-button-hover-bg);
-            transform: scale(1.03);
-            border-color: var(--clr-accent);
+            transform: scale(1.02); border-color: var(--clr-accent);
+            box-shadow: 0 0 10px rgba(var(--clr-accent-rgb),0.3);
         }
         .product-card.is-pinned .btn-details {
-            background-color: rgba(var(--clr-highlight-rgb), 0.2);
+            background-color: rgba(var(--clr-highlight-rgb), 0.15);
             border-color: rgba(var(--clr-highlight-rgb), 0.3);
+            color: var(--clr-highlight);
         }
         .product-card.is-pinned .btn-details:hover {
-            background-color: rgba(var(--clr-highlight-rgb), 0.4);
+            background-color: rgba(var(--clr-highlight-rgb), 0.3);
             border-color: var(--clr-highlight);
+            box-shadow: 0 0 10px rgba(var(--clr-highlight-rgb),0.3);
         }
-
-
-        #bio-text .typing-cursor {
-            display: inline-block; width: 8px; height: 1em;
-            background-color: var(--clr-accent);
-            animation: blink 0.8s infinite; margin-left: 3px;
-            vertical-align: text-bottom; border-radius: 2px;
-        }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
         .music-player-container {
-            padding: var(--spacing-md) var(--spacing-lg);
+            padding: var(--spacing-md);
             background-color: rgba(var(--clr-bg-rgb),0.1);
             border-top: 1px solid var(--clr-panel-border);
-            opacity: 0; transform: translateY(15px);
-            animation: section-fade-in 0.85s var(--transition-ease) 0.85s forwards;
         }
         .player-controls { display: flex; align-items: center; gap: var(--spacing-md); justify-content: center; }
         .play-pause-button {
-            background: none;
-            border: 1px solid rgba(var(--clr-accent-rgb),0.2);
-            border-radius: 50%; width: 44px; height: 44px;
+            background: none; border: 1px solid rgba(var(--clr-accent-rgb),0.25);
+            border-radius: 50%; width: 40px; height: 40px;
             display: flex; align-items: center; justify-content: center;
-            color: var(--clr-icon); font-size: 1rem; cursor: pointer;
-            transition: all var(--transition-speed) var(--transition-ease);
+            color: var(--clr-icon); font-size: 0.9rem; cursor: pointer;
+            transition: all var(--transition-speed-fast);
         }
         .play-pause-button:hover, .play-pause-button:focus-visible {
             background-color: var(--clr-accent);
             color: var(--clr-icon-hover); border-color: var(--clr-accent);
-            transform: scale(1.15); box-shadow: 0 0 12px var(--clr-accent-glow);
+            transform: scale(1.12); box-shadow: 0 0 10px var(--clr-accent-glow);
             outline: none;
         }
         .now-playing {
-            font-size: 0.85rem; color: var(--clr-text-secondary);
+            font-family: var(--font-mono); font-size: 0.8rem; color: var(--clr-text-secondary);
             text-align: center; flex-grow: 1;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-            max-width: 250px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 230px;
         }
         .hidden-audio-player { display: none; }
 
-        .support-section {
-            text-align: center; padding-top: var(--spacing-sm);
-            border-top: 1px solid var(--clr-panel-border);
-            margin-top: var(--spacing-lg);
-        }
-         .support-section p { font-size: 0.85rem; color: var(--clr-text-secondary); margin-bottom: var(--spacing-sm); }
-         .support-section .support-link {
-             color: var(--clr-accent); font-weight: 600; text-decoration: none;
-             border-bottom: 1px dashed var(--clr-accent);
-             transition: color var(--transition-speed), border-color var(--transition-speed);
-         }
-         .support-section .support-link:hover { color: var(--clr-text-primary); border-color: var(--clr-text-primary); }
-
         footer {
-            padding: var(--spacing-md) var(--spacing-lg);
-            text-align: center; font-size: 0.8rem;
-            color: var(--clr-text-secondary); opacity: 0.7;
-            border-top: 1px solid var(--clr-panel-border);
-            background-color: transparent;
+            padding: var(--spacing-md); text-align: center; font-size: 0.75rem;
+            font-family: var(--font-mono); color: var(--clr-text-secondary); opacity: 0.65;
+            border-top: 1px solid var(--clr-panel-border); background-color: transparent;
         }
 
-        @keyframes section-fade-in { to { opacity: 1; transform: translateY(0); } }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: rgba(var(--clr-bg-rgb), 0.5); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: rgba(var(--clr-accent-rgb), 0.3); border-radius: 8px; border: 1px solid rgba(var(--clr-accent-rgb),0.1); }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(var(--clr-accent-rgb), 0.5); }
+        ::-webkit-scrollbar { width: 7px; }
+        ::-webkit-scrollbar-track { background: rgba(var(--clr-bg-rgb), 0.7); }
+        ::-webkit-scrollbar-thumb { background: rgba(var(--clr-accent-rgb), 0.35); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(var(--clr-accent-rgb), 0.55); }
 
         @media (max-width: 768px) {
+            .site-title { font-size: 2.2rem; }
+            .site-tagline { font-size: 0.85rem; }
             .product-grid { grid-template-columns: 1fr; }
-            .tab-button { font-size: 0.85rem; padding: var(--spacing-sm) var(--spacing-md); }
-            .card-wrapper { max-width: 95%; }
+            .tab-button { font-size: 0.75rem; padding: var(--spacing-sm) var(--spacing-sm); }
         }
-
-        @media (max-width: 640px) {
-            body { align-items: flex-start; padding: var(--spacing-sm); }
+        @media (max-width: 600px) {
+            body { padding: var(--spacing-sm); }
             main { padding: var(--spacing-md) var(--spacing-xs); }
-            .profile-card { border-radius: calc(var(--radius-card) - 4px); }
-            .card-banner { height: 8rem; }
-            .avatar-container { width: 110px; height: 110px; }
-            .card-header { padding-top: calc(55px + var(--spacing-xs)); }
-            .username { font-size: 2rem; }
-            .username-alias { font-size: 0.8rem; }
-            .availability-status { font-size: 0.8rem; }
-            .social-links { gap: var(--spacing-sm); }
-            .social-icon { width: 42px; height: 42px; font-size: 1.2rem; }
-            
-            .tabs { /* Keep horizontal scrolling, or stack them if preferred */ }
-            /* If stacking:
-            .tabs { flex-direction: column; }
-            .tab-button { border-right: none; border-bottom: 1px solid var(--clr-panel-border); }
-            .tab-button.active { box-shadow: inset 3px 0 0px var(--clr-accent), 0 0 10px -3px var(--clr-accent-glow); }
-            .tab-button:last-child { border-bottom: none; }
-            */
-            .tab-content { padding: var(--spacing-md); }
-            .music-player-container { padding: var(--spacing-sm); }
-            .player-controls { gap: var(--spacing-sm); }
-            .now-playing { max-width: calc(100% - 75px); }
-            .info-section h3 { font-size: 1rem; letter-spacing: 1px;}
+            .card-banner { height: 10rem; }
+            .site-title { font-size: 2rem; }
+            .contact-info { font-size: 0.9rem; }
+            .social-icon { width: 40px; height: 40px; font-size: 1.1rem; }
         }
 
-        ::selection { background-color: var(--clr-accent); color: var(--clr-text-primary); text-shadow: none; }
-        ::-moz-selection { background-color: var(--clr-accent); color: var(--clr-text-primary); text-shadow: none; }
+        ::selection { background-color: var(--clr-accent); color: var(--clr-bg); text-shadow: none; }
+        ::-moz-selection { background-color: var(--clr-accent); color: var(--clr-bg); text-shadow: none; }
     </style>
 </head>
 <body>
     <main>
         <div class="card-wrapper">
-             <div class="particles-container"></div>
             <div class="profile-card">
-                <div class="card-banner"></div>
+                <div class="card-banner">
+                    <h1 class="site-title">ResellWindow</h1>
+                    <p class="site-tagline">Цифровые товары и услуги // Скупка & Продажа</p>
+                </div>
                 <div class="card-header">
-                    <div class="avatar-container" id="avatar-container">
-                        <img src="https://via.placeholder.com/130/00aeff/0d1117?Text=RW" alt="ResellWindow Avatar" class="avatar-image" id="avatar-image" loading="lazy">
-                    </div>
-                    <div class="username-container">
-                        <h1 class="username" id="username-text">ResellWindow</h1>
-                        <span class="username-alias">Твоё окно в мир цифровых товаров</span>
-                         <button class="copy-button" id="copy-username-btn" aria-label="Копировать Telegram">
-                            <i class="far fa-copy"></i> @smsgetter
-                            <span class="tooltip">Копировать Telegram</span>
-                        </button>
-                    </div>
+                    <p class="contact-info"><i class="fab fa-telegram-plane"></i> Telegram: @smsgetter</p>
                     <div class="availability-status">
-                        <i class="fas fa-circle status-icon"></i><span>Открыты для сделок 24/7</span>
+                        <i class="fas fa-circle status-icon"></i><span>Всегда на связи для ваших сделок</span>
                     </div>
                     <ul class="social-links">
-                        <li><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a><span class="tooltip">Telegram</span></li>
-                        <li><a href="https://github.com/smsgetter" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a><span class="tooltip">GitHub</span></li>
-                        <li><a href="https://t.me/smsspamblockbot" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Spam Block Bot"><i class="fas fa-comment-slash"></i></a><span class="tooltip">Spam Block Bot</span></li>
+                        <li><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a></li>
+                        <li><a href="https://github.com/smsgetter" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://t.me/smsspamblockbot" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Spam Block Bot"><i class="fas fa-comment-slash"></i></a></li>
                     </ul>
                 </div>
 
                 <div class="tabs">
-                    <button class="tab-button active" data-tab="minecraft">Minecraft</button>
+                    <button class="tab-button active" data-tab="bio">Bio</button>
+                    <button class="tab-button" data-tab="minecraft">Minecraft</button>
                     <button class="tab-button" data-tab="steam">Steam</button>
                     <button class="tab-button" data-tab="epic">Epic</button>
                     <button class="tab-button" data-tab="telegram">Telegram</button>
                     <button class="tab-button" data-tab="discord">Discord</button>
                     <button class="tab-button" data-tab="tools">Tools & Work</button>
                     <button class="tab-button" data-tab="other">Other</button>
+                    <button class="tab-button" data-tab="fastsell">FastSell</button>
+                    <button class="tab-button" data-tab="searchbuy">Search/Buy</button>
                 </div>
 
-                <div id="minecraft-content" class="tab-content active">
-                     <p style="font-size: 0.9rem; color: var(--clr-text-secondary); margin-bottom: var(--spacing-md); text-align: center;">
-                        Аккаунты и услуги для популярных Minecraft серверов. Для покупки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" style="color:var(--clr-accent); font-weight:bold;">Telegram: @smsgetter</a>.
-                    </p>
+                <div id="bio-content" class="tab-content active">
+                    <div class="info-section">
+                        <h3><i class="fas fa-user-astronaut"></i> О ResellWindow</h3>
+                        <p>Приветствуем в <strong>ResellWindow</strong> – вашем универсальном магазине и площадке для скупки цифровых товаров! Мы специализируемся на широком спектре продуктов: от игровых аккаунтов и подписок до уникальных инструментов и услуг по разработке.</p>
+                        <p><strong>Наша миссия</strong> – предоставлять качественные товары и услуги по справедливым ценам, обеспечивая при этом безопасность и удобство каждой сделки. Мы ценим ваше время и доверие.</p>
+                        <ul>
+                            <li><strong>Продажа:</strong> Обширный каталог готовых товаров.</li>
+                            <li><strong>Скупка:</strong> Мы готовы рассмотреть ваши предложения по выкупу цифровых активов.</li>
+                            <li><strong>Разработка:</strong> Заказные боты и софт для Telegram/Discord.</li>
+                        </ul>
+                        <p>Все детали сделок, как по продаже, так и по скупке, обсуждаются индивидуально через Telegram: <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">@smsgetter</a>.</p>
+                         <p><strong>Текущий баланс для скупки:</strong> ~33,440₽ (сумма может меняться, уточняйте актуальность).</p>
+                    </div>
+                </div>
+
+                <div id="minecraft-content" class="tab-content">
+                    <p class="tab-description">Аккаунты и услуги для Minecraft. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card">
-                            <h4><i class="fas fa-server"></i> FunTime Аккаунт</h4>
-                            <p>Аккаунт с привилегиями / ресурсами на сервере FunTime. Детали в ЛС.</p>
-                            <div class="price-tag">от 150₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Узнать больше</a>
-                        </div>
-                        <div class="product-card">
-                            <h4><i class="fas fa-server"></i> HolyWorld Услуги</h4>
-                            <p>Прокачка, ресурсы или донат-валюта для сервера HolyWorld.</p>
-                            <div class="price-tag">Договорная</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
-                        </div>
-                        <div class="product-card">
-                            <h4><i class="fas fa-server"></i> ReallyWorld Аккаунт</h4>
-                            <p>Готовые аккаунты с доступом и возможностью игры на ReallyWorld.</p>
-                            <div class="price-tag">от 100₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Узнать больше</a>
-                        </div>
+                        <div class="product-card"><h4><i class="fas fa-server"></i> FunTime Аккаунт</h4><p>Привилегии/ресурсы на FunTime. Детали в ЛС.</p><div class="price-tag">от 150₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fas fa-server"></i> HolyWorld Услуги</h4><p>Прокачка, ресурсы, донат-валюта для HolyWorld.</p><div class="price-tag">Договорная</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a></div>
+                        <div class="product-card"><h4><i class="fas fa-server"></i> ReallyWorld Аккаунт</h4><p>Готовые аккаунты для ReallyWorld.</p><div class="price-tag">от 100₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
                     </div>
                 </div>
                 
                 <div id="steam-content" class="tab-content">
-                    <p style="font-size: 0.9rem; color: var(--clr-text-secondary); margin-bottom: var(--spacing-md); text-align: center;">
-                        Игровые аккаунты Steam с различными играми и инвентарем.
-                    </p>
+                    <p class="tab-description">Игровые аккаунты Steam. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card">
-                            <h4><i class="fab fa-steam"></i> Steam Аккаунт (CS2 Prime)</h4>
-                            <p>Аккаунт Steam с CS2 Prime статусом и возможными скинами.</p>
-                            <div class="price-tag">от 500₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
-                        <div class="product-card">
-                            <h4><i class="fab fa-steam"></i> Steam Аккаунт (PUBG)</h4>
-                            <p>Аккаунт с игрой PlayerUnknown's Battlegrounds и инвентарем.</p>
-                            <div class="price-tag">от 300₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
-                         <div class="product-card">
-                            <h4><i class="fab fa-steam"></i> Steam Аккаунт (Жирный)</h4>
-                            <p>Аккаунт с большим количеством игр, высоким уровнем или редкими значками.</p>
-                            <div class="price-tag">Договорная</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Предложить цену</a>
-                        </div>
+                        <div class="product-card"><h4><i class="fab fa-steam"></i> Steam (CS2 Prime)</h4><p>CS2 Prime статус, возможны скины.</p><div class="price-tag">от 500₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fab fa-steam"></i> Steam (PUBG)</h4><p>Аккаунт с PUBG и инвентарем.</p><div class="price-tag">от 300₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fab fa-steam"></i> Steam (Жирный)</h4><p>Много игр, высокий уровень, редкие значки.</p><div class="price-tag">Договорная</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a></div>
                     </div>
                 </div>
 
                 <div id="epic-content" class="tab-content">
-                     <p style="font-size: 0.9rem; color: var(--clr-text-secondary); margin-bottom: var(--spacing-md); text-align: center;">
-                        Аккаунты Epic Games Store, часто с Fortnite и другими играми.
-                    </p>
+                    <p class="tab-description">Аккаунты Epic Games Store. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card">
-                            <h4><i class="fas fa-gamepad"></i> Epic Games (Fortnite)</h4>
-                            <p>Аккаунт Epic Games с редкими скинами Fortnite и V-Bucks.</p>
-                            <div class="price-tag">от 400₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
-                        <div class="product-card">
-                            <h4><i class="fas fa-gamepad"></i> Epic Games (GTA V)</h4>
-                            <p>Аккаунт с Grand Theft Auto V и другими играми, полученными по раздаче.</p>
-                            <div class="price-tag">от 200₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
+                        <div class="product-card"><h4><i class="fas fa-gamepad"></i> Epic (Fortnite)</h4><p>Редкие скины Fortnite, V-Bucks.</p><div class="price-tag">от 400₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fas fa-gamepad"></i> Epic (GTA V)</h4><p>GTA V и другие игры по раздаче.</p><div class="price-tag">от 200₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
                     </div>
                 </div>
 
                 <div id="telegram-content" class="tab-content">
-                    <p style="font-size: 0.9rem; color: var(--clr-text-secondary); margin-bottom: var(--spacing-md); text-align: center;">
-                        Аккаунты Telegram для различных нужд.
-                    </p>
+                    <p class="tab-description">Аккаунты Telegram. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card">
-                            <h4><i class="fab fa-telegram"></i> Telegram Автореги</h4>
-                            <p>Автоматически зарегистрированные аккаунты Telegram. Формат TData/Session+JSON.</p>
-                            <div class="price-tag">45-85₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
-                        <div class="product-card">
-                            <h4><i class="fab fa-telegram"></i> Telegram Физ. (Отлега/Траст)</h4>
-                            <p>Аккаунты Telegram, зарегистрированные на физические SIM-карты, с отлежкой и трастом.</p>
-                            <div class="price-tag">115-315₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
+                        <div class="product-card"><h4><i class="fab fa-telegram"></i> Telegram Автореги</h4><p>Формат TData/Session+JSON.</p><div class="price-tag">45-85₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fab fa-telegram"></i> Telegram Физ. (Отлега/Траст)</h4><p>Регистрация на физ. SIM, отлега, траст.</p><div class="price-tag">115-315₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
                     </div>
                 </div>
                 
                 <div id="discord-content" class="tab-content">
-                    <p style="font-size: 0.9rem; color: var(--clr-text-secondary); margin-bottom: var(--spacing-md); text-align: center;">
-                        Discord аккаунты с различными характеристиками.
-                    </p>
+                    <p class="tab-description">Discord аккаунты. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card">
-                            <h4><i class="fab fa-discord"></i> Discord Аккаунты (Отлега)</h4>
-                            <p>Аккаунты Discord с отлежкой. Email+Pass / Token.</p>
-                            <div class="price-tag">50₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
-                         <div class="product-card">
-                            <h4><i class="fab fa-discord"></i> Discord Аккаунты (Nitro)</h4>
-                            <p>Аккаунты Discord с активной подпиской Nitro (Classic/Full).</p>
-                            <div class="price-tag">от 200₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
+                        <div class="product-card"><h4><i class="fab fa-discord"></i> Discord (Отлега)</h4><p>Аккаунты с отлежкой. Email+Pass / Token.</p><div class="price-tag">50₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fab fa-discord"></i> Discord (Nitro)</h4><p>Активная подписка Nitro (Classic/Full).</p><div class="price-tag">от 200₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
                     </div>
                 </div>
 
                 <div id="tools-content" class="tab-content">
-                    <p style="font-size: 0.9rem; color: var(--clr-text-secondary); margin-bottom: var(--spacing-md); text-align: center;">
-                        Разработка ПО, ботов и готовые инструменты.
-                    </p>
+                    <p class="tab-description">Разработка ПО, ботов и готовые инструменты. Для заказа/покупки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card">
-                            <h4><i class="fas fa-code"></i> Разработка Telegram Ботов</h4>
-                            <p>Создание Telegram ботов любой сложности под ваши задачи.</p>
-                            <div class="price-tag">от 2.5$</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Заказать</a>
-                        </div>
-                        <div class="product-card">
-                            <h4><i class="fas fa-code"></i> Разработка Discord Ботов</h4>
-                            <p>Кастомные Discord боты для ваших серверов и сообществ.</p>
-                            <div class="price-tag">от 2.5$</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Заказать</a>
-                        </div>
-                        <div class="product-card">
-                            <h4><i class="fas fa-cogs"></i> Кастомный Софт (TG/DS)</h4>
-                            <p>Разработка специализированного программного обеспечения для Telegram или Discord.</p>
-                            <div class="price-tag">Договорная</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
-                        </div>
-                        <div class="product-card is-pinned">
-                            <i class="fas fa-thumbtack pin-icon"></i>
-                            <h4><i class="fas fa-rocket"></i> Session Manager (TG)</h4>
-                            <p>Готовый менеджер сессий Telegram: вход, работа с session+json, автоматизация рассылок и др.</p>
-                            <div class="price-tag">350₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
+                        <div class="product-card is-pinned"><i class="fas fa-thumbtack pin-icon"></i><h4><i class="fas fa-rocket"></i> Session Manager (TG)</h4><p>Вход, работа с session+json, автоматизация.</p><div class="price-tag">350₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a></div>
+                        <div class="product-card"><h4><i class="fas fa-code"></i> Разработка TG Ботов</h4><p>Telegram боты любой сложности под ваши задачи.</p><div class="price-tag">от 2.5$</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Заказать</a></div>
+                        <div class="product-card"><h4><i class="fas fa-code"></i> Разработка DS Ботов</h4><p>Кастомные Discord боты для ваших серверов.</p><div class="price-tag">от 2.5$</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Заказать</a></div>
+                        <div class="product-card"><h4><i class="fas fa-cogs"></i> Кастомный Софт (TG/DS)</h4><p>Специализированное ПО для Telegram/Discord.</p><div class="price-tag">Договорная</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a></div>
                     </div>
                 </div>
                 
                 <div id="other-content" class="tab-content">
-                     <p style="font-size: 0.9rem; color: var(--clr-text-secondary); margin-bottom: var(--spacing-md); text-align: center;">
-                        Различные цифровые товары и услуги.
-                    </p>
+                    <p class="tab-description">Различные цифровые товары и услуги. Для покупки/обсуждения свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
                     <div class="product-grid">
-                        <div class="product-card">
-                            <h4><i class="fas fa-sim-card"></i> Номера для Сервисов</h4>
-                            <p>Виртуальные номера для регистрации на более чем 50 сервисах. Уточняйте нужный сервис.</p>
-                            <div class="price-tag">5-300₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Запросить</a>
-                        </div>
-                        <div class="product-card">
-                            <h4><i class="fas fa-credit-card"></i> YooMoney Номер</h4>
-                            <p>Номер для привязки к кошельку YooMoney.</p>
-                            <div class="price-tag">25₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
-                        <div class="product-card is-pinned">
-                             <i class="fas fa-thumbtack pin-icon"></i>
-                            <h4><i class="fas fa-id-card"></i> YooMoney Верификация</h4>
-                            <p>Полностью верифицированный кошелек YooMoney (Паспорт+ИНН).</p>
-                            <div class="price-tag">1500+₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
-                        <div class="product-card">
-                            <h4><i class="fas fa-cash-register"></i> Номера для FunPay</h4>
-                            <p>Номера для верификации или использования на FunPay.</p>
-                            <div class="price-tag">50₽</div>
-                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
-                        </div>
+                        <div class="product-card is-pinned"><i class="fas fa-thumbtack pin-icon"></i><h4><i class="fas fa-id-card"></i> YooMoney Верификация</h4><p>Полностью верифицированный кошелек (Паспорт+ИНН).</p><div class="price-tag">1500+₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a></div>
+                        <div class="product-card"><h4><i class="fas fa-sim-card"></i> Номера для Сервисов</h4><p>Вирт. номера для 50+ сервисов. Уточняйте.</p><div class="price-tag">5-300₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Запросить</a></div>
+                        <div class="product-card"><h4><i class="fas fa-credit-card"></i> YooMoney Номер</h4><p>Номер для привязки к YooMoney.</p><div class="price-tag">25₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fas fa-cash-register"></i> Номера для FunPay</h4><p>Номера для верификации FunPay.</p><div class="price-tag">50₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
                     </div>
-                     <section class="info-section" style="margin-top: var(--spacing-lg);">
-                        <h3><i class="fas fa-info-circle"></i> Общая информация</h3>
-                        <p id="bio-text" data-typed="false">ResellWindow - ваш надежный партнер в мире цифровых товаров. Мы предлагаем широкий ассортимент аккаунтов, подписок и инструментов, а также занимаемся скупкой интересных позиций. <br><br><strong>Наши приоритеты:</strong> честность, скорость и лучшие цены. Свяжитесь с нами для обсуждения сделки или заказа услуги.</p>
-                        <p><strong>Баланс для скупки:</strong> ~33,440₽ (актуальность уточняйте)</p>
-                    </section>
+                </div>
+                
+                <div id="fastsell-content" class="tab-content">
+                     <div class="info-section">
+                        <h3><i class="fas fa-bolt"></i> FastSell – Быстрые Сделки</h3>
+                        <p>Нужно срочно продать ваш цифровой товар? Мы готовы рассмотреть ваше предложение по сниженной цене для максимально быстрой сделки. Идеально, если вам нужны средства "здесь и сейчас".</p>
+                        <p><strong>Что мы можем быстро выкупить:</strong></p>
+                        <ul>
+                            <li>Ликвидные игровые аккаунты (Steam, Epic, Minecraft сервера).</li>
+                            <li>Telegram/Discord аккаунты с хорошей историей/отлегой.</li>
+                            <li>Подписки на популярные сервисы/читы.</li>
+                        </ul>
+                        <p>Свяжитесь с нами в Telegram с пометкой "FastSell" и вашим предложением. Мы оперативно его оценим и предложим условия.</p>
+                        <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details" style="display: block; max-width: 250px; margin: var(--spacing-md) auto 0;">Предложить для FastSell</a>
+                    </div>
+                </div>
+
+                <div id="searchbuy-content" class="tab-content">
+                    <div class="info-section">
+                        <h3><i class="fas fa-search-dollar"></i> Search/Buy – Найдем или Купим для Вас</h3>
+                        <p>Не нашли нужный товар в нашем каталоге? Или хотите, чтобы мы нашли и выкупили для вас что-то специфическое? Воспользуйтесь услугой Search/Buy!</p>
+                        <p><strong>Как это работает:</strong></p>
+                        <ul>
+                            <li>Вы описываете товар, который хотите приобрести (или который хотите, чтобы мы для вас нашли и выкупили).</li>
+                            <li>Указываете желаемый бюджет или характеристики.</li>
+                            <li>Мы используем наши ресурсы и контакты для поиска или предлагаем варианты из наших запасов/скупки.</li>
+                        </ul>
+                        <p>Эта услуга также подразумевает, что мы активно скупаем различные цифровые активы. Если у вас есть что предложить на продажу – смело пишите!</p>
+                        <p>Свяжитесь с нами в Telegram, чтобы обсудить ваш запрос на поиск, покупку или предложение о продаже вашего товара.</p>
+                         <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details" style="display: block; max-width: 250px; margin: var(--spacing-md) auto 0;">Сделать запрос / Предложить товар</a>
+                    </div>
                 </div>
 
 
                  <div class="music-player-container">
                      <div class="player-controls">
-                         <button id="play-pause-btn" class="play-pause-button" aria-label="Play/Pause">
-                             <i class="fas fa-play"></i>
-                         </button>
-                         <span id="now-playing-text" class="now-playing">LIL KRYSTALLL - Air Force 1</span>
+                         <button id="play-pause-btn" class="play-pause-button" aria-label="Play/Pause"><i class="fas fa-play"></i></button>
+                         <span id="now-playing-text" class="now-playing">DVRST - Close Eyes</span>
                      </div>
                      <audio id="audio-player" loop class="hidden-audio-player">
-                         <source src="https://raw.githubusercontent.com/smsgetter/smsgetter.github.io/main/Madk1D%20%D0%A2%D0%BE%D0%BB%D0%BF%D1%8B.mp3" type="audio/mpeg">
+                         <source src="https://raw.githubusercontent.com/smsgetter/smsgetter.github.io/main/DVRST%20-%20Close%20Eyes.mp3" type="audio/mpeg">
                          Your browser does not support the audio element.
                      </audio>
                  </div>
@@ -892,173 +611,47 @@
             const playPauseBtn = document.getElementById('play-pause-btn');
             const playPauseIcon = playPauseBtn.querySelector('i');
             const nowPlayingText = document.getElementById('now-playing-text');
-            const defaultTrackName = 'LIL KRYSTALLL - Air Force 1'; 
-            const bioTextElement = document.getElementById('bio-text');
-            const copyUsernameBtn = document.getElementById('copy-username-btn');
-            const copyTooltip = copyUsernameBtn.querySelector('.tooltip');
-            const avatarContainer = document.getElementById('avatar-container');
-            const avatarImage = document.getElementById('avatar-image');
-
-            let isPlaying = false;
-            let typingTimeout;
+            const defaultTrackName = 'DVRST - Close Eyes';
+            
+            const bioContentTab = document.querySelector('.tab-button[data-tab="bio"]');
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     const targetTabId = tab.getAttribute('data-tab');
                     const targetContent = document.getElementById(targetTabId + '-content');
-
                     tabs.forEach(t => t.classList.remove('active'));
                     contents.forEach(c => c.classList.remove('active'));
-
                     tab.classList.add('active');
-                    if (targetContent) {
-                        targetContent.classList.add('active');
-                         if (bioTextElement && bioTextElement.dataset.typed === 'false' && targetContent.contains(bioTextElement)) {
-                             startTypingEffect(bioTextElement, bioTextElement.innerHTML);
-                             bioTextElement.dataset.typed = 'true';
-                         }
-                    }
+                    if (targetContent) targetContent.classList.add('active');
                 });
             });
 
             if(nowPlayingText) nowPlayingText.textContent = defaultTrackName;
-            if(audioPlayer && audioPlayer.querySelector('source')) audioPlayer.querySelector('source').src = "https://github.com/smsgetter/smsgetter.github.io/raw/main/LIL%20KRYSTALLL%20-%20Air%20Force%201%20(Lyrics).mp3";
-
-
+            if(audioPlayer && audioPlayer.querySelector('source')) audioPlayer.querySelector('source').src = "https://raw.githubusercontent.com/smsgetter/smsgetter.github.io/main/DVRST%20-%20Close%20Eyes.mp3";
+            
             if(playPauseBtn && audioPlayer) {
                 playPauseBtn.addEventListener('click', () => {
-                    if (isPlaying) {
-                        audioPlayer.pause();
-                    } else {
-                        audioPlayer.play().catch(error => {
-                            resetAudioUI();
-                        });
-                    }
+                    if (audioPlayer.paused) audioPlayer.play().catch(()=>{resetAudioUI();});
+                    else audioPlayer.pause();
                 });
             }
 
             if (audioPlayer) {
-                audioPlayer.addEventListener('play', () => {
-                    if(playPauseIcon) playPauseIcon.classList.replace('fa-play', 'fa-pause');
-                    if(nowPlayingText) nowPlayingText.textContent = `Играет: ${defaultTrackName}`;
-                    isPlaying = true;
-                });
+                audioPlayer.addEventListener('play', () => { if(playPauseIcon) playPauseIcon.classList.replace('fa-play', 'fa-pause'); if(nowPlayingText) nowPlayingText.textContent = `Играет: ${defaultTrackName}`; });
                 audioPlayer.addEventListener('pause', () => { resetAudioUI(); });
                 audioPlayer.addEventListener('ended', () => { resetAudioUI(); audioPlayer.currentTime = 0;});
-                audioPlayer.addEventListener('error', (e) => {
-                    if(nowPlayingText) nowPlayingText.textContent = "Ошибка аудио";
-                    resetAudioUI();
-                });
+                audioPlayer.addEventListener('error', () => { if(nowPlayingText) nowPlayingText.textContent = "Ошибка аудио"; resetAudioUI(); });
             }
 
             function resetAudioUI() {
                 if(playPauseIcon) playPauseIcon.classList.replace('fa-pause', 'fa-play');
                 if(nowPlayingText) nowPlayingText.textContent = defaultTrackName;
-                isPlaying = false;
             }
 
-             if(copyUsernameBtn && copyTooltip) {
-                 copyUsernameBtn.addEventListener('click', () => {
-                     const textToCopy = "@smsgetter";
-                     navigator.clipboard.writeText(textToCopy).then(() => {
-                         copyTooltip.textContent = 'Telegram скопирован!';
-                         copyTooltip.classList.add('copied');
-                         if(copyUsernameBtn.querySelector('i')) copyUsernameBtn.querySelector('i').classList.replace('fa-copy', 'fa-check-circle');
-                         setTimeout(() => {
-                             copyTooltip.textContent = 'Копировать Telegram';
-                             copyTooltip.classList.remove('copied');
-                            if(copyUsernameBtn.querySelector('i')) copyUsernameBtn.querySelector('i').classList.replace('fa-check-circle', 'fa-copy');
-                         }, 1500);
-                     }).catch(err => {
-                         copyTooltip.textContent = 'Ошибка копирования';
-                          setTimeout(() => { copyTooltip.textContent = 'Копировать Telegram'; }, 1500);
-                     });
-                 });
-             }
-
-            function typeWriter(element, htmlContent, i, callback) {
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = htmlContent;
-                const text = tempDiv.textContent || tempDiv.innerText || "";
-
-                if (i < text.length) {
-                    let currentText = text.substring(0, i + 1);
-                    let displayHtml = "";
-                    let textIndex = 0;
-                    function reconstructHtml(node) {
-                        if (textIndex >= currentText.length) return "";
-                        if (node.nodeType === Node.TEXT_NODE) {
-                            let availableChars = currentText.length - textIndex;
-                            let nodeText = node.textContent.substring(0, availableChars);
-                            textIndex += nodeText.length; return nodeText;
-                        } else if (node.nodeType === Node.ELEMENT_NODE) {
-                            let elementHtml = `<${node.nodeName.toLowerCase()}`;
-                            for (let attr of node.attributes) { elementHtml += ` ${attr.name}="${attr.value}"`; }
-                            elementHtml += `>`;
-                            for (let child of node.childNodes) { elementHtml += reconstructHtml(child); if (textIndex >= currentText.length) break; }
-                            elementHtml += `</${node.nodeName.toLowerCase()}>`; return elementHtml;
-                        } return "";
-                    }
-                    for(let child of tempDiv.childNodes){ displayHtml += reconstructHtml(child); if (textIndex >= currentText.length) break; }
-                    element.innerHTML = displayHtml + '<span class="typing-cursor"></span>';
-                    typingTimeout = setTimeout(() => { typeWriter(element, htmlContent, i + 1, callback); }, 35);
-                } else {
-                     element.innerHTML = htmlContent.replace('<span class="typing-cursor"></span>', '');
-                     if (callback) callback();
-                }
-            }
-
-            function startTypingEffect(element, htmlContent) {
-                 clearTimeout(typingTimeout);
-                 element.innerHTML = '<span class="typing-cursor"></span>';
-                 typeWriter(element, htmlContent.trim(), 0);
-            }
-            
-            const initialActiveTabContent = document.querySelector('.tab-content.active');
-            if (initialActiveTabContent && bioTextElement && bioTextElement.dataset.typed === 'false' && initialActiveTabContent.contains(bioTextElement)) {
-                startTypingEffect(bioTextElement, bioTextElement.innerHTML);
-                bioTextElement.dataset.typed = 'true';
-            }
-
-             console.log("%c ResellWindow %c v2.0 Loaded %c Contact @smsgetter",
-                 "background:linear-gradient(to right, #00aeff, #00e0ff); color:#fff; padding:6px 12px; border-radius: 6px 0 0 6px; font-weight:bold; font-size: 1.1em;",
-                 "background:#1a1f2c; color:#fff; padding:6px 12px; border-radius: 0 6px 6px 0; font-size: 1.1em;",
-                 "padding:5px; font-size: 1em;");
-
-             const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-             let konamiIndex = 0;
-             document.addEventListener('keydown', (event) => {
-                 if (event.key.toLowerCase() === konamiCode[konamiIndex].toLowerCase()) {
-                     konamiIndex++;
-                     if (konamiIndex === konamiCode.length) {
-                         document.body.classList.add('easter-egg-bg');
-                         setTimeout(() => { document.body.classList.remove('easter-egg-bg'); }, 3500);
-                         konamiIndex = 0;
-                     }
-                 } else { konamiIndex = 0; }
-             });
-
-            let avatarClickCount = 0;
-            let avatarClickTimer = null;
-            if (avatarContainer && avatarImage) {
-                avatarContainer.addEventListener('click', () => {
-                    avatarClickCount++;
-                    avatarImage.classList.add('clicked');
-                    clearTimeout(avatarClickTimer);
-                    avatarClickTimer = setTimeout(() => { avatarClickCount = 0; }, 600);
-                    setTimeout(() => { avatarImage.classList.remove('clicked'); }, 180);
-                    if (avatarClickCount === 5) {
-                        const currentTransition = avatarImage.style.transition;
-                        avatarImage.style.transition = 'transform 0.55s cubic-bezier(0.68, -0.6, 0.265, 1.65)';
-                        avatarImage.style.transform = 'rotate(360deg) scale(1.15)';
-                        setTimeout(() => {
-                            avatarImage.style.transform = 'rotate(0deg) scale(1)';
-                            setTimeout(() => { avatarImage.style.transition = currentTransition || 'transform 0.3s var(--transition-ease)'; }, 550);
-                         }, 550);
-                        avatarClickCount = 0; clearTimeout(avatarClickTimer);
-                    }
-                });
-            }
+            console.log("%cResellWindow%c Digital Marketplace %cReady",
+                 "background: #1de9b6; color:#0c0f1a; padding:4px 8px; border-radius: 4px 0 0 4px; font-weight:bold; font-size: 1em;",
+                 "background: #7e57c2; color:#e8efff; padding:4px 8px; font-size: 1em;",
+                 "background: #0c0f1a; color:#1de9b6; padding:4px 8px; border-radius: 0 4px 4px 0; font-size: 1em;");
         });
     </script>
 </body>
