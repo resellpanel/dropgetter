@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:title" content="ResellWindow">
+    <meta property="og:url" content="https://smsgetter.github.io/ResellWindow/">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/0a0a0a/e53935?text=ResellWindow+Store">
+    <meta property="og:site_name" content="ResellWindow Store">
+    <meta name="description" content="ResellWindow - Продажа и скупка игровых подписок, аккаунтов, Telegram каналов и ботов.">
+    <link rel="canonical" href="https://smsgetter.github.io/ResellWindow/">
+    <title>ResellWindow</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --clr-bg: #0a0a0a;
+            --clr-panel-bg: rgba(18, 18, 20, 0.7);
+            --clr-panel-bg-alt: rgba(26, 26, 29, 0.8);
+            --clr-panel-border: rgba(255, 255, 255, 0.08);
+            --clr-text-primary: #f0f0f0;
+            --clr-text-secondary: #b0b0b0;
+            --clr-icon: #d5d5d5;
+            --clr-icon-hover: #ffffff;
+            --clr-button-bg: rgba(40, 40, 45, 0.75);
+            --clr-button-hover-bg: rgba(55, 55, 60, 0.9);
+            --clr-button-border: rgba(255, 255, 255, 0.12);
+            --clr-tab-active-bg: transparent;
+            --clr-shadow: rgba(0, 0, 0, 0.6);
+            --clr-glow: rgba(229, 57, 53, 0.18);
+            --clr-accent: #e53935;
+            --clr-accent-rgb: 229, 57, 53;
+            --clr-accent-glow: rgba(229, 57, 53, 0.45);
+            --clr-success: #4CAF50;
+            --clr-star: rgba(255, 255, 255, 0.65);
+            --clr-info: #2196F3;
+
+            --radius-card: 1.6rem;
+            --radius-button: 1rem;
+            --radius-full: 9999px;
+            --radius-xs: 0.45rem;
+            --radius-item: 0.8rem;
+
+            --spacing-xs: 0.35rem;
+            --spacing-sm: 0.7rem;
+            --spacing-md: 1.2rem;
+            --spacing-lg: 1.8rem;
+
+            --transition-speed: 0.3s;
+            --transition-speed-fast: 0.2s;
+            --transition-ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            background-color: var(--clr-bg);
+            color: var(--clr-text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+            cursor: default;
+            transition: background-color 0.5s var(--transition-ease);
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+            background-image: url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+            background-size: cover;
+            background-position: center center;
+            filter: blur(11px) brightness(0.35) saturate(1.2);
+            transform: scale(1.12);
+            transition: filter 0.5s var(--transition-ease);
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            opacity: 0.01;
+            pointer-events: none;
+        }
+
+        body.easter-egg-bg::before {
+             filter: blur(10px) brightness(0.7) saturate(2) hue-rotate(220deg);
+             transition: filter 0.6s cubic-bezier(0.68, -0.6, 0.265, 1.6);
+        }
+
+        main {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg) var(--spacing-md);
+            z-index: 1;
+        }
+
+        .card-wrapper {
+            max-width: 48rem;
+            width: 100%;
+            margin: auto;
+            position: relative;
+        }
+
+        .particles-container {
+            position: absolute;
+            inset: -60px;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+            border-radius: var(--radius-card);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.7); }
+            50% { opacity: 0.75; transform: scale(1.05); }
+        }
+
+        .particles-container::before,
+        .particles-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            box-shadow:
+                6vw 17vh 1px var(--clr-star), 32vw 7vh 0px var(--clr-star), 57vw 32vh 1px var(--clr-star),
+                86vw 24vh 1px var(--clr-star), 14vw 83vh 0px var(--clr-star), 41vw 69vh 1px var(--clr-star),
+                76vw 56vh 0px var(--clr-star), 92vw 91vh 1px var(--clr-star), 24vw 41vh 1px var(--clr-star),
+                67vw 11vh 0px var(--clr-star), 51vw 94vh 1px var(--clr-star), 9vw 66vh 0px var(--clr-star);
+             animation: twinkle 8.5s infinite ease-in-out alternate;
+        }
+
+        .particles-container::after {
+            box-shadow:
+                11vw 7vh 0px var(--clr-star), 38vw 47vh 1px var(--clr-star), 61vw 14vh 1px var(--clr-star),
+                81vw 72vh 0px var(--clr-star), 19vw 91vh 1px var(--clr-star), 52vw 27vh 0px var(--clr-star),
+                72vw 87vh 1px var(--clr-star), 97vw 17vh 1px var(--clr-star), 28vw 77vh 0px var(--clr-star),
+                57vw 59vh 1px var(--clr-star), 89vw 42vh 0px var(--clr-star), 6vw 32vh 1px var(--clr-star);
+            animation: twinkle 10.5s infinite ease-in-out alternate;
+            animation-delay: -2.8s;
+        }
+
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            backdrop-filter: blur(45px) saturate(160%);
+            -webkit-backdrop-filter: blur(45px) saturate(160%);
+            border-radius: var(--radius-card);
+            background: linear-gradient(148deg, var(--clr-panel-bg), var(--clr-panel-bg-alt));
+            border: 1px solid var(--clr-panel-border);
+            box-shadow: 0 14px 50px var(--clr-shadow), inset 0 0 0 1.5px rgba(255,255,255,0.04);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            animation: card-fade-in 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s forwards;
+            z-index: 2;
+        }
+        @keyframes card-fade-in { to { opacity: 1; transform: translateY(0) scale(1); } }
+
+        .card-banner {
+            width: 100%;
+            height: 9rem;
+            background-color: rgba(12, 12, 15, 0.85);
+            border-bottom: 1px solid var(--clr-panel-border);
+            position: relative;
+            overflow: hidden;
+        }
+         .card-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--clr-accent), var(--clr-accent-glow), var(--clr-accent), transparent);
+            opacity: 0.35;
+            animation: banner-glow-line 6s infinite linear;
+        }
+        @keyframes banner-glow-line {
+            0% { transform: translateX(-100%) scaleX(0.5); }
+            50% { transform: translateX(0) scaleX(1); }
+            100% { transform: translateX(100%) scaleX(0.5); }
+        }
+
+        .card-header {
+            position: relative;
+            padding-top: calc(60px + var(--spacing-sm));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: var(--spacing-md);
+        }
+
+        .avatar-container {
+            position: absolute;
+            width: 125px;
+            height: 125px;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .avatar-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 6px solid var(--clr-bg);
+            object-fit: cover;
+            box-shadow: 0 7px 28px rgba(0,0,0,0.55), 0 0 0 1.5px rgba(255,255,255,0.06), 0 0 25px -7px var(--clr-accent-glow);
+            transition: transform 0.28s var(--transition-ease);
+        }
+        .avatar-image.clicked {
+             transform: scale(0.91) rotate(8deg);
+        }
+
+        .username-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-xs);
+        }
+
+        .username-main-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .username {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--clr-text-primary);
+            text-align: center;
+            word-break: break-all;
+            margin: 0;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.65), 0 0 12px rgba(255, 255, 255, 0.08);
+        }
+        .username-alias {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--clr-text-secondary);
+            opacity: 0.9;
+            margin-top: 2px;
+            line-height: 1;
+        }
+
+        .copy-button {
+            background: none;
+            border: none;
+            color: var(--clr-icon);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: var(--spacing-xs);
+            border-radius: var(--radius-xs);
+            transition: color var(--transition-speed-fast), background-color var(--transition-speed-fast), transform var(--transition-speed-fast);
+            position: relative;
+        }
+        .copy-button:hover, .copy-button:focus-visible {
+            color: var(--clr-accent);
+            background-color: rgba(var(--clr-accent-rgb), 0.12);
+            transform: scale(1.18);
+        }
+        .copy-button .tooltip {
+             bottom: 100%;
+             left: 50%;
+             transform: translateX(-50%) translateY(calc(-1 * var(--spacing-xs) - 3px));
+             font-size: 0.8rem;
+             opacity: 0;
+             visibility: hidden;
+             transition: opacity var(--transition-speed), visibility var(--transition-speed), background-color var(--transition-speed-fast);
+        }
+        .copy-button:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+         .copy-button .tooltip.copied {
+             background-color: var(--clr-success);
+             color: #fff;
+         }
+
+        .availability-status {
+            font-size: 0.9rem;
+            color: var(--clr-text-secondary);
+            margin-top: var(--spacing-sm);
+            padding: var(--spacing-xs) var(--spacing-md);
+            background-color: rgba(0, 0, 0, 0.35);
+            border-radius: var(--radius-full);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+         .availability-status .status-icon {
+             color: var(--clr-success);
+             font-size: 0.7rem;
+             animation: pulse-status 2.3s infinite ease-in-out;
+         }
+          @keyframes pulse-status {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.55); }
+            70% { box-shadow: 0 0 0 7px rgba(76, 175, 80, 0); }
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: calc(var(--spacing-md) + 0.3rem);
+            list-style: none;
+            padding: 0;
+            margin-top: var(--spacing-lg);
+        }
+        .social-links li {
+            position: relative;
+            opacity: 0;
+            transform: translateY(28px);
+            animation: link-fade-in 0.65s var(--transition-ease) forwards;
+        }
+        .social-links li:nth-child(1) { animation-delay: 0.4s; }
+        .social-links li:nth-child(2) { animation-delay: 0.45s; }
+        .social-links li:nth-child(3) { animation-delay: 0.5s; }
+        @keyframes link-fade-in { to { opacity: 1; transform: translateY(0); } }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: var(--radius-full);
+            color: var(--clr-icon);
+            font-size: 1.35rem;
+            text-decoration: none;
+            transition: all var(--transition-speed) var(--transition-ease);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+        }
+        .social-icon:hover, .social-icon:focus-visible {
+            background-color: var(--clr-accent);
+            border-color: var(--clr-accent);
+            transform: translateY(-5px) scale(1.12);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.4), 0 0 22px var(--clr-accent-glow);
+            color: var(--clr-icon-hover);
+            outline: none;
+        }
+        .social-icon:hover i, .social-icon:focus-visible i {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 12px rgba(255,255,255,0.35));
+        }
+        .social-icon i {
+            transition: transform var(--transition-speed) var(--transition-ease), filter var(--transition-speed) var(--transition-ease);
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(calc(-1 * var(--spacing-sm) - 4px));
+            background-color: rgba(8, 8, 8, 0.92);
+            color: var(--clr-text-primary);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-xs);
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            z-index: 20;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all var(--transition-speed) var(--transition-ease);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
+        }
+        .social-links li:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(calc(-1 * var(--spacing-sm) - 9px));
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--clr-panel-border);
+            border-top: 1px solid var(--clr-panel-border);
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(18px);
+            animation: section-fade-in 0.75s var(--transition-ease) 0.5s forwards;
+        }
+        .tab-button {
+            flex: 1;
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--clr-text-secondary);
+            background: none;
+            border: none;
+            border-right: 1px solid var(--clr-panel-border);
+            cursor: pointer;
+            transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
+            text-align: center;
+            position: relative;
+        }
+        .tab-button:last-child { border-right: none; }
+        .tab-button:hover, .tab-button:focus-visible {
+            background-color: rgba(255,255,255,0.05);
+            color: var(--clr-text-primary);
+            outline: none;
+        }
+        .tab-button.active {
+            background-color: var(--clr-tab-active-bg);
+            color: var(--clr-text-primary);
+            box-shadow: inset 0 -3.5px 0px var(--clr-accent), 0 0 20px -6px var(--clr-accent-glow);
+         }
+
+        .tab-content {
+            display: none;
+            padding: var(--spacing-lg);
+        }
+        .tab-content.active {
+            display: block;
+            animation: content-fade-in 0.65s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+        }
+        @keyframes content-fade-in {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .custom-links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .custom-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-md) var(--spacing-lg);
+            background-color: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-button);
+            color: var(--clr-text-primary);
+            font-size: 0.98rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-speed) var(--transition-ease);
+            overflow: hidden;
+            position: relative;
+        }
+         .custom-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+            transition: left 0.55s ease-in-out;
+        }
+        .custom-link:hover::before { left: 100%; }
+        .custom-link:hover, .custom-link:focus-visible {
+            background-color: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 9px 22px rgba(0,0,0,0.38);
+            outline: none;
+        }
+        .custom-link .link-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            z-index: 1;
+        }
+        .custom-link i {
+            font-size: 1.1rem;
+            color: var(--clr-icon);
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+        .custom-link:hover i, .custom-link:focus-visible i { color: var(--clr-accent); }
+        .custom-link .arrow {
+            font-size: 0.9rem;
+            opacity: 0.75;
+            transition: transform var(--transition-speed) var(--transition-ease), opacity var(--transition-speed) var(--transition-ease), color var(--transition-speed) var(--transition-ease);
+            z-index: 1;
+        }
+        .custom-link:hover .arrow, .custom-link:focus-visible .arrow {
+            transform: translateX(6px);
+            opacity: 1;
+            color: var(--clr-accent);
+        }
+
+        .info-section {
+            margin-bottom: var(--spacing-lg);
+        }
+        .info-section:last-child { margin-bottom: 0; }
+        .info-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--clr-text-primary);
+            margin-bottom: calc(var(--spacing-md) + 0.3rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            border-bottom: 1px solid var(--clr-panel-border);
+            padding-bottom: var(--spacing-sm);
+            position: relative;
+        }
+         .info-section h3::after {
+             content: '';
+             position: absolute;
+             bottom: -2px;
+             left: 0;
+             height: 3.5px;
+             width: 60px;
+             background: var(--clr-accent);
+             border-radius: 3px;
+             opacity: 0.95;
+         }
+        .info-section h3 i {
+            color: var(--clr-accent);
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-right: var(--spacing-xs);
+        }
+        .info-section p, .info-section ul {
+            font-size: 0.95rem;
+            color: var(--clr-text-secondary);
+            line-height: 1.85;
+            margin-bottom: var(--spacing-sm);
+        }
+        .info-section ul {
+            list-style: none;
+            padding-left: var(--spacing-sm);
+        }
+        .info-section li {
+            margin-bottom: var(--spacing-xs);
+            position: relative;
+            padding-left: 1.5em;
+            transition: transform var(--transition-speed-fast) var(--transition-ease), color var(--transition-speed-fast);
+        }
+        .info-section li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--clr-accent);
+            opacity: 0.85;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: color var(--transition-speed-fast), transform var(--transition-speed-fast);
+        }
+         .info-section li:hover {
+             transform: translateX(6px);
+             color: var(--clr-text-primary);
+         }
+         .info-section li:hover::before {
+             color: var(--clr-accent);
+             transform: scale(1.35) rotate(15deg);
+         }
+        .info-section strong {
+            color: var(--clr-text-primary);
+            font-weight: 700;
+        }
+        .info-section a {
+            color: var(--clr-accent);
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(var(--clr-accent-rgb), 0.6);
+            transition: color var(--transition-speed), border-color var(--transition-speed);
+            font-weight: 600;
+        }
+        .info-section a:hover, .info-section a:focus-visible {
+            color: var(--clr-text-primary);
+            border-color: rgba(240, 240, 240, 0.75);
+            outline: none;
+        }
+
+        .skills-container, .tools-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+        .skill-item, .tool-item {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            background-color: rgba(255, 255, 255, 0.04);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-item);
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease), background-color var(--transition-speed) var(--transition-ease);
+        }
+         .skill-item i, .tool-item i {
+             color: var(--clr-icon);
+             font-size: 1em;
+             opacity: 0.9;
+             transition: color var(--transition-speed) var(--transition-ease);
+         }
+         .skill-item:hover, .skill-item:focus-visible,
+         .tool-item:hover, .tool-item:focus-visible {
+             transform: translateY(-3.5px) scale(1.06);
+             box-shadow: 0 7px 14px rgba(0,0,0,0.38);
+             background-color: rgba(255, 255, 255, 0.09);
+             outline: none;
+         }
+         .skill-item:hover i, .skill-item:focus-visible i,
+         .tool-item:hover i, .tool-item:focus-visible i {
+            color: var(--clr-accent);
+         }
+         .tool-item .tool-extensions {
+            font-size: 0.8em;
+            color: var(--clr-text-secondary);
+            opacity: 0.8;
+            margin-left: var(--spacing-xs);
+         }
+
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .product-card {
+            background-color: rgba(255,255,255,0.03);
+            border: 1px solid var(--clr-panel-border);
+            border-radius: var(--radius-item);
+            padding: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            transition: all var(--transition-speed) var(--transition-ease);
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.15);
+        }
+        .product-card h4 {
+            font-size: 1.1rem;
+            color: var(--clr-text-primary);
+            margin-bottom: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .product-card h4 i { color: var(--clr-accent); font-size: 1rem; }
+        .product-card p {
+            font-size: 0.88rem;
+            color: var(--clr-text-secondary);
+            flex-grow: 1;
+            margin-bottom: var(--spacing-sm);
+            min-height: 4.5em; /* approx 3 lines */
+        }
+        .product-card .price-tag {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--clr-accent);
+            text-align: right;
+            margin-top: auto;
+            padding-top: var(--spacing-xs);
+            border-top: 1px solid var(--clr-panel-border);
+            margin-bottom: var(--spacing-sm);
+        }
+        .product-card .btn-details {
+            display: inline-block;
+            background-color: var(--clr-button-bg);
+            color: var(--clr-text-primary);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-button);
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: background-color var(--transition-speed) var(--transition-ease), transform var(--transition-speed-fast);
+            border: 1px solid var(--clr-button-border);
+            margin-top: var(--spacing-xs);
+        }
+        .product-card .btn-details:hover {
+            background-color: var(--clr-accent);
+            transform: scale(1.03);
+            border-color: var(--clr-accent);
+        }
+
+
+        #bio-text .typing-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.1em;
+            background-color: var(--clr-accent);
+            animation: blink 0.75s infinite;
+            margin-left: 3.5px;
+            vertical-align: text-bottom;
+            border-radius: 2.5px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+
+        .music-player-container {
+            padding: var(--spacing-md) var(--spacing-lg);
+            background-color: rgba(0,0,0,0.18);
+            border-top: 1px solid var(--clr-panel-border);
+            opacity: 0;
+            transform: translateY(18px);
+            animation: section-fade-in 0.8s var(--transition-ease) 0.8s forwards;
+        }
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+        .play-pause-button {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--clr-icon);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all var(--transition-speed) var(--transition-ease);
+        }
+        .play-pause-button:hover, .play-pause-button:focus-visible {
+            background-color: var(--clr-accent);
+            color: var(--clr-icon-hover);
+            border-color: var(--clr-accent);
+            transform: scale(1.18);
+            box-shadow: 0 0 14px var(--clr-accent-glow);
+            outline: none;
+        }
+        .now-playing {
+            font-size: 0.9rem;
+            color: var(--clr-text-secondary);
+            text-align: center;
+            flex-grow: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 270px;
+        }
+        .hidden-audio-player { display: none; }
+
+        .support-section {
+            text-align: center;
+            padding-top: var(--spacing-sm);
+            border-top: 1px solid var(--clr-panel-border);
+            margin-top: var(--spacing-lg);
+        }
+         .support-section p {
+             font-size: 0.9rem;
+             color: var(--clr-text-secondary);
+             margin-bottom: var(--spacing-sm);
+         }
+         .support-section .support-link {
+             color: var(--clr-accent);
+             font-weight: 600;
+             text-decoration: none;
+             border-bottom: 1px dashed var(--clr-accent);
+             transition: color var(--transition-speed), border-color var(--transition-speed);
+         }
+         .support-section .support-link:hover {
+             color: var(--clr-text-primary);
+             border-color: var(--clr-text-primary);
+         }
+
+
+        footer {
+            padding: var(--spacing-md) var(--spacing-lg);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--clr-text-secondary);
+            opacity: 0.75;
+            border-top: 1px solid var(--clr-panel-border);
+            background-color: transparent;
+        }
+
+        @keyframes section-fade-in {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.12);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.28);
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+             .tabs {
+                flex-wrap: wrap;
+            }
+            .tab-button {
+                flex-basis: 50%;
+                font-size: 0.9rem;
+            }
+        }
+
+
+        @media (max-width: 640px) {
+            body {
+                align-items: flex-start;
+                padding: var(--spacing-sm);
+            }
+            main {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+            .profile-card {
+                backdrop-filter: blur(35px) saturate(140%);
+                -webkit-backdrop-filter: blur(35px) saturate(140%);
+                border-radius: calc(var(--radius-card) - 0.4rem);
+            }
+            .card-banner { height: 7.5rem; }
+            .avatar-container { width: 105px; height: 105px; }
+            .card-header { padding-top: calc(52px + var(--spacing-sm)); }
+            .username { font-size: 1.9rem; }
+            .username-container { flex-direction: column; gap: var(--spacing-xs); }
+            .username-alias { font-size: 0.75rem; }
+            .availability-status { font-size: 0.85rem; }
+            .social-links { gap: var(--spacing-md); }
+            .social-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+            .tabs { flex-direction: column; }
+            .tab-button { border-right: none; border-bottom: 1px solid var(--clr-panel-border); flex-basis: auto;}
+            .tab-button.active { box-shadow: inset 4.5px 0 0px var(--clr-accent), 0 0 12px -4px var(--clr-accent-glow); }
+            .tab-button:last-child { border-bottom: none; }
+            .tab-content { padding: var(--spacing-md); }
+            .custom-links-container { grid-template-columns: 1fr; }
+            .music-player-container { padding: var(--spacing-md); }
+            .player-controls { flex-direction: row; gap: var(--spacing-sm); }
+            .now-playing { max-width: calc(100% - 85px); }
+            .info-section li:hover { transform: translateX(5px); }
+            .info-section h3 { font-size: 1rem; letter-spacing: 1.5px;}
+        }
+
+        ::selection { background-color: var(--clr-accent); color: var(--clr-text-primary); text-shadow: none; }
+        ::-moz-selection { background-color: var(--clr-accent); color: var(--clr-text-primary); text-shadow: none; }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="card-wrapper">
+             <div class="particles-container"></div>
+            <div class="profile-card">
+                <div class="card-banner"></div>
+                <div class="card-header">
+                    <div class="avatar-container" id="avatar-container">
+                        <img src="https://via.placeholder.com/128/e53935/0a0a0a?Text=RW" alt="ResellWindow Avatar" class="avatar-image" id="avatar-image" loading="lazy">
+                    </div>
+                    <div class="username-container">
+                        <div class="username-main-wrapper">
+                            <h1 class="username" id="username-text">ResellWindow</h1>
+                            <span class="username-alias">Магазин цифровых товаров</span>
+                        </div>
+                        <button class="copy-button" id="copy-username-btn" aria-label="Копировать Telegram">
+                            <i class="far fa-copy"></i>
+                            <span class="tooltip">Копировать Telegram</span>
+                        </button>
+                    </div>
+                    <div class="availability-status">
+                        <i class="fas fa-circle status-icon"></i><span>Открыты для сделок</span>
+                    </div>
+                    <ul class="social-links">
+                        <li><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a><span class="tooltip">Telegram</span></li>
+                        <li><a href="https://github.com/smsgetter" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a><span class="tooltip">GitHub</span></li>
+                        <li><a href="https://t.me/smsspamblockbot" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Spam Block Bot"><i class="fas fa-comment-slash"></i></a><span class="tooltip">Spam Block Bot</span></li>
+                    </ul>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="selling">Продажа</button>
+                    <button class="tab-button" data-tab="buying">Скупка</button>
+                    <button class="tab-button" data-tab="info">Информация</button>
+                </div>
+
+                <div id="selling-content" class="tab-content active">
+                    <p style="font-size: 0.9rem; color: var(--clr-text-secondary); margin-bottom: var(--spacing-md); text-align: center;">
+                        Для покупки свяжитесь с нами в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" style="color:var(--clr-accent); font-weight:bold;">Telegram: @smsgetter</a>.
+                    </p>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <h4><i class="fas fa-shield-alt"></i> Nursultan LifeTime</h4>
+                            <p>Количество: 1 шт.<br>Подписка: Пожизненная (LifeTime)</p>
+                            <div class="price-tag">250₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-shield-alt"></i> Nursultan Other</h4>
+                            <p>Количество: 1 шт.<br>Действительна до: 04.01.2026</p>
+                            <div class="price-tag">175₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-ghost"></i> Expensive LifeTime</h4>
+                            <p>Подписка: Пожизненная (LifeTime)</p>
+                            <div class="price-tag">250₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-ghost"></i> Expensive Ancient</h4>
+                            <p>Подписка: Пожизненная (LifeTime)</p>
+                            <div class="price-tag">275₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-biohazard"></i> Arbuz Client</h4>
+                            <p>Версия: Актуальная</p>
+                            <div class="price-tag">250₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-hat-wizard"></i> Wild Client</h4>
+                            <p>Версия: Актуальная</p>
+                            <div class="price-tag">200₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
+                        </div>
+                         <div class="product-card">
+                            <h4><i class="fas fa-meteor"></i> Wexside Client</h4>
+                            <p>Версия: Актуальная</p>
+                            <div class="price-tag">300₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
+                        </div>
+                         <div class="product-card">
+                            <h4><i class="fas fa-star-of-life"></i> Celestial Client</h4>
+                            <p>Версия: Актуальная</p>
+                            <div class="price-tag">300₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--clr-text-secondary); margin-top: var(--spacing-md); text-align: center;">
+                        Примечание: Цены на товары без HWID-привязки могут быть выше на 15-25%. Уточняйте в ЛС.
+                    </p>
+                </div>
+
+                <div id="buying-content" class="tab-content">
+                    <section class="info-section">
+                        <h3><i class="fas fa-shopping-bag"></i> Что мы скупаем?</h3>
+                        <ul>
+                            <li>Подписки на читы (Nursultan, Expensive, Arbuz, Wild, Wexside, Celestial и другие)</li>
+                            <li>Игровые аккаунты (Steam, Epic Games, etc. с отлегой и без)</li>
+                            <li>Аккаунты социальных сетей (Discord, etc.)</li>
+                            <li>Telegram Каналы и Боты (с активной аудиторией или отлегой)</li>
+                            <li>Telegram Звёзды (по курсу <strong>1₽ за 1 звезду</strong>, обсуждаемо)</li>
+                        </ul>
+                        <p>Если у вас есть что-то из этого списка или другие интересные цифровые товары, свяжитесь с нами для обсуждения условий выкупа.</p>
+                        <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="custom-link" style="justify-content: center; margin-top: var(--spacing-md);">
+                            <span class="link-content"><i class="fab fa-telegram-plane"></i><span>Предложить товар в Telegram</span></span>
+                            <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+                        </a>
+                    </section>
+                </div>
+
+                <div id="info-content" class="tab-content">
+                    <section class="info-section bio">
+                        <h3><i class="fas fa-info-circle"></i> О нас</h3>
+                        <p id="bio-text" data-typed="false">ResellWindow - ваш надежный магазин цифровых товаров. Мы специализируемся на продаже и скупке игровых подписок, эксклюзивных аккаунтов, Telegram-каналов, ботов и других цифровых активов. <br><br><strong>Наши принципы:</strong> только честные сделки, оперативная поддержка клиентов и стремление предложить лучшие условия на рынке. Мы ценим ваше доверие и время.</p>
+                    </section>
+                    <section class="info-section contacts">
+                        <h3><i class="fas fa-address-book"></i> Контакты</h3>
+                        <ul>
+                            <li>Telegram для связи: <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">@smsgetter</a></li>
+                            <li>Если у вас спам-блок: <a href="https://t.me/smsspamblockbot" target="_blank" rel="noopener noreferrer">@smsspamblockbot</a></li>
+                        </ul>
+                    </section>
+                     <section class="info-section balance">
+                        <h3><i class="fas fa-wallet"></i> Баланс для скупки</h3>
+                        <p>Текущий доступный баланс: <strong>33,440₽</strong></p>
+                        <p style="font-size: 0.85em; opacity: 0.8;">Баланс может меняться. Актуальную сумму для крупных сделок уточняйте в ЛС.</p>
+                    </section>
+                    <section class="info-section terms">
+                        <h3><i class="fas fa-file-contract"></i> Условия работы</h3>
+                        <ul>
+                            <li><strong>Цены:</strong> Указанные цены на товары актуальны на момент публикации. Для товаров без HWID-привязки (если применимо) цена может быть увеличена на <strong>+15-25%</strong>.</li>
+                            <li><strong>Оплата:</strong> Принимаем оплату в криптовалюте (USDT TRC20/BEP20, BTC, LTC и др.) и на карты банков РФ (Сбер, Тинькофф).</li>
+                            <li><strong>Сделки:</strong> Все операции по покупке и продаже проводятся исключительно через указанные контакты в Telegram.</li>
+                            <li><strong>Гарантии:</strong> Предоставляем гарантию на работоспособность товара на момент продажи, если не оговорены иные условия.</li>
+                        </ul>
+                    </section>
+                     <section class="info-section support-section">
+                        <h3><i class="fas fa-hand-holding-heart"></i> Поддержать проект</h3>
+                        <p>Если вам понравился наш сервис, вы можете оставить отзыв или поддержать нас:</p>
+                        <p><i class="fab fa-telegram-plane"></i> Telegram Stars на <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="support-link">@smsgetter</a></p>
+                        <p><i class="fab fa-bitcoin"></i> Криптовалютой (адреса можно уточнить в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="support-link">Telegram</a>)</p>
+                    </section>
+                </div>
+
+                 <div class="music-player-container">
+                     <div class="player-controls">
+                         <button id="play-pause-btn" class="play-pause-button" aria-label="Play/Pause">
+                             <i class="fas fa-play"></i>
+                         </button>
+                         <span id="now-playing-text" class="now-playing">Madk1D - Толпы</span>
+                     </div>
+                     <audio id="audio-player" loop class="hidden-audio-player">
+                         <source src="https://raw.githubusercontent.com/smsgetter/smsgetter.github.io/main/Madk1D%20%D0%A2%D0%BE%D0%BB%D0%BF%D1%8B.mp3" type="audio/mpeg">
+                         Ваш браузер не поддерживает аудио элемент.
+                     </audio>
+                 </div>
+
+                <footer><p>© ResellWindow 2024</p></footer>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-button');
+            const contents = document.querySelectorAll('.tab-content');
+            const audioPlayer = document.getElementById('audio-player');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            const playPauseIcon = playPauseBtn.querySelector('i');
+            const nowPlayingText = document.getElementById('now-playing-text');
+            const defaultTrackName = 'Madk1D - Толпы';
+            const bioTextElement = document.getElementById('bio-text');
+            const copyUsernameBtn = document.getElementById('copy-username-btn');
+            const copyTooltip = copyUsernameBtn.querySelector('.tooltip');
+            const avatarContainer = document.getElementById('avatar-container');
+            const avatarImage = document.getElementById('avatar-image');
+
+            let isPlaying = false;
+            let typingTimeout;
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetTabId = tab.getAttribute('data-tab');
+                    const targetContent = document.getElementById(targetTabId + '-content');
+
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    tab.classList.add('active');
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                         if (targetTabId === 'info' && bioTextElement && bioTextElement.dataset.typed === 'false' && targetContent.contains(bioTextElement)) {
+                             startTypingEffect(bioTextElement, bioTextElement.innerHTML);
+                             bioTextElement.dataset.typed = 'true';
+                         }
+                    }
+                });
+            });
+
+            if(nowPlayingText) nowPlayingText.textContent = defaultTrackName;
+
+            if(playPauseBtn && audioPlayer) {
+                playPauseBtn.addEventListener('click', () => {
+                    if (isPlaying) {
+                        audioPlayer.pause();
+                    } else {
+                        audioPlayer.play().catch(error => {
+                            resetAudioUI();
+                        });
+                    }
+                });
+            }
+
+            if (audioPlayer) {
+                audioPlayer.addEventListener('play', () => {
+                    if(playPauseIcon) playPauseIcon.classList.replace('fa-play', 'fa-pause');
+                    if(nowPlayingText) nowPlayingText.textContent = `Играет: ${defaultTrackName}`;
+                    isPlaying = true;
+                });
+
+                audioPlayer.addEventListener('pause', () => {
+                    resetAudioUI();
+                });
+
+                audioPlayer.addEventListener('error', (e) => {
+                    if(nowPlayingText) nowPlayingText.textContent = "Ошибка аудио";
+                    resetAudioUI();
+                });
+            }
+
+
+            function resetAudioUI() {
+                if(playPauseIcon) playPauseIcon.classList.replace('fa-pause', 'fa-play');
+                if(nowPlayingText) nowPlayingText.textContent = defaultTrackName;
+                isPlaying = false;
+            }
+
+             if(copyUsernameBtn && copyTooltip) {
+                 copyUsernameBtn.addEventListener('click', () => {
+                     const textToCopy = "@smsgetter";
+                     navigator.clipboard.writeText(textToCopy).then(() => {
+                         copyTooltip.textContent = 'Telegram скопирован!';
+                         copyTooltip.classList.add('copied');
+                         if(copyUsernameBtn.querySelector('i')) copyUsernameBtn.querySelector('i').classList.replace('fa-copy', 'fa-check');
+
+                         setTimeout(() => {
+                             copyTooltip.textContent = 'Копировать Telegram';
+                             copyTooltip.classList.remove('copied');
+                            if(copyUsernameBtn.querySelector('i')) copyUsernameBtn.querySelector('i').classList.replace('fa-check', 'fa-copy');
+                         }, 1500);
+                     }).catch(err => {
+                         copyTooltip.textContent = 'Ошибка копирования';
+                          setTimeout(() => {
+                             copyTooltip.textContent = 'Копировать Telegram';
+                         }, 1500);
+                     });
+                 });
+             }
+
+
+            function typeWriter(element, htmlContent, i, callback) {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = htmlContent;
+                const text = tempDiv.textContent || tempDiv.innerText || "";
+
+                if (i < text.length) {
+                    let currentText = text.substring(0, i + 1);
+                    let displayHtml = "";
+                    let textIndex = 0;
+
+                    function reconstructHtml(node) {
+                        if (textIndex >= currentText.length) return "";
+                        if (node.nodeType === Node.TEXT_NODE) {
+                            let availableChars = currentText.length - textIndex;
+                            let nodeText = node.textContent.substring(0, availableChars);
+                            textIndex += nodeText.length;
+                            return nodeText;
+                        } else if (node.nodeType === Node.ELEMENT_NODE) {
+                            let elementHtml = `<${node.nodeName.toLowerCase()}`;
+                            for (let attr of node.attributes) {
+                                elementHtml += ` ${attr.name}="${attr.value}"`;
+                            }
+                            elementHtml += `>`;
+                            for (let child of node.childNodes) {
+                                elementHtml += reconstructHtml(child);
+                                if (textIndex >= currentText.length) break;
+                            }
+                            elementHtml += `</${node.nodeName.toLowerCase()}>`;
+                            return elementHtml;
+                        }
+                        return "";
+                    }
+
+                    for(let child of tempDiv.childNodes){
+                        displayHtml += reconstructHtml(child);
+                         if (textIndex >= currentText.length) break;
+                    }
+
+                    element.innerHTML = displayHtml + '<span class="typing-cursor"></span>';
+                    typingTimeout = setTimeout(() => {
+                        typeWriter(element, htmlContent, i + 1, callback);
+                    }, 40);
+                } else {
+                     element.innerHTML = htmlContent.replace('<span class="typing-cursor"></span>', '');
+                     if (callback) callback();
+                }
+            }
+
+            function startTypingEffect(element, htmlContent) {
+                 clearTimeout(typingTimeout);
+                 element.innerHTML = '<span class="typing-cursor"></span>';
+                 typeWriter(element, htmlContent.trim(), 0);
+            }
+
+            if (document.querySelector('.tab-button[data-tab="info"].active') && bioTextElement && bioTextElement.dataset.typed === 'false') {
+                 if (bioTextElement.closest('.tab-content.active')) {
+                    startTypingEffect(bioTextElement, bioTextElement.innerHTML);
+                    bioTextElement.dataset.typed = 'true';
+                 }
+            }
+
+
+             console.log("%c ResellWindow %c Store Loaded %c Contact @smsgetter",
+                 "background:#e53935; color:#fff; padding:6px 12px; border-radius: 6px 0 0 6px; font-weight:bold; font-size: 1.1em;",
+                 "background:#2c2c2c; color:#fff; padding:6px 12px; border-radius: 0 6px 6px 0; font-size: 1.1em;",
+                 "padding:5px; font-size: 1em;");
+
+             const konamiCode = [
+                 'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+                 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+                 'b', 'a'
+             ];
+             let konamiIndex = 0;
+             document.addEventListener('keydown', (event) => {
+                 if (event.key.toLowerCase() === konamiCode[konamiIndex].toLowerCase()) {
+                     konamiIndex++;
+                     if (konamiIndex === konamiCode.length) {
+                         document.body.classList.add('easter-egg-bg');
+                         setTimeout(() => {
+                            document.body.classList.remove('easter-egg-bg');
+                         }, 3500);
+                         konamiIndex = 0;
+                     }
+                 } else {
+                     konamiIndex = 0;
+                 }
+             });
+
+            let avatarClickCount = 0;
+            let avatarClickTimer = null;
+
+            if (avatarContainer && avatarImage) {
+                avatarContainer.addEventListener('click', () => {
+                    avatarClickCount++;
+                    avatarImage.classList.add('clicked');
+
+                    clearTimeout(avatarClickTimer);
+
+                    avatarClickTimer = setTimeout(() => {
+                        avatarClickCount = 0;
+                    }, 600);
+
+                     setTimeout(() => {
+                         avatarImage.classList.remove('clicked');
+                     }, 180);
+
+
+                    if (avatarClickCount === 5) {
+                        const currentTransition = avatarImage.style.transition;
+                        avatarImage.style.transition = 'transform 0.55s cubic-bezier(0.68, -0.6, 0.265, 1.65)';
+                        avatarImage.style.transform = 'rotate(360deg) scale(1.15)';
+
+                        setTimeout(() => {
+                            avatarImage.style.transform = 'rotate(0deg) scale(1)';
+                            setTimeout(() => {
+                                avatarImage.style.transition = currentTransition || 'transform 0.2s ease-out';
+                             }, 550);
+                         }, 550);
+                        avatarClickCount = 0;
+                        clearTimeout(avatarClickTimer);
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
