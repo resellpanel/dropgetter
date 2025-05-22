@@ -302,17 +302,24 @@
         }
         .info-section ul { list-style-type: none; padding-left: 0;}
         .info-section li {
-            padding-left: 1.5em; margin-bottom: var(--spacing-xs); position: relative;
+            padding-left: 1.8em;
+            margin-bottom: var(--spacing-xs);
+            position: relative;
             transition: color 0.2s ease;
         }
         .info-section li::before {
-            content: '\\2023';
-            position: absolute; left: 0.2em; color: var(--clr-accent);
-            font-weight: bold; font-size: 1.1em;
+            content: '\u2022';
+            position: absolute;
+            left: 0.5em;
+            top: 0;
+            color: var(--clr-accent);
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: inherit;
             transition: transform 0.2s ease;
         }
         .info-section li:hover { color: var(--clr-text-primary); }
-        .info-section li:hover::before { transform: scale(1.3); }
+        .info-section li:hover::before { transform: scale(1.3) translateX(-1px); }
 
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: var(--spacing-md); }
         .product-card {
@@ -427,6 +434,7 @@
             white-space: pre-wrap;
             word-wrap: break-word;
             margin-top: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
         }
         .code-template code { font-family: inherit; }
         
@@ -435,6 +443,7 @@
             font-size: 1.1rem;
             font-weight: 500;
             color: var(--clr-text-primary);
+            margin-top: var(--spacing-lg);
             margin-bottom: var(--spacing-sm);
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -445,6 +454,9 @@
             border-bottom: 1px solid var(--clr-panel-border);
             position: relative;
         }
+         .tab-content .info-section h4:first-of-type {
+             margin-top: 0;
+         }
         .tab-content .info-section h4::after {
             content: '';
             position: absolute;
@@ -460,13 +472,29 @@
             font-size: 0.9rem;
         }
 
+        .tab-button-link {
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: inherit;
+            color: var(--clr-accent);
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .tab-button-link:hover, .tab-button-link:focus-visible {
+            color: var(--clr-text-primary);
+            text-decoration: none;
+        }
+
         footer {
             padding: var(--spacing-md); text-align: center; font-size: 0.75rem;
             font-family: var(--font-mono); color: var(--clr-text-secondary); opacity: 0.65;
             border-top: 1px solid var(--clr-panel-border); background-color: transparent;
         }
 
-        ::-webkit-scrollbar { width: 7px; }
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
         ::-webkit-scrollbar-track { background: rgba(var(--clr-bg-rgb), 0.7); }
         ::-webkit-scrollbar-thumb { background: rgba(var(--clr-accent-rgb), 0.35); border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(var(--clr-accent-rgb), 0.55); }
@@ -550,7 +578,7 @@
                         </div>
                         <div class="product-card">
                             <h4><i class="fas fa-server"></i> Аккаунт Minecraft Сервера</h4>
-                            <p>Аккаунты для различных Minecraft серверов (например, FunTime, HolyWorld). Привилегии, ресурсы. Детали в ЛС.</p>
+                            <p>Аккаунты для различных Minecraft серверов. Привилегии, ресурсы. Детали в ЛС.</p>
                             <div class="price-tag">от 100₽</div>
                             <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a>
                         </div>
@@ -568,13 +596,13 @@
                     <div class="product-grid">
                         <div class="product-card">
                             <h4><i class="fab fa-steam"></i> Steam Аккаунт (С Играми)</h4>
-                            <p>Аккаунты с популярными играми (CS2 Prime, PUBG, Rust и др.). Возможен инвентарь. Покупаем ваши аккаунты.</p>
+                            <p>Аккаунты с различными играми. Возможен инвентарь. Покупаем ваши аккаунты.</p>
                             <div class="price-tag">от 300₽</div>
                             <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a>
                         </div>
                         <div class="product-card">
                             <h4><i class="fab fa-steam"></i> Steam Аккаунт (Личный/Жирный)</h4>
-                            <p>Скупка и продажа "жирных" аккаунтов Steam с большой библиотекой игр, высоким уровнем, значками и инвентарем.</p>
+                            <p>Скупка и продажа аккаунтов Steam с большой библиотекой игр, высоким уровнем, значками и инвентарем.</p>
                             <div class="price-tag">Договорная</div>
                             <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
                         </div>
@@ -592,7 +620,7 @@
                     <div class="product-grid">
                         <div class="product-card">
                             <h4><i class="fas fa-gamepad"></i> Epic Games (С Играми)</h4>
-                            <p>Аккаунты с играми, полученными по раздаче (GTA V и др.) или купленными. В том числе Fortnite с предметами.</p>
+                            <p>Аккаунты с играми, полученными по раздаче или купленными. В том числе Fortnite с предметами.</p>
                             <div class="price-tag">от 200₽</div>
                             <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a>
                         </div>
@@ -651,7 +679,7 @@
                             <li>Telegram/Discord аккаунты с хорошей историей/отлегой.</li>
                             <li>Подписки на популярные сервисы.</li>
                         </ul>
-                        <p>Свяжитесь с нами в Telegram с пометкой "FastSell" и вашим предложением. Мы оперативно его оценим и предложим условия. Используйте шаблон из вкладки <button class="tab-button-link" data-tab-link="help">Help</button> для удобства.</p>
+                        <p>Свяжитесь с нами в Telegram с пометкой "FastSell" и вашим предложением. Мы оперативно его оценим и предложим условия. Используйте шаблон из вкладки <button type="button" class="tab-button-link" data-tab-link="help">Help</button> для удобства.</p>
                         <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details" style="display: block; max-width: 250px; margin: var(--spacing-md) auto 0;">Предложить для FastSell</a>
                     </div>
                 </div>
@@ -667,7 +695,7 @@
                             <li>Мы используем наши ресурсы и контакты для поиска или предлагаем варианты из наших запасов/скупки.</li>
                         </ul>
                         <p>Эта услуга также подразумевает, что мы активно скупаем различные цифровые активы. Если у вас есть что предложить на продажу – смело пишите!</p>
-                        <p>Свяжитесь с нами в Telegram, чтобы обсудить ваш запрос на поиск, покупку или предложение о продаже вашего товара. Используйте шаблон из вкладки <button class="tab-button-link" data-tab-link="help">Help</button> для удобства.</p>
+                        <p>Свяжитесь с нами в Telegram, чтобы обсудить ваш запрос на поиск, покупку или предложение о продаже вашего товара. Используйте шаблон из вкладки <button type="button" class="tab-button-link" data-tab-link="help">Help</button> для удобства.</p>
                          <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details" style="display: block; max-width: 250px; margin: var(--spacing-md) auto 0;">Сделать запрос / Предложить товар</a>
                     </div>
                 </div>
@@ -675,7 +703,7 @@
                 <div id="help-content" class="tab-content">
                     <div class="info-section">
                         <h3><i class="fas fa-question-circle"></i> Помощь по сделкам</h3>
-                        <p>Чтобы ускорить процесс, используйте следующие шаблоны при обращении в Telegram <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">@smsgetter</a>.</ Скопируйте нужный шаблон и заполните своими данными.</p>
+                        <p>Чтобы ускорить процесс, используйте следующие шаблоны при обращении в Telegram <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">@smsgetter</a>. Скопируйте нужный шаблон и заполните своими данными.</p>
                     </div>
 
                     <div class="info-section">
@@ -766,21 +794,16 @@
             });
 
             document.querySelectorAll('.tab-button-link').forEach(link => {
-                link.style.background = 'none';
-                link.style.border = 'none';
-                link.style.padding = '0';
-                link.style.fontFamily = 'inherit';
-                link.style.fontSize = 'inherit';
-                link.style.color = 'var(--clr-accent)';
-                link.style.cursor = 'pointer';
-                link.style.textDecoration = 'underline';
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetTabId = link.getAttribute('data-tab-link');
                     setActiveTab(targetTabId);
                     const targetElement = document.getElementById(targetTabId + '-content');
                     if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        // Ensure the tab content is visible before scrolling
+                        setTimeout(() => {
+                           targetElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 100); // Small delay for content to become active
                     }
                 });
             });
