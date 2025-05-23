@@ -4,1363 +4,838 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index,follow">
-    <meta name="theme-color" content="#050810">
-    <meta property="og:title" content="smsgetter">
-    <meta property="og:url" content="https://smsgetter.github.io/">
-    <meta property="og:image" content="https://raw.githubusercontent.com/smsgetter/smsgetter.github.io/main/%D0%A1%D0%B8%D1%8F%D0%BD%D0%B8%D0%B5%20%D0%B7%D0%B2%D1%91%D0%B7%D0%B4%20%D0%B8%20%D1%82%D0%B5%D0%BA%D1%81%D1%82%20_smsgetter_.png">
-    <meta property="og:site_name" content="SMSGetter Bio">
-    <meta name="description" content="smsgetter - Разработчик, проекты, услуги, шаблоны.">
-    <link rel="canonical" href="https://smsgetter.github.io/">
-    <title>smsgetter</title>
+    <meta name="theme-color" content="#0c0f1a">
+    <meta property="og:title" content="ResellWindow">
+    <meta property="og:url" content="https://your-domain.com/ResellWindow/">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/0c0f1a/1de9b6?text=ResellWindow+Marketplace">
+    <meta property="og:site_name" content="ResellWindow Marketplace">
+    <meta name="description" content="ResellWindow - Продажа и скупка цифровых товаров: аккаунты, подписки, инструменты. Быстро, надежно, выгодно.">
+    <link rel="canonical" href="https://your-domain.com/ResellWindow/">
+    <title>ResellWindow</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style>
-    :root {
-        --clr-bg: #050810;
-        --clr-bg-rgb: 5, 8, 16;
-        --clr-panel-bg: rgba(10, 15, 30, 0.75);
-        --clr-panel-bg-alt: rgba(15, 22, 40, 0.85);
-        --clr-panel-border: rgba(0, 200, 220, 0.25);
-        --clr-text-primary: #D8E0F0;
-        --clr-text-secondary: #9098B0;
-        --clr-icon: #A0A8C8;
-        --clr-icon-hover: #00C8DC;
-        --clr-button-bg: rgba(0, 200, 220, 0.1);
-        --clr-button-hover-bg: rgba(0, 200, 220, 0.25);
-        --clr-button-border: rgba(0, 200, 220, 0.3);
-        --clr-tab-active-bg: transparent;
-        --clr-shadow: rgba(0, 0, 0, 0.55);
-        --clr-accent: #00C8DC;
-        --clr-accent-rgb: 0, 200, 220;
-        --clr-accent-glow: rgba(0, 200, 220, 0.35);
-        --clr-success: #00FF89;
-        --clr-star: rgba(0, 200, 220, 0.6);
-        --clr-info: #2196F3;
+    <style>
+        :root {
+            --clr-bg: #0c0f1a;
+            --clr-bg-rgb: 12, 15, 26;
+            --clr-panel-bg: rgba(18, 22, 38, 0.88);
+            --clr-panel-bg-alt: rgba(22, 28, 48, 0.92);
+            --clr-panel-border: rgba(60, 80, 150, 0.25);
+            --clr-text-primary: #e8efff;
+            --clr-text-secondary: #a0aec0;
+            --clr-icon: #c0d0e0;
+            --clr-icon-hover: #ffffff;
+            --clr-button-bg: rgba(29, 233, 182, 0.2);
+            --clr-button-hover-bg: rgba(29, 233, 182, 0.4);
+            --clr-button-border: rgba(29, 233, 182, 0.4);
+            --clr-tab-active-bg: transparent;
+            --clr-shadow: rgba(0, 0, 0, 0.6);
+            --clr-accent: #1de9b6;
+            --clr-accent-rgb: 29, 233, 182;
+            --clr-accent-glow: rgba(var(--clr-accent-rgb), 0.35);
+            --clr-secondary-accent: #7e57c2;
+            --clr-secondary-accent-rgb: 126, 87, 194;
+            --clr-highlight: #ffab00;
+            --clr-highlight-rgb: 255, 171, 0;
+            --clr-success: #00c853;
 
-        --radius-card: 1.1rem;
-        --radius-button: 0.5rem;
-        --radius-full: 9999px;
-        --radius-xs: 0.3rem;
-        --radius-item: 0.6rem;
+            --radius-card: 10px;
+            --radius-button: 6px;
+            --radius-full: 50px;
+            --radius-xs: 4px;
+            --radius-item: 8px;
 
-        --spacing-xs: 0.4rem;
-        --spacing-sm: 0.8rem;
-        --spacing-md: 1.3rem;
-        --spacing-lg: 1.9rem;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.9rem;
+            --spacing-md: 1.4rem;
+            --spacing-lg: 2.0rem;
 
-        --transition-speed: 0.33s;
-        --transition-speed-fast: 0.18s;
-        --transition-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-        --font-primary: 'Inter', sans-serif;
-        --font-display: 'Oxanium', cursive;
-        --font-mono: 'Roboto Mono', monospace;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-        font-family: var(--font-primary);
-        background-color: var(--clr-bg);
-        color: var(--clr-text-primary);
-        line-height: 1.6;
-        min-height: 100vh;
-        overflow-x: hidden;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: var(--spacing-md);
-        cursor: default;
-        transition: background-color 0.5s var(--transition-ease);
-    }
-
-    body::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        z-index: -5;
-        background-image: url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
-        background-size: cover;
-        background-position: center center;
-        filter: blur(12px) brightness(0.22) saturate(1.0) hue-rotate(15deg);
-        transform: scale(1.18);
-        transition: filter 0.5s var(--transition-ease);
-    }
-
-    body::after {
-        content: '';
-        position: fixed;
-        inset: 0;
-        z-index: -4;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        background-repeat: repeat;
-        opacity: 0.018;
-        pointer-events: none;
-    }
-    
-    #matrix-bg-overlay {
-        position: fixed;
-        inset: 0;
-        z-index: -3;
-        pointer-events: none;
-        overflow: hidden;
-        font-family: var(--font-mono);
-        font-size: 1.6vw;
-        line-height: 1.25;
-        color: rgba(var(--clr-accent-rgb), 0.022);
-        text-transform: uppercase;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        align-content: center;
-        opacity: 0;
-        padding: 0.5%;
-        animation: fadeInMatrix 4.5s 1.8s forwards, matrixPulse 18s infinite alternate;
-        white-space: pre;
-    }
-
-    @keyframes fadeInMatrix { to { opacity: 1; } }
-    @keyframes matrixPulse {
-        0% { color: rgba(var(--clr-accent-rgb), 0.018); transform: scale(1); }
-        50% { color: rgba(var(--clr-accent-rgb), 0.03); transform: scale(1.003); }
-        100% { color: rgba(var(--clr-accent-rgb), 0.018); transform: scale(1); }
-    }
-
-    body.easter-egg-bg::before {
-         filter: blur(9px) brightness(0.65) saturate(2.2) hue-rotate(200deg);
-         transition: filter 0.6s cubic-bezier(0.68, -0.6, 0.265, 1.6);
-    }
-
-    main {
-        display: flex;
-        width: 100%;
-        min-height: 100vh;
-        align-items: center;
-        justify-content: center;
-        padding: var(--spacing-lg) var(--spacing-md);
-        z-index: 1;
-    }
-
-    .card-wrapper {
-        max-width: 50rem;
-        width: 100%;
-        margin: auto;
-        position: relative;
-    }
-
-    .particles-container {
-        position: absolute;
-        inset: -65px;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 1;
-        border-radius: var(--radius-card);
-    }
-
-    @keyframes newTwinkle {
-        0%, 100% { opacity: 0.08; transform: scale(0.75) rotate(0deg); filter: brightness(0.6); }
-        50% { opacity: 0.85; transform: scale(1.12) rotate(120deg); filter: brightness(1.15); }
-    }
-
-    .particles-container::before,
-    .particles-container::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 2.5px;
-        height: 2.5px;
-        border-radius: 50%;
-        box-shadow:
-            7vw 18vh 1px var(--clr-star), 30vw 8vh 0px var(--clr-star), 58vw 30vh 1px var(--clr-star),
-            88vw 22vh 1px var(--clr-star), 12vw 85vh 0px var(--clr-star), 43vw 72vh 1px var(--clr-star),
-            78vw 58vh 0px var(--clr-star), 90vw 93vh 1px var(--clr-star), 22vw 43vh 1px var(--clr-star),
-            69vw 10vh 0px var(--clr-star), 53vw 96vh 1px var(--clr-star), 8vw 68vh 0px var(--clr-star);
-         animation: newTwinkle 9s infinite ease-in-out alternate;
-    }
-
-    .particles-container::after {
-        box-shadow:
-            10vw 6vh 0px var(--clr-star), 36vw 45vh 1px var(--clr-star), 63vw 12vh 1px var(--clr-star),
-            83vw 70vh 0px var(--clr-star), 17vw 93vh 1px var(--clr-star), 50vw 25vh 0px var(--clr-star),
-            70vw 85vh 1px var(--clr-star), 95vw 15vh 1px var(--clr-star), 26vw 75vh 0px var(--clr-star),
-            55vw 61vh 1px var(--clr-star), 91vw 44vh 0px var(--clr-star), 5vw 34vh 1px var(--clr-star);
-        animation: newTwinkle 11s infinite ease-in-out alternate;
-        animation-delay: -3s;
-    }
-
-    .profile-card {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        position: relative;
-        backdrop-filter: blur(35px) saturate(140%) brightness(1.05);
-        -webkit-backdrop-filter: blur(35px) saturate(140%) brightness(1.05);
-        border-radius: var(--radius-card);
-        background: linear-gradient(150deg, var(--clr-panel-bg), var(--clr-panel-bg-alt));
-        border: 1.2px solid var(--clr-panel-border);
-        box-shadow: 0 15px 55px var(--clr-shadow), 
-                    inset 0 0 0 1px rgba(var(--clr-accent-rgb),0.06),
-                    0 0 45px -12px var(--clr-glow);
-        overflow: hidden;
-        opacity: 0;
-        transform: translateY(42px) scale(0.965);
-        animation: card-fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-        z-index: 2;
-    }
-    @keyframes card-fade-in { to { opacity: 1; transform: translateY(0) scale(1); } }
-
-    .card-banner {
-        width: 100%;
-        height: 9.5rem;
-        background:
-            linear-gradient(to bottom, rgba(var(--clr-accent-rgb), 0.07) 0%, transparent 65%),
-            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='rgba(0,200,220,0.03)' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-            var(--clr-panel-bg-alt);
-        background-size: auto, 80px 80px, auto;
-        border-bottom: 1.2px solid var(--clr-panel-border);
-        position: relative;
-        overflow: hidden;
-    }
-     .card-banner::after {
-        content: '';
-        position: absolute;
-        bottom: -1px; left: 0;
-        width: 100%; height: 2.5px;
-        background: linear-gradient(90deg, transparent, var(--clr-accent), var(--clr-accent-glow), var(--clr-accent), transparent);
-        opacity: 0.55;
-        animation: banner-glow-line 6.5s infinite linear;
-    }
-    @keyframes banner-glow-line {
-        0% { transform: translateX(-100%) scaleX(0.45); }
-        50% { transform: translateX(0) scaleX(1.1); }
-        100% { transform: translateX(100%) scaleX(0.45); }
-    }
-
-    .card-header {
-        position: relative;
-        padding-top: calc(62px + var(--spacing-sm));
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: var(--spacing-md);
-    }
-
-    .avatar-container {
-        position: absolute;
-        width: 128px;
-        height: 128px;
-        left: 50%;
-        top: 0;
-        transform: translate(-50%, -50%);
-        z-index: 10;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: transform 0.35s var(--transition-ease);
-    }
-    .avatar-container:hover {
-        transform: translate(-50%, -50%) scale(1.04);
-    }
-    .avatar-image {
-        display: block;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        border: 4.5px solid var(--clr-bg);
-        object-fit: cover;
-        box-shadow: 0 7px 28px rgba(0,0,0,0.6), 
-                    0 0 0 1.8px var(--clr-accent),
-                    0 0 28px -6px var(--clr-accent-glow);
-        transition: transform 0.28s var(--transition-ease), box-shadow 0.28s var(--transition-ease);
-    }
-    .avatar-image.clicked {
-         transform: scale(0.92) rotate(9deg);
-         box-shadow: 0 6px 22px rgba(0,0,0,0.55), 
-                    0 0 0 2px var(--clr-accent), 
-                    0 0 35px -2px var(--clr-accent-glow);
-    }
-
-    .username-container {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-xs);
-    }
-
-    .username-main-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .username {
-        font-family: var(--font-display);
-        font-size: 2.3rem;
-        font-weight: 700;
-        line-height: 1.22;
-        color: var(--clr-text-primary);
-        text-align: center;
-        word-break: break-all;
-        margin: 0;
-        text-shadow: 0 1px 0px rgba(0,0,0,0.75), 0 0 18px var(--clr-accent-glow);
-    }
-    .username-alias {
-        font-family: var(--font-mono);
-        font-size: 0.88rem;
-        font-weight: 500;
-        color: var(--clr-text-secondary);
-        opacity: 0.85;
-        margin-top: 3px;
-        line-height: 1;
-        letter-spacing: 0.4px;
-    }
-
-    .copy-button {
-        background: none;
-        border: none;
-        color: var(--clr-icon);
-        font-size: 1.05rem;
-        cursor: pointer;
-        padding: var(--spacing-xs);
-        border-radius: var(--radius-xs);
-        transition: color var(--transition-speed-fast), transform var(--transition-speed-fast);
-        position: relative;
-        margin-left: var(--spacing-xs);
-    }
-    .copy-button:hover, .copy-button:focus-visible {
-        color: var(--clr-accent);
-        transform: scale(1.22) rotate(-6deg);
-    }
-    .copy-button .tooltip {
-         bottom: 100%;
-         left: 50%;
-         transform: translateX(-50%) translateY(calc(-1 * var(--spacing-xs) - 4px));
-         font-size: 0.82rem;
-         opacity: 0;
-         visibility: hidden;
-         transition: opacity var(--transition-speed), visibility var(--transition-speed), background-color var(--transition-speed-fast);
-         background-color: var(--clr-panel-bg);
-         border: 1px solid var(--clr-panel-border);
-    }
-    .copy-button:hover .tooltip {
-        opacity: 1;
-        visibility: visible;
-    }
-     .copy-button .tooltip.copied {
-         background-color: var(--clr-success);
-         color: var(--clr-bg);
-         border-color: var(--clr-success);
-     }
-
-    .availability-status {
-        font-size: 0.88rem;
-        color: var(--clr-text-secondary);
-        margin-top: var(--spacing-md);
-        padding: calc(var(--spacing-xs) + 1.5px) var(--spacing-md);
-        background-color: rgba(var(--clr-accent-rgb), 0.06);
-        border-radius: var(--radius-full);
-        display: inline-flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        border: 1px solid rgba(var(--clr-accent-rgb),0.18);
-        box-shadow: inset 0 0 8px rgba(var(--clr-accent-rgb),0.04);
-    }
-     .availability-status .status-icon {
-         color: var(--clr-success);
-         font-size: 0.6rem;
-         animation: pulse-status-new 2.1s infinite ease-in-out;
-     }
-      @keyframes pulse-status-new {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 137, 0.55); }
-        70% { box-shadow: 0 0 0 7.5px rgba(0, 255, 137, 0); }
-    }
-
-    .social-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: calc(var(--spacing-lg) - 0.2rem);
-        list-style: none;
-        padding: 0;
-        margin-top: var(--spacing-lg);
-    }
-    .social-links li {
-        position: relative;
-        opacity: 0;
-        transform: translateY(29px);
-        animation: link-fade-in 0.68s var(--transition-ease) forwards;
-    }
-    .social-links li:nth-child(1) { animation-delay: 0.42s; }
-    .social-links li:nth-child(2) { animation-delay: 0.48s; }
-    .social-links li:nth-child(3) { animation-delay: 0.52s; }
-    @keyframes link-fade-in { to { opacity: 1; transform: translateY(0); } }
-
-    .social-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 50px;
-        background-color: rgba(var(--clr-accent-rgb), 0.06);
-        border: 1.2px solid rgba(var(--clr-accent-rgb), 0.16);
-        border-radius: var(--radius-full);
-        color: var(--clr-icon);
-        font-size: 1.4rem;
-        text-decoration: none;
-        transition: all var(--transition-speed) var(--transition-ease);
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 3.5px 9px rgba(0,0,0,0.28);
-    }
-    .social-icon:hover, .social-icon:focus-visible {
-        background-color: var(--clr-accent);
-        border-color: var(--clr-accent);
-        transform: translateY(-5.5px) scale(1.13);
-        box-shadow: 0 9px 24px rgba(0,0,0,0.42), 0 0 24px var(--clr-accent-glow);
-        color: var(--clr-bg);
-        outline: none;
-    }
-    .social-icon:hover i, .social-icon:focus-visible i {
-        transform: scale(1.12);
-    }
-    .social-icon i {
-        transition: transform var(--transition-speed) var(--transition-ease), filter var(--transition-speed) var(--transition-ease);
-    }
-
-    .tooltip {
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%) translateY(calc(-1 * var(--spacing-sm) - 4.5px));
-        background-color: var(--clr-panel-bg);
-        color: var(--clr-text-primary);
-        padding: var(--spacing-xs) var(--spacing-sm);
-        border-radius: var(--radius-xs);
-        font-size: 0.85rem;
-        font-weight: 600;
-        white-space: nowrap;
-        z-index: 20;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: all var(--transition-speed) var(--transition-ease);
-        box-shadow: 0 3.5px 14px rgba(0, 0, 0, 0.45);
-        border: 1px solid var(--clr-panel-border);
-    }
-    .social-links li:hover .tooltip {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(calc(-1 * var(--spacing-sm) - 9.5px));
-    }
-
-    .tabs {
-        display: flex;
-        border-bottom: 1.2px solid var(--clr-panel-border);
-        border-top: 1.2px solid var(--clr-panel-border);
-        background: rgba(var(--clr-bg-rgb), 0.22);
-        opacity: 0;
-        transform: translateY(19px);
-        animation: section-fade-in 0.78s var(--transition-ease) 0.56s forwards;
-    }
-    .tab-button {
-        flex: 1;
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-family: var(--font-display);
-        font-size: 1.02rem;
-        font-weight: 600;
-        color: var(--clr-text-secondary);
-        background: none;
-        border: none;
-        border-right: 1.2px solid var(--clr-panel-border);
-        cursor: pointer;
-        transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
-        text-align: center;
-        position: relative;
-        letter-spacing: 0.6px;
-    }
-    .tab-button:last-child { border-right: none; }
-    .tab-button:hover, .tab-button:focus-visible {
-        background-color: rgba(var(--clr-accent-rgb),0.06);
-        color: var(--clr-text-primary);
-        outline: none;
-    }
-    .tab-button.active {
-        background-color: var(--clr-tab-active-bg);
-        color: var(--clr-accent);
-        box-shadow: inset 0 -3.8px 0px var(--clr-accent), 0 0 23px -9px var(--clr-accent-glow);
-     }
-
-    .tab-content {
-        display: none;
-        padding: var(--spacing-lg);
-    }
-    .tab-content.active {
-        display: block;
-        animation: content-fade-in 0.68s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-    }
-    @keyframes content-fade-in {
-        from { opacity: 0; transform: translateY(14px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .custom-links-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
-        gap: var(--spacing-md);
-    }
-    .custom-link {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: var(--spacing-md) var(--spacing-lg);
-        background-color: rgba(var(--clr-accent-rgb), 0.035);
-        border: 1.2px solid rgba(var(--clr-accent-rgb), 0.13);
-        border-radius: var(--radius-button);
-        color: var(--clr-text-primary);
-        font-size: 0.99rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all var(--transition-speed) var(--transition-ease);
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0 2.5px 7px rgba(0,0,0,0.22);
-    }
-     .custom-link::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -105%;
-        width: 75%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(var(--clr-accent-rgb), 0.12), transparent);
-        transition: left 0.6s ease-in-out;
-        transform: skewX(-22deg);
-    }
-    .custom-link:hover::before { left: 105%; }
-    .custom-link:hover, .custom-link:focus-visible {
-        background-color: rgba(var(--clr-accent-rgb), 0.08);
-        border-color: rgba(var(--clr-accent-rgb), 0.28);
-        transform: translateY(-4.5px) scale(1.025);
-        box-shadow: 0 9.5px 23px rgba(0,0,0,0.32), 0 0 14px var(--clr-glow);
-        outline: none;
-    }
-    .custom-link .link-content {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        z-index: 1;
-    }
-    .custom-link i {
-        font-size: 1.12rem;
-        color: var(--clr-icon);
-        transition: color var(--transition-speed) var(--transition-ease);
-    }
-    .custom-link:hover i, .custom-link:focus-visible i { color: var(--clr-accent); }
-    .custom-link .arrow {
-        font-size: 0.92rem;
-        opacity: 0.78;
-        transition: transform var(--transition-speed) var(--transition-ease), opacity var(--transition-speed) var(--transition-ease), color var(--transition-speed) var(--transition-ease);
-        z-index: 1;
-    }
-    .custom-link:hover .arrow, .custom-link:focus-visible .arrow {
-        transform: translateX(6.5px) scale(1.08);
-        opacity: 1;
-        color: var(--clr-accent);
-    }
-
-    .info-section {
-        margin-bottom: var(--spacing-lg);
-    }
-    .info-section:last-child { margin-bottom: 0; }
-    .info-section h3 {
-        font-family: var(--font-display);
-        font-size: 1.12rem;
-        font-weight: 700;
-        color: var(--clr-text-primary);
-        margin-bottom: calc(var(--spacing-md) + 0.35rem);
-        text-transform: uppercase;
-        letter-spacing: 2.2px;
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        border-bottom: 1.2px solid var(--clr-panel-border);
-        padding-bottom: var(--spacing-sm);
-        position: relative;
-    }
-     .info-section h3::after {
-         content: '';
-         position: absolute;
-         bottom: -1.5px;
-         left: 0;
-         height: 2.8px;
-         width: 65px;
-         background: var(--clr-accent);
-         border-radius: 1.5px;
-         opacity: 1;
-         box-shadow: 0 0 9px var(--clr-accent-glow);
-     }
-    .info-section h3 i {
-        color: var(--clr-accent);
-        font-size: 0.98rem;
-        opacity: 1;
-        margin-right: var(--spacing-xs);
-    }
-    .info-section p, .info-section ul {
-        font-size: 0.96rem;
-        color: var(--clr-text-secondary);
-        line-height: 1.75;
-        margin-bottom: var(--spacing-sm);
-    }
-    .info-section ul {
-        list-style: none;
-        padding-left: var(--spacing-sm);
-    }
-    .info-section li {
-        margin-bottom: var(--spacing-xs);
-        position: relative;
-        padding-left: 1.7em;
-        transition: transform var(--transition-speed-fast) var(--transition-ease), color var(--transition-speed-fast);
-    }
-    .info-section li::before {
-        content: '»';
-        position: absolute;
-        left: 0;
-        top: 0.5px;
-        color: var(--clr-accent);
-        opacity: 0.88;
-        font-size: 1.18em;
-        font-weight: bold;
-        transition: color var(--transition-speed-fast), transform var(--transition-speed-fast);
-    }
-     .info-section li:hover {
-         transform: translateX(6.5px);
-         color: var(--clr-text-primary);
-     }
-     .info-section li:hover::before {
-         color: var(--clr-accent);
-         transform: scale(1.38) rotate(8deg);
-     }
-    .info-section strong {
-        color: var(--clr-text-primary);
-        font-weight: 600;
-    }
-    .info-section a {
-        color: var(--clr-accent);
-        text-decoration: none;
-        border-bottom: 1.2px dashed rgba(var(--clr-accent-rgb), 0.55);
-        transition: color var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed);
-        font-weight: 600;
-        padding: 0.5px 1.5px;
-        border-radius: 1.5px;
-    }
-    .info-section a:hover, .info-section a:focus-visible {
-        color: var(--clr-bg);
-        background-color: var(--clr-accent);
-        border-color: var(--clr-accent);
-        outline: none;
-    }
-
-    .skills-container, .tools-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-    }
-    .skill-item, .tool-item {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--spacing-xs);
-        background-color: rgba(var(--clr-accent-rgb), 0.045);
-        padding: var(--spacing-xs) var(--spacing-md);
-        border-radius: var(--radius-item);
-        font-size: 0.9rem;
-        border: 1px solid rgba(var(--clr-accent-rgb), 0.12);
-        transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease), background-color var(--transition-speed) var(--transition-ease);
-    }
-     .skill-item i, .tool-item i {
-         color: var(--clr-icon);
-         font-size: 0.95em;
-         opacity: 0.85;
-         transition: color var(--transition-speed) var(--transition-ease);
-     }
-     .skill-item:hover, .skill-item:focus-visible,
-     .tool-item:hover, .tool-item:focus-visible {
-         transform: translateY(-3.8px) scale(1.055);
-         box-shadow: 0 7.5px 15px rgba(0,0,0,0.36), 0 0 9px var(--clr-glow);
-         background-color: rgba(var(--clr-accent-rgb), 0.11);
-         color: var(--clr-text-primary);
-         outline: none;
-     }
-     .skill-item:hover i, .skill-item:focus-visible i,
-     .tool-item:hover i, .tool-item:focus-visible i {
-        color: var(--clr-accent);
-     }
-     .tool-item .tool-extensions {
-        font-family: var(--font-mono);
-        font-size: 0.78em;
-        color: var(--clr-text-secondary);
-        opacity: 0.75;
-        margin-left: var(--spacing-xs);
-     }
-
-    .product-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-        gap: var(--spacing-md);
-    }
-    .product-card {
-        background-color: rgba(var(--clr-accent-rgb), 0.028);
-        border: 1.2px solid var(--clr-panel-border);
-        border-radius: var(--radius-item);
-        padding: var(--spacing-md);
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-sm);
-        transition: all var(--transition-speed) var(--transition-ease);
-        box-shadow: 0 3.2px 9.5px rgba(0,0,0,0.21);
-    }
-    .product-card:hover {
-        transform: translateY(-5.5px) scale(1.028);
-        box-shadow: 0 9.5px 21px rgba(0,0,0,0.33), 0 0 18px var(--clr-glow);
-        border-color: rgba(var(--clr-accent-rgb),0.32);
-    }
-    .product-card h4 {
-        font-family: var(--font-display);
-        font-size: 1.13rem;
-        color: var(--clr-text-primary);
-        margin-bottom: var(--spacing-xs);
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-    }
-    .product-card h4 i { color: var(--clr-accent); font-size: 1.03rem; }
-    .product-card p {
-        font-size: 0.89rem;
-        color: var(--clr-text-secondary);
-        flex-grow: 1;
-        margin-bottom: var(--spacing-sm);
-    }
-    .product-card .btn-details {
-        display: inline-block;
-        background-color: var(--clr-button-bg);
-        color: var(--clr-text-primary);
-        padding: var(--spacing-sm) var(--spacing-md);
-        border-radius: var(--radius-button);
-        text-decoration: none;
-        text-align: center;
-        font-weight: 600;
-        transition: background-color var(--transition-speed) var(--transition-ease), transform var(--transition-speed-fast), border-color var(--transition-speed);
-        border: 1.2px solid var(--clr-button-border);
-    }
-    .product-card .btn-details:hover {
-        background-color: var(--clr-accent);
-        transform: scale(1.035);
-        border-color: var(--clr-accent);
-        color: var(--clr-bg);
-        box-shadow: 0 0 14px var(--clr-accent-glow);
-    }
-
-    #bio-text .typing-cursor {
-        display: inline-block;
-        width: 8.5px;
-        height: 1.08em;
-        background-color: var(--clr-accent);
-        animation: blink 0.78s infinite;
-        margin-left: 3.8px;
-        vertical-align: text-bottom;
-        border-radius: 1.2px;
-        box-shadow: 0 0 7px var(--clr-accent-glow);
-    }
-    @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-    }
-
-    .music-player-container {
-        padding: var(--spacing-md) var(--spacing-lg);
-        background-color: rgba(var(--clr-bg-rgb), 0.18);
-        border-top: 1.2px solid var(--clr-panel-border);
-        opacity: 0;
-        transform: translateY(19px);
-        animation: section-fade-in 0.82s var(--transition-ease) 0.86s forwards;
-    }
-    .player-controls {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-md);
-        justify-content: center;
-    }
-    .play-pause-button {
-        background: var(--clr-button-bg);
-        border: 1.2px solid var(--clr-button-border);
-        border-radius: 50%;
-        width: 47px;
-        height: 47px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--clr-icon);
-        font-size: 1.12rem;
-        cursor: pointer;
-        transition: all var(--transition-speed) var(--transition-ease);
-    }
-    .play-pause-button:hover, .play-pause-button:focus-visible {
-        background-color: var(--clr-accent);
-        color: var(--clr-bg);
-        border-color: var(--clr-accent);
-        transform: scale(1.16);
-        box-shadow: 0 0 17px var(--clr-accent-glow);
-        outline: none;
-    }
-    .now-playing {
-        font-size: 0.9rem;
-        font-family: var(--font-mono);
-        color: var(--clr-text-secondary);
-        text-align: center;
-        flex-grow: 1;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 275px;
-    }
-    .hidden-audio-player { display: none; }
-
-    .support-section {
-        text-align: center;
-        padding-top: var(--spacing-sm);
-        border-top: 1.2px solid var(--clr-panel-border);
-        margin-top: var(--spacing-lg);
-    }
-     .support-section p {
-         font-size: 0.92rem;
-         color: var(--clr-text-secondary);
-         margin-bottom: var(--spacing-sm);
-     }
-     .support-section .support-link {
-        color: var(--clr-accent);
-        font-weight: 600;
-        text-decoration: none;
-        border-bottom: 1.2px dashed rgba(var(--clr-accent-rgb), 0.55);
-        transition: color var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed);
-        padding: 0.5px 1.5px;
-        border-radius: 1.5px;
-     }
-     .support-section .support-link:hover {
-        color: var(--clr-bg);
-        background-color: var(--clr-accent);
-        border-color: var(--clr-accent);
-     }
-
-    footer {
-        padding: var(--spacing-md) var(--spacing-lg);
-        text-align: center;
-        font-size: 0.86rem;
-        color: var(--clr-text-secondary);
-        opacity: 0.7;
-        border-top: 1.2px solid var(--clr-panel-border);
-        background-color: transparent;
-        font-family: var(--font-mono);
-    }
-
-    @keyframes section-fade-in {
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    ::-webkit-scrollbar {
-        width: 9.5px;
-    }
-    ::-webkit-scrollbar-track {
-        background: rgba(var(--clr-bg-rgb), 0.12);
-        border-radius: 9.5px;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: rgba(var(--clr-accent-rgb), 0.28);
-        border-radius: 7.5px;
-        border: 1.2px solid rgba(var(--clr-accent-rgb),0.08);
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: rgba(var(--clr-accent-rgb), 0.42);
-    }
-
-    @media (max-width: 768px) {
-        .product-grid {
-            grid-template-columns: 1fr;
+            --transition-speed: 0.3s;
+            --transition-speed-fast: 0.2s;
+            --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+            --font-primary: 'Inter', sans-serif;
+            --font-display: 'Orbitron', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
         }
-         .tabs {
-            flex-wrap: wrap;
-        }
-        .tab-button {
-            flex-basis: 50%;
-            font-size: 0.96rem;
-        }
-         .card-wrapper {
-             max-width: 100%;
-         }
-    }
 
-    @media (max-width: 640px) {
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
         body {
-            align-items: flex-start;
-            padding: var(--spacing-sm);
+            font-family: var(--font-primary);
+            background-color: var(--clr-bg);
+            color: var(--clr-text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
         }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+            background:
+                radial-gradient(ellipse at 70% 20%, rgba(var(--clr-accent-rgb), 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 80%, rgba(var(--clr-secondary-accent-rgb), 0.1) 0%, transparent 50%),
+                linear-gradient(170deg, rgba(var(--clr-bg-rgb),0.95) 30%, rgba(var(--clr-secondary-accent-rgb), 0.05) 100%);
+            background-size: 200% 200%;
+            animation: subtleGradientShift 25s ease infinite;
+        }
+        @keyframes subtleGradientShift {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
         main {
-            padding: var(--spacing-md) var(--spacing-sm);
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg) var(--spacing-sm);
+            z-index: 1;
         }
+
+        .card-wrapper {
+            max-width: 60rem;
+            width: 100%;
+            margin: auto;
+            position: relative;
+        }
+
         .profile-card {
-            backdrop-filter: blur(28px) saturate(135%) brightness(1.03);
-            -webkit-backdrop-filter: blur(28px) saturate(135%) brightness(1.03);
-            border-radius: calc(var(--radius-card) - 0.25rem);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            backdrop-filter: blur(20px) saturate(110%);
+            -webkit-backdrop-filter: blur(20px) saturate(110%);
+            border-radius: var(--radius-card);
+            background: linear-gradient(160deg, var(--clr-panel-bg), var(--clr-panel-bg-alt));
+            border: 1px solid var(--clr-panel-border);
+            box-shadow: 0 12px 45px var(--clr-shadow), inset 0 0 0 1.5px rgba(var(--clr-accent-rgb),0.1);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(25px) scale(0.985);
+            animation: card-fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            z-index: 2;
         }
-        .card-banner { height: 8.2rem; }
-        .avatar-container { width: 112px; height: 112px; }
-        .card-header { padding-top: calc(56px + var(--spacing-sm)); }
-        .username { font-size: 2.05rem; }
-        .username-container { flex-direction: column; gap: var(--spacing-xs); }
-        .username-alias { font-size: 0.82rem; }
-        .availability-status { font-size: 0.86rem; }
-        .social-links { gap: var(--spacing-md); }
-        .social-icon { width: 45px; height: 45px; font-size: 1.22rem; }
-        .tabs { flex-direction: column; }
-        .tab-button { border-right: none; border-bottom: 1.2px solid var(--clr-panel-border); flex-basis: auto;}
-        .tab-button.active { box-shadow: inset 4.8px 0 0px var(--clr-accent), 0 0 14px -4.5px var(--clr-accent-glow); }
-        .tab-button:last-child { border-bottom: none; }
-        .tab-content { padding: var(--spacing-md); }
-        .custom-links-container { grid-template-columns: 1fr; }
-        .music-player-container { padding: var(--spacing-md); }
-        .player-controls { flex-direction: row; gap: var(--spacing-sm); }
-        .now-playing { max-width: calc(100% - 88px); }
-        .info-section li:hover { transform: translateX(6.2px); }
-        .info-section h3 { font-size: 1.03rem; letter-spacing: 1.8px;}
-    }
+        @keyframes card-fade-in { to { opacity: 1; transform: translateY(0) scale(1); } }
 
-    ::selection { background-color: var(--clr-accent); color: var(--clr-bg); text-shadow: none; }
-    ::-moz-selection { background-color: var(--clr-accent); color: var(--clr-bg); text-shadow: none; }
-</style>
+        .card-banner {
+            width: 100%;
+            height: 12rem;
+            background: linear-gradient(rgba(var(--clr-bg-rgb), 0.5), rgba(var(--clr-bg-rgb), 0.8)),
+                        url('https://images.unsplash.com/photo-1604079628040-94301bb21b91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+            border-bottom: 1px solid var(--clr-panel-border);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .site-title {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--clr-text-primary);
+            text-shadow: 0 0 15px rgba(var(--clr-accent-rgb), 0.5), 0 0 5px rgba(var(--clr-accent-rgb),0.7);
+            margin-bottom: var(--spacing-xs);
+        }
+        .site-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            color: var(--clr-text-secondary);
+            opacity: 0.9;
+        }
 
+        .card-header {
+            padding: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-bottom: 1px solid var(--clr-panel-border);
+        }
+        .contact-info {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--clr-accent);
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background-color: rgba(var(--clr-accent-rgb),0.08);
+            border-radius: var(--radius-xs);
+            border: 1px solid rgba(var(--clr-accent-rgb),0.15);
+        }
+        .contact-info i { margin-right: var(--spacing-xs); }
+
+        .availability-status {
+            font-size: 0.8rem; color: var(--clr-text-secondary);
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-xs) var(--spacing-md);
+            background-color: rgba(var(--clr-bg-rgb), 0.3);
+            border-radius: var(--radius-full);
+            display: inline-flex; align-items: center; gap: var(--spacing-sm);
+            border: 1px solid var(--clr-panel-border);
+        }
+         .availability-status .status-icon {
+             color: var(--clr-success); font-size: 0.6rem;
+             animation: pulse-status 2.2s infinite ease-in-out;
+         }
+        @keyframes pulse-status {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(var(--clr-success), 0.5); }
+            70% { box-shadow: 0 0 0 5px rgba(var(--clr-success), 0); }
+        }
+
+        .social-links {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: var(--spacing-md); list-style: none; padding: 0;
+        }
+        .social-icon {
+            display: flex; align-items: center; justify-content: center;
+            width: 44px; height: 44px;
+            background-color: rgba(var(--clr-secondary-accent-rgb), 0.1);
+            border: 1px solid rgba(var(--clr-secondary-accent-rgb), 0.2);
+            border-radius: var(--radius-full); color: var(--clr-icon);
+            font-size: 1.2rem; text-decoration: none;
+            transition: all var(--transition-speed) var(--transition-ease);
+        }
+        .social-icon:hover, .social-icon:focus-visible {
+            background-color: var(--clr-secondary-accent);
+            border-color: var(--clr-secondary-accent);
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 6px 15px rgba(var(--clr-secondary-accent-rgb),0.3);
+            color: var(--clr-icon-hover); outline: none;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--clr-panel-border);
+            background: rgba(var(--clr-bg-rgb),0.15);
+            overflow-x: auto;
+            -ms-overflow-style: none; scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar { display: none; }
+
+        .tab-button {
+            flex-shrink: 0;
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: 0.85rem; font-weight: 600; font-family: var(--font-mono);
+            color: var(--clr-text-secondary);
+            background: none; border: none;
+            border-right: 1px solid var(--clr-panel-border);
+            cursor: pointer;
+            transition: all var(--transition-speed-fast);
+            text-align: center; position: relative; white-space: nowrap;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .tab-button:last-child { border-right: none; }
+        .tab-button:hover, .tab-button:focus-visible {
+            background-color: rgba(var(--clr-accent-rgb),0.1);
+            color: var(--clr-accent); outline: none;
+        }
+        .tab-button.active {
+            color: var(--clr-accent);
+            box-shadow: inset 0 -2.5px 0px var(--clr-accent);
+         }
+
+        .tab-content { display: none; padding: var(--spacing-lg); }
+        .tab-content.active {
+            display: block;
+            animation: content-fade-in 0.6s var(--transition-ease) forwards;
+        }
+        @keyframes content-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .tab-description {
+            font-size: 0.9rem; color: var(--clr-text-secondary);
+            margin-bottom: var(--spacing-md); text-align: center;
+            padding: var(--spacing-sm);
+            background-color: rgba(var(--clr-bg-rgb),0.2);
+            border-radius: var(--radius-xs);
+            border: 1px solid var(--clr-panel-border);
+        }
+        .tab-description a { color: var(--clr-accent); font-weight: 600; }
+
+        .info-section { margin-bottom: var(--spacing-lg); }
+        .info-section:last-child { margin-bottom: 0; }
+        .info-section h3 {
+            font-family: var(--font-display); font-size: 1.2rem; font-weight: 500;
+            color: var(--clr-text-primary); margin-bottom: var(--spacing-md);
+            text-transform: uppercase; letter-spacing: 1px;
+            display: flex; align-items: center; gap: var(--spacing-sm);
+            border-bottom: 1px solid var(--clr-panel-border);
+            padding-bottom: var(--spacing-sm); position: relative;
+        }
+         .info-section h3::after {
+             content: ''; position: absolute; bottom: -1px; left: 0;
+             height: 2px; width: 40px; background: var(--clr-accent);
+             border-radius: 2px;
+         }
+        .info-section h3 i { color: var(--clr-accent); font-size: 1rem; }
+        .info-section p, .info-section ul {
+            font-size: 0.9rem; color: var(--clr-text-secondary);
+            line-height: 1.8; margin-bottom: var(--spacing-sm);
+        }
+        .info-section ul { list-style-type: none; padding-left: 0;}
+        .info-section li {
+            padding-left: 1.8em;
+            margin-bottom: var(--spacing-xs);
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        .info-section li::before {
+            content: '\u2022';
+            position: absolute;
+            left: 0.5em;
+            top: 0;
+            color: var(--clr-accent);
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: inherit;
+            transition: transform 0.2s ease;
+        }
+        .info-section li:hover { color: var(--clr-text-primary); }
+        .info-section li:hover::before { transform: scale(1.3) translateX(-1px); }
+
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: var(--spacing-md); }
+        .product-card {
+            background-color: rgba(var(--clr-bg-rgb),0.3);
+            border: 1px solid var(--clr-panel-border);
+            border-radius: var(--radius-item);
+            padding: var(--spacing-md);
+            display: flex; flex-direction: column; gap: var(--spacing-sm);
+            transition: all var(--transition-speed) var(--transition-ease);
+            position: relative; overflow: hidden;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.35), 0 0 0 1.5px rgba(var(--clr-accent-rgb), 0.25);
+            border-color: rgba(var(--clr-accent-rgb),0.35);
+        }
+        .product-card.is-pinned {
+            border-left: 4px solid var(--clr-highlight);
+            box-shadow: -4px 0 15px -3px rgba(var(--clr-highlight-rgb),0.5), 0 6px 18px rgba(0,0,0,0.3);
+        }
+         .product-card.is-pinned:hover {
+             box-shadow: -4px 0 20px 0px rgba(var(--clr-highlight-rgb),0.6), 0 10px 25px rgba(0,0,0,0.35), 0 0 0 1.5px rgba(var(--clr-highlight-rgb), 0.3);
+        }
+        .pin-icon {
+            position: absolute; top: var(--spacing-sm); right: var(--spacing-sm);
+            font-size: 0.9rem; color: var(--clr-highlight);
+            background-color: rgba(var(--clr-bg-rgb), 0.8);
+            padding: 0.35em 0.5em; border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.6); z-index: 1;
+        }
+        .product-card h4 {
+            font-size: 1rem; font-weight: 600;
+            color: var(--clr-text-primary); margin-bottom: 0;
+            display: flex; align-items: center; gap: var(--spacing-xs);
+            line-height: 1.4; min-height: 2.8em;
+        }
+        .product-card h4 i { color: var(--clr-accent); font-size: 0.9rem; min-width: 1em; text-align: center;}
+        .product-card.is-pinned h4 i { color: var(--clr-highlight); }
+        .product-card p {
+            font-size: 0.82rem; color: var(--clr-text-secondary);
+            flex-grow: 1; margin-bottom: var(--spacing-xs);
+            min-height: 3.2em;
+            line-height: 1.6;
+        }
+        .product-card .price-tag {
+            font-family: var(--font-mono); font-size: 1.25rem; font-weight: 500;
+            color: var(--clr-accent); text-align: right; margin-top: auto;
+            padding-top: var(--spacing-sm);
+            border-top: 1px solid var(--clr-panel-border);
+            margin-bottom: var(--spacing-sm);
+        }
+        .product-card.is-pinned .price-tag { color: var(--clr-highlight); }
+        .product-card .btn-details {
+            display: inline-block; background-color: var(--clr-button-bg);
+            color: var(--clr-text-primary); padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-button); text-decoration: none; text-align: center; font-weight: 600;
+            transition: all var(--transition-speed-fast);
+            border: 1px solid var(--clr-button-border); font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .product-card .btn-details:hover {
+            background-color: var(--clr-button-hover-bg);
+            transform: scale(1.02); border-color: var(--clr-accent);
+            box-shadow: 0 0 10px rgba(var(--clr-accent-rgb),0.3);
+        }
+        .product-card.is-pinned .btn-details {
+            background-color: rgba(var(--clr-highlight-rgb), 0.15);
+            border-color: rgba(var(--clr-highlight-rgb), 0.3);
+            color: var(--clr-highlight);
+        }
+        .product-card.is-pinned .btn-details:hover {
+            background-color: rgba(var(--clr-highlight-rgb), 0.3);
+            border-color: var(--clr-highlight);
+            box-shadow: 0 0 10px rgba(var(--clr-highlight-rgb),0.3);
+        }
+
+        .music-player-container {
+            padding: var(--spacing-md);
+            background-color: rgba(var(--clr-bg-rgb),0.1);
+            border-top: 1px solid var(--clr-panel-border);
+        }
+        .player-controls { display: flex; align-items: center; gap: var(--spacing-md); justify-content: center; }
+        .play-pause-button {
+            background: none; border: 1px solid rgba(var(--clr-accent-rgb),0.25);
+            border-radius: 50%; width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--clr-icon); font-size: 0.9rem; cursor: pointer;
+            transition: all var(--transition-speed-fast);
+        }
+        .play-pause-button:hover, .play-pause-button:focus-visible {
+            background-color: var(--clr-accent);
+            color: var(--clr-icon-hover); border-color: var(--clr-accent);
+            transform: scale(1.12); box-shadow: 0 0 10px var(--clr-accent-glow);
+            outline: none;
+        }
+        .now-playing {
+            font-family: var(--font-mono); font-size: 0.8rem; color: var(--clr-text-secondary);
+            text-align: center; flex-grow: 1;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 230px;
+        }
+        .hidden-audio-player { display: none; }
+
+        .code-template {
+            background-color: rgba(var(--clr-bg-rgb), 0.4);
+            border: 1px solid var(--clr-panel-border);
+            border-left: 3px solid var(--clr-secondary-accent);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-xs);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--clr-text-secondary);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        .code-template code { font-family: inherit; }
+        
+        .tab-content .info-section h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--clr-text-primary);
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 1px solid var(--clr-panel-border);
+            position: relative;
+        }
+         .tab-content .info-section h4:first-of-type {
+             margin-top: 0;
+         }
+        .tab-content .info-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            height: 2px;
+            width: 30px;
+            background: var(--clr-secondary-accent);
+            border-radius: 2px;
+        }
+        .tab-content .info-section h4 i {
+            color: var(--clr-secondary-accent);
+            font-size: 0.9rem;
+        }
+
+        .tab-button-link {
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: inherit;
+            color: var(--clr-accent);
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .tab-button-link:hover, .tab-button-link:focus-visible {
+            color: var(--clr-text-primary);
+            text-decoration: none;
+        }
+
+        footer {
+            padding: var(--spacing-md); text-align: center; font-size: 0.75rem;
+            font-family: var(--font-mono); color: var(--clr-text-secondary); opacity: 0.65;
+            border-top: 1px solid var(--clr-panel-border); background-color: transparent;
+        }
+
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: rgba(var(--clr-bg-rgb), 0.7); }
+        ::-webkit-scrollbar-thumb { background: rgba(var(--clr-accent-rgb), 0.35); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(var(--clr-accent-rgb), 0.55); }
+
+        @media (max-width: 768px) {
+            .site-title { font-size: 2.2rem; }
+            .site-tagline { font-size: 0.85rem; }
+            .product-grid { grid-template-columns: 1fr; }
+            .tab-button { font-size: 0.75rem; padding: var(--spacing-sm) var(--spacing-sm); }
+        }
+        @media (max-width: 600px) {
+            body { padding: var(--spacing-sm); }
+            main { padding: var(--spacing-md) var(--spacing-xs); }
+            .card-banner { height: 10rem; }
+            .site-title { font-size: 2rem; }
+            .contact-info { font-size: 0.9rem; }
+            .social-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+        }
+
+        ::selection { background-color: var(--clr-accent); color: var(--clr-bg); text-shadow: none; }
+        ::-moz-selection { background-color: var(--clr-accent); color: var(--clr-bg); text-shadow: none; }
+    </style>
 </head>
 <body>
-    <div id="matrix-bg-overlay"></div>
     <main>
         <div class="card-wrapper">
-             <div class="particles-container"></div>
             <div class="profile-card">
-                <div class="card-banner"></div>
+                <div class="card-banner">
+                    <h1 class="site-title">ResellWindow</h1>
+                    <p class="site-tagline">Цифровые товары и услуги // Скупка & Продажа</p>
+                </div>
                 <div class="card-header">
-                    <div class="avatar-container" id="avatar-container">
-                        <img src="https://raw.githubusercontent.com/smsgetter/smsgetter.github.io/main/%D0%A1%D0%B8%D1%8F%D0%BD%D0%B8%D0%B5%20%D0%B7%D0%B2%D1%91%D0%B7%D0%B4%20%D0%B8%20%D1%82%D0%B5%D0%BA%D1%81%D1%82%20_smsgetter_.png" alt="smsgetter Avatar" class="avatar-image" id="avatar-image" loading="lazy">
-                    </div>
-                    <div class="username-container">
-                        <div class="username-main-wrapper">
-                            <h1 class="username" id="username-text">smsgetter</h1>
-                            <span class="username-alias">aka wartov1337</span>
-                        </div>
-                        <button class="copy-button" id="copy-username-btn" aria-label="Копировать Telegram ник">
-                            <i class="far fa-copy"></i>
-                            <span class="tooltip">Копировать ник</span>
-                        </button>
-                    </div>
+                    <p class="contact-info"><i class="fab fa-telegram-plane"></i> Telegram: @smsgetter</p>
                     <div class="availability-status">
-                        <i class="fas fa-circle status-icon"></i><span>Доступен для предложений</span>
+                        <i class="fas fa-circle status-icon"></i><span>Всегда на связи для ваших сделок</span>
                     </div>
                     <ul class="social-links">
-                        <li><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a><span class="tooltip">Telegram</span></li>
-                        <li><a href="https://github.com/smsgetter" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a><span class="tooltip">GitHub</span></li>
-                        <li><a href="https://t.me/wartovcrypto" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Wartov Crypto Project"><i class="fas fa-rocket"></i></a><span class="tooltip">@wartovcrypto</span></li>
+                        <li><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a></li>
+                        <li><a href="https://github.com/smsgetter" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://t.me/smsspamblockbot" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Spam Block Bot"><i class="fas fa-comment-slash"></i></a></li>
                     </ul>
                 </div>
 
                 <div class="tabs">
-                    <button class="tab-button active" data-tab="main">Главная</button>
-                    <button class="tab-button" data-tab="products">Продукты</button>
-                    <button class="tab-button" data-tab="details">Детали</button>
+                    <button class="tab-button active" data-tab="bio">Bio</button>
+                    <button class="tab-button" data-tab="minecraft">Minecraft</button>
+                    <button class="tab-button" data-tab="steam">Steam</button>
+                    <button class="tab-button" data-tab="epic">Epic</button>
+                    <button class="tab-button" data-tab="telegram">Telegram</button>
+                    <button class="tab-button" data-tab="discord">Discord</button>
+                    <button class="tab-button" data-tab="tools">Tools & Work</button>
+                    <button class="tab-button" data-tab="other">Other</button>
+                    <button class="tab-button" data-tab="fastsell">FastSell</button>
+                    <button class="tab-button" data-tab="searchbuy">Search/Buy</button>
+                    <button class="tab-button" data-tab="help">Help</button>
                 </div>
 
-                <div id="main-content" class="tab-content active">
-                    <div class="custom-links-container">
-                        <a href="https://github.com/smsgetter?tab=repositories" target="_blank" rel="noopener noreferrer" class="custom-link">
-                            <span class="link-content"><i class="fas fa-code-branch"></i><span>Репозитории</span></span>
-                            <span class="arrow"><i class="fas fa-arrow-right"></i></span>
-                        </a>
-                        <a href="https://t.me/getterreviews" target="_blank" rel="noopener noreferrer" class="custom-link">
-                            <span class="link-content"><i class="fas fa-star"></i><span>Отзывы (getterreviews)</span></span>
-                            <span class="arrow"><i class="fas fa-arrow-right"></i></span>
-                        </a>
-                        <a href="https://t.me/StarCasinoTelegramBot" target="_blank" rel="noopener noreferrer" class="custom-link">
-                            <span class="link-content"><i class="fas fa-dice"></i><span>StarCasinoBot (Sale)</span></span>
-                            <span class="arrow"><i class="fas fa-arrow-right"></i></span>
-                        </a>
+                <div id="bio-content" class="tab-content active">
+                    <div class="info-section">
+                        <h3><i class="fas fa-user-astronaut"></i> О ResellWindow</h3>
+                        <p>Приветствуем в <strong>ResellWindow</strong> – вашем универсальном магазине и площадке для скупки цифровых товаров! Мы специализируемся на широком спектре продуктов: от игровых аккаунтов и подписок до уникальных инструментов и услуг по разработке.</p>
+                        <p><strong>Наша миссия</strong> – предоставлять качественные товары и услуги по справедливым ценам, обеспечивая при этом безопасность и удобство каждой сделки. Мы ценим ваше время и доверие.</p>
+                        <ul>
+                            <li><strong>Продажа:</strong> Обширный каталог готовых товаров.</li>
+                            <li><strong>Скупка:</strong> Мы готовы рассмотреть ваши предложения по выкупу цифровых активов.</li>
+                            <li><strong>Разработка:</strong> Заказные боты и софт для Telegram/Discord.</li>
+                        </ul>
+                        <p>Все детали сделок, как по продаже, так и по скупке, обсуждаются индивидуально через Telegram: <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">@smsgetter</a>.</p>
+                         <p><strong>Текущий баланс для скупки:</strong> ~33,440₽ (сумма может меняться, уточняйте актуальность).</p>
                     </div>
                 </div>
 
-                <div id="products-content" class="tab-content">
-                    <section class="info-section templates-bots">
-                        <h3><i class="fab fa-telegram-plane"></i> Шаблоны Telegram Ботов</h3>
-                        <div class="product-grid">
-                            <div class="product-card">
-                                <h4><i class="fas fa-shopping-cart"></i> Казино Бот</h4>
-                                <p>Готовый шаблон для запуска собственного Telegram-казино с различными играми и админ-панелью.</p>
-                                <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Узнать больше</a>
-                            </div>
-                            <div class="product-card">
-                                <h4><i class="fas fa-users"></i> Реферальный Бот</h4>
-                                <p>Шаблон бота для создания многоуровневой реферальной системы, отслеживания приглашений и начисления бонусов.</p>
-                                <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Узнать больше</a>
-                            </div>
-                            <div class="product-card">
-                                <h4><i class="fas fa-store"></i> Магазин Бот</h4>
-                                <p>Базовый шаблон Telegram-бота для организации онлайн-магазина с каталогом товаров и приемом заказов.</p>
-                                <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Узнать больше</a>
-                            </div>
+                <div id="minecraft-content" class="tab-content">
+                    <p class="tab-description">Аккаунты Minecraft и связанные товары. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <h4><i class="fas fa-cube"></i> Minecraft Аккаунт</h4>
+                            <p>Скупаем и продаем аккаунты Minecraft (Java/Bedrock). Лицензии, полный доступ. Обсудим ваши предложения.</p>
+                            <div class="price-tag">Договорная</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
                         </div>
-                    </section>
-                    <section class="info-section templates-web">
-                        <h3><i class="fas fa-globe"></i> Веб-Шаблоны и Темы</h3>
-                        <div class="product-grid">
-                            <div class="product-card">
-                                <h4><i class="fas fa-address-card"></i> Лендинг-Визитка</h4>
-                                <p>Современный и адаптивный шаблон для персональной страницы-визитки, аналогичный этой.</p>
-                                <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Узнать больше</a>
-                            </div>
-                            <div class="product-card">
-                                <h4><i class="fas fa-briefcase"></i> Портфолио Разработчика</h4>
-                                <p>Стильный шаблон для демонстрации ваших проектов, навыков и опыта работы.</p>
-                                <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Узнать больше</a>
-                            </div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-server"></i> Аккаунт Minecraft Сервера</h4>
+                            <p>Аккаунты для различных Minecraft серверов. Привилегии, ресурсы. Детали в ЛС.</p>
+                            <div class="price-tag">от 100₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a>
                         </div>
-                    </section>
-                </div>
-
-                <div id="details-content" class="tab-content">
-                    <section class="info-section bio">
-                        <h3><i class="fas fa-user-secret"></i> Кто я?</h3>
-                        <p id="bio-text" data-typed="false">Создаю IT-решения, превращая концепции в рабочий код. Фокус на: <strong>Telegram</strong> (боты, API), <strong>Web</strong> (сайты, шлюзы), <strong>Java</strong> (бэкенд). Помогаю с кодом и запуском проектов. <br><br><strong>Принципы:</strong> Честность с заказчиками — основа. Скамом не занимаюсь. Угрозы (сват/докс и т.п.) бесполезны и не заслуживают внимания. <br><br>#MOPS clnx</p>
-                    </section>
-                    <section class="info-section skills">
-                        <h3><i class="fas fa-laptop-code"></i> Навыки</h3>
-                        <div class="skills-container">
-                            <span class="skill-item"><i class="fab fa-telegram"></i> Telegram Bot API</span>
-                            <span class="skill-item"><i class="fab fa-python"></i> Python</span>
-                            <span class="skill-item"><i class="fab fa-java"></i> Java</span>
-                            <span class="skill-item"><i class="fab fa-html5"></i> HTML</span>
-                            <span class="skill-item"><i class="fab fa-css3-alt"></i> CSS</span>
-                            <span class="skill-item"><i class="fab fa-js"></i> JavaScript</span>
-                            <span class="skill-item"><i class="fas fa-database"></i> SQL</span>
-                            <span class="skill-item"><i class="fab fa-git-alt"></i> Git</span>
-                            <span class="skill-item"><i class="fab fa-linux"></i> Linux</span>
+                        <div class="product-card">
+                            <h4><i class="fas fa-gem"></i> Minecraft Предметы/Услуги</h4>
+                            <p>Продажа игровой валюты, предметов, услуг прокачки на различных серверах Minecraft. Также скупаем.</p>
+                            <div class="price-tag">Договорная</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
                         </div>
-                    </section>
-                    <section class="info-section activity">
-                        <h3><i class="fas fa-concierge-bell"></i> Услуги и Деятельность</h3>
-                        <ul>
-                            <li>Обмен криптовалюты (~76.5₽ = 1 USDT)</li>
-                            <li>Покупка Яндекс.Отзывов & Яндекс.Айди</li>
-                            <li>Продажа аккаунтов Telegram, Discord, Funpay</li>
-                            <li>Proxy & Дополнительные сервисы</li>
-                            <li>IT-Консультации и Разработка на заказ (см. прайс)</li>
-                            <li>Помощь в коде / Старте и запуске проектов</li>
-                            <li>Выступлю гарантом в ваших сделках (комиссия 2-5% в зависимости от суммы и сложности).</li>
-                        </ul>
-                    </section>
-                    <section class="info-section recommended-services">
-                        <h3><i class="fas fa-thumbs-up"></i> Рекомендуемые Сервисы</h3>
-                        <ul>
-                            <li><strong>VDS/VPS:</strong> <a href="https://ruvds.com/ru-rub" target="_blank" rel="noopener noreferrer">RUVDS</a> (ахуенный сервис!)</li>
-                            <li><strong>Домены:</strong> Telegram бот <a href="https://t.me/BuyDomain_BOT" target="_blank" rel="noopener noreferrer">@BuyDomain_BOT</a>, <a href="https://reg.ru" target="_blank" rel="noopener noreferrer">Reg.ru</a></li>
-                            <li><strong>API:</strong> Telegram API, <a href="https://gridysms.com/" target="_blank" rel="noopener noreferrer">GridySMS API</a> (для своих целей, перепродажа TG аккаунтов)</li>
-                        </ul>
-                    </section>
-                    <section class="info-section my-tools">
-                        <h3><i class="fas fa-tools"></i> Мои Инструменты</h3>
-                        <div class="tools-container">
-                            <span class="tool-item"><i class="fas fa-code"></i> VS Code <span class="tool-extensions">(Python, Prettier, Live Server etc.)</span></span>
-                            <span class="tool-item"><i class="fab fa-git-alt"></i> Git & GitHub</span>
-                            <span class="tool-item"><i class="fab fa-docker"></i> Docker (базово)</span>
-                            <span class="tool-item"><i class="fas fa-terminal"></i> Терминал (Linux/WSL)</span>
-                        </div>
-                    </section>
-                    <section class="info-section pricing">
-                        <h3><i class="fas fa-dollar-sign"></i> Прайс (Разработка и Консультации)</h3>
-                        <ul>
-                            <li>Микро-задачи и помощь в коде: <strong>от 5$</strong></li>
-                            <li>Стандарт (бот/сайт/консультация): <strong>от 15$</strong></li>
-                            <li>Комплекс (полный цикл разработки): <strong>от 30$</strong></li>
-                        </ul>
-                        <p style="font-size: 0.86em; opacity: 0.82; font-family: var(--font-mono);">Оплата: Crypto (USDT+), Карта РФ.</p>
-                    </section>
-                    <section class="info-section conditions">
-                        <h3><i class="fas fa-exclamation-triangle"></i> Условия</h3>
-                        <p>Без спама и угроз — ЧС. Соблюдение ТЗ и сроков.</p>
-                    </section>
-                    <section class="info-section support-section">
-                        <h3><i class="fas fa-hand-holding-heart"></i> Поддержать</h3>
-                        <p>Если моя работа или проекты были вам полезны, вы можете поддержать меня:</p>
-                        <p><i class="fab fa-telegram-plane"></i> Telegram Stars на <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="support-link">@smsgetter</a></p>
-                        <p><i class="fab fa-bitcoin"></i> Криптовалютным чеком (напишите в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="support-link">Telegram</a>)</p>
-                    </section>
-                </div>
-
-                <div class="music-player-container">
-                    <div class="player-controls">
-                        <button id="play-pause-btn" class="play-pause-button" aria-label="Play/Pause">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <span id="now-playing-text" class="now-playing">Madk1D - Толпы</span>
                     </div>
-                    <audio id="audio-player" loop class="hidden-audio-player">
-                        <source src="https://raw.githubusercontent.com/smsgetter/smsgetter.github.io/main/Madk1D%20%D0%A2%D0%BE%D0%BB%D0%BF%D1%8B.mp3" type="audio/mpeg">
-                        Ваш браузер не поддерживает аудио элемент.
-                    </audio>
+                </div>
+                
+                <div id="steam-content" class="tab-content">
+                    <p class="tab-description">Игровые аккаунты Steam. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <h4><i class="fab fa-steam"></i> Steam Аккаунт (С Играми)</h4>
+                            <p>Аккаунты с различными играми. Возможен инвентарь. Покупаем ваши аккаунты.</p>
+                            <div class="price-tag">от 300₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fab fa-steam"></i> Steam Аккаунт (Личный/Жирный)</h4>
+                            <p>Скупка и продажа аккаунтов Steam с большой библиотекой игр, высоким уровнем, значками и инвентарем.</p>
+                            <div class="price-tag">Договорная</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fab fa-steam"></i> Steam Аккаунт (Баланс/Ключи)</h4>
+                            <p>Продажа аккаунтов с балансом кошелька Steam или активированными ключами игр. Также скупаем.</p>
+                            <div class="price-tag">Договорная</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
+                        </div>
+                    </div>
                 </div>
 
-                <footer><p>© smsgetter 2025</p></footer>
+                <div id="epic-content" class="tab-content">
+                    <p class="tab-description">Аккаунты Epic Games Store. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <h4><i class="fas fa-gamepad"></i> Epic Games (С Играми)</h4>
+                            <p>Аккаунты с играми, полученными по раздаче или купленными. В том числе Fortnite с предметами.</p>
+                            <div class="price-tag">от 200₽</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a>
+                        </div>
+                        <div class="product-card">
+                            <h4><i class="fas fa-gamepad"></i> Epic Games (Личный)</h4>
+                            <p>Скупка и продажа личных аккаунтов Epic Games с обширной библиотекой, редкими скинами Fortnite и другими ценностями.</p>
+                            <div class="price-tag">Договорная</div>
+                            <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="telegram-content" class="tab-content">
+                    <p class="tab-description">Аккаунты Telegram. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <div class="product-grid">
+                        <div class="product-card"><h4><i class="fab fa-telegram"></i> Telegram Автореги</h4><p>Формат TData/Session+JSON. Покупаем и продаем.</p><div class="price-tag">45-85₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fab fa-telegram"></i> Telegram Физ. (Отлега/Траст)</h4><p>Регистрация на физ. SIM, отлега, траст. Покупаем и продаем.</p><div class="price-tag">115-315₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                    </div>
+                </div>
+                
+                <div id="discord-content" class="tab-content">
+                    <p class="tab-description">Discord аккаунты. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <div class="product-grid">
+                        <div class="product-card"><h4><i class="fab fa-discord"></i> Discord (Отлега)</h4><p>Аккаунты с отлежкой. Email+Pass / Token. Покупаем и продаем.</p><div class="price-tag">от 50₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fab fa-discord"></i> Discord (Nitro)</h4><p>Активная подписка Nitro (Classic/Full). Покупаем и продаем.</p><div class="price-tag">от 200₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                    </div>
+                </div>
+
+                <div id="tools-content" class="tab-content">
+                    <p class="tab-description">Разработка ПО, ботов и готовые инструменты. Для заказа/покупки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <div class="product-grid">
+                        <div class="product-card is-pinned"><i class="fas fa-thumbtack pin-icon"></i><h4><i class="fas fa-rocket"></i> Session Manager (TG)</h4><p>Вход, работа с session+json, автоматизация.</p><div class="price-tag">350₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a></div>
+                        <div class="product-card"><h4><i class="fas fa-code"></i> Разработка TG Ботов</h4><p>Telegram боты любой сложности под ваши задачи.</p><div class="price-tag">от 2.5$</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Заказать</a></div>
+                        <div class="product-card"><h4><i class="fas fa-code"></i> Разработка DS Ботов</h4><p>Кастомные Discord боты для ваших серверов.</p><div class="price-tag">от 2.5$</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Заказать</a></div>
+                        <div class="product-card"><h4><i class="fas fa-cogs"></i> Кастомный Софт (TG/DS)</h4><p>Специализированное ПО для Telegram/Discord.</p><div class="price-tag">Договорная</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Обсудить</a></div>
+                    </div>
+                </div>
+                
+                <div id="other-content" class="tab-content">
+                    <p class="tab-description">Различные цифровые товары и услуги. Скупка и продажа. Для сделки свяжитесь в <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+                    <div class="product-grid">
+                        <div class="product-card is-pinned"><i class="fas fa-thumbtack pin-icon"></i><h4><i class="fas fa-id-card"></i> YooMoney Верификация</h4><p>Полностью верифицированный кошелек (Паспорт+ИНН).</p><div class="price-tag">1500+₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Купить</a></div>
+                        <div class="product-card"><h4><i class="fas fa-sim-card"></i> Номера для Сервисов</h4><p>Вирт. номера для 50+ сервисов. Уточняйте. Скупаем оптом.</p><div class="price-tag">5-300₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Запросить</a></div>
+                        <div class="product-card"><h4><i class="fas fa-credit-card"></i> YooMoney Номер</h4><p>Номер для привязки к YooMoney.</p><div class="price-tag">25₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                        <div class="product-card"><h4><i class="fas fa-cash-register"></i> Номера для FunPay</h4><p>Номера для верификации FunPay.</p><div class="price-tag">50₽</div><a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details">Связаться</a></div>
+                    </div>
+                </div>
+                
+                <div id="fastsell-content" class="tab-content">
+                     <div class="info-section">
+                        <h3><i class="fas fa-bolt"></i> FastSell – Быстрые Сделки</h3>
+                        <p>Нужно срочно продать ваш цифровой товар? Мы готовы рассмотреть ваше предложение по сниженной цене для максимально быстрой сделки. Идеально, если вам нужны средства "здесь и сейчас".</p>
+                        <p><strong>Что мы можем быстро выкупить:</strong></p>
+                        <ul>
+                            <li>Ликвидные игровые аккаунты (Steam, Epic, Minecraft сервера).</li>
+                            <li>Telegram/Discord аккаунты с хорошей историей/отлегой.</li>
+                            <li>Подписки на популярные сервисы.</li>
+                        </ul>
+                        <p>Свяжитесь с нами в Telegram с пометкой "FastSell" и вашим предложением. Мы оперативно его оценим и предложим условия. Используйте шаблон из вкладки <button type="button" class="tab-button-link" data-tab-link="help">Help</button> для удобства.</p>
+                        <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details" style="display: block; max-width: 250px; margin: var(--spacing-md) auto 0;">Предложить для FastSell</a>
+                    </div>
+                </div>
+
+                <div id="searchbuy-content" class="tab-content">
+                    <div class="info-section">
+                        <h3><i class="fas fa-search-dollar"></i> Search/Buy – Найдем или Купим для Вас</h3>
+                        <p>Не нашли нужный товар в нашем каталоге? Или хотите, чтобы мы нашли и выкупили для вас что-то специфическое? Воспользуйтесь услугой Search/Buy!</p>
+                        <p><strong>Как это работает:</strong></p>
+                        <ul>
+                            <li>Вы описываете товар, который хотите приобрести (или который хотите, чтобы мы для вас нашли и выкупили).</li>
+                            <li>Указываете желаемый бюджет или характеристики.</li>
+                            <li>Мы используем наши ресурсы и контакты для поиска или предлагаем варианты из наших запасов/скупки.</li>
+                        </ul>
+                        <p>Эта услуга также подразумевает, что мы активно скупаем различные цифровые активы. Если у вас есть что предложить на продажу – смело пишите!</p>
+                        <p>Свяжитесь с нами в Telegram, чтобы обсудить ваш запрос на поиск, покупку или предложение о продаже вашего товара. Используйте шаблон из вкладки <button type="button" class="tab-button-link" data-tab-link="help">Help</button> для удобства.</p>
+                         <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details" style="display: block; max-width: 250px; margin: var(--spacing-md) auto 0;">Сделать запрос / Предложить товар</a>
+                    </div>
+                </div>
+                
+                <div id="help-content" class="tab-content">
+                    <div class="info-section">
+                        <h3><i class="fas fa-question-circle"></i> Помощь по сделкам</h3>
+                        <p>Чтобы ускорить процесс, используйте следующие шаблоны при обращении в Telegram <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer">@smsgetter</a>. Скопируйте нужный шаблон и заполните своими данными.</p>
+                    </div>
+
+                    <div class="info-section">
+                        <h4><i class="fas fa-bolt"></i> Шаблон для FastSell (Быстрая продажа)</h4>
+                        <p>Если хотите быстро продать свой товар по цене ниже рыночной:</p>
+                        <pre class="code-template"><code>#FastSell
+Тип товара: (например, Аккаунт Steam)
+Описание: (ключевые особенности, игры, скины, отлега и т.д.)
+Желаемая цена: [ВАША ЦЕНА] рублей
+Дополнительно: (скриншоты, ссылки - по возможности)</code></pre>
+                    </div>
+
+                    <div class="info-section">
+                        <h4><i class="fas fa-search-dollar"></i> Шаблон для Search/Buy (Поиск и Покупка)</h4>
+                        <p>Если ищете конкретный товар, которого нет в списке, или хотите заказать поиск:</p>
+                        <pre class="code-template"><code>#SearchBuy
+Тип товара: (например, Аккаунт Fortnite с редким скином)
+Описание/Требования: (конкретные игры, предметы, характеристики)
+Ваш бюджет: до [ВАШ БЮДЖЕТ] рублей
+Дополнительно: (любая важная информация)</code></pre>
+                    </div>
+
+                    <div class="info-section">
+                        <h4><i class="fas fa-hand-holding-usd"></i> Шаблон для Продажи (Общее)</h4>
+                        <p>Если хотите предложить свой товар на продажу (не срочно):</p>
+                        <pre class="code-template"><code>#sell
+Тип товара: (например, Telegram авторег)
+Описание: (характеристики, количество, формат)
+Ваша цена: [ВАША ЦЕНА] за единицу/партию
+Дополнительно: </code></pre>
+                    </div>
+
+                    <div class="info-section">
+                        <h4><i class="fas fa-shopping-cart"></i> Шаблон для Покупки (Общее)</h4>
+                        <p>Если хотите купить товар из имеющихся или уточнить наличие:</p>
+                        <pre class="code-template"><code>#buy
+Тип товара: (например, Discord с Nitro)
+Количество: (если нужно несколько)
+Вопросы: (если есть)</code></pre>
+                        <p>Или просто напишите, какой товар из каталога вас интересует.</p>
+                    </div>
+                     <a href="https://t.me/smsgetter" target="_blank" rel="noopener noreferrer" class="btn-details" style="display: block; max-width: 250px; margin: var(--spacing-lg) auto 0;">Связаться в Telegram</a>
+                </div>
+
+
+                 <div class="music-player-container">
+                     <div class="player-controls">
+                         <button id="play-pause-btn" class="play-pause-button" aria-label="Play/Pause"><i class="fas fa-play"></i></button>
+                         <span id="now-playing-text" class="now-playing">DVRST - Close Eyes</span>
+                     </div>
+                     <audio id="audio-player" loop class="hidden-audio-player">
+                         <source src="https://raw.githubusercontent.com/smsgetter/smsgetter.github.io/main/DVRST%20-%20Close%20Eyes.mp3" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                     </audio>
+                 </div>
+
+                <footer><p>© ResellWindow 2025</p></footer>
             </div>
         </div>
     </main>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const tabs = document.querySelectorAll('.tab-button');
-        const contents = document.querySelectorAll('.tab-content');
-        const audioPlayer = document.getElementById('audio-player');
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        const playPauseIcon = playPauseBtn.querySelector('i');
-        const nowPlayingText = document.getElementById('now-playing-text');
-        const defaultTrackName = 'Madk1D - Толпы';
-        const bioTextElement = document.getElementById('bio-text');
-        const usernameTextElement = document.getElementById('username-text');
-        const copyUsernameBtn = document.getElementById('copy-username-btn');
-        const copyTooltip = copyUsernameBtn.querySelector('.tooltip');
-        const avatarContainer = document.getElementById('avatar-container');
-        const avatarImage = document.getElementById('avatar-image');
-        const matrixOverlay = document.getElementById('matrix-bg-overlay');
-
-        let isPlaying = false;
-        let typingTimeout;
-
-        if (matrixOverlay) {
-            const textPattern = "#MOPS clnx  ";
-            const fixedRepetitions = 300;
-            let content = "";
-            for(let i=0; i < fixedRepetitions; i++) {
-                content += `<span>${textPattern}</span>`;
-            }
-            matrixOverlay.innerHTML = content;
-        }
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetTabId = tab.getAttribute('data-tab');
-                const targetContent = document.getElementById(targetTabId + '-content');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-button');
+            const contents = document.querySelectorAll('.tab-content');
+            const audioPlayer = document.getElementById('audio-player');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            const playPauseIcon = playPauseBtn.querySelector('i');
+            const nowPlayingText = document.getElementById('now-playing-text');
+            const defaultTrackName = 'DVRST - Close Eyes';
+            
+            function setActiveTab(tabId) {
+                const targetTabButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                const targetContent = document.getElementById(tabId + '-content');
 
                 tabs.forEach(t => t.classList.remove('active'));
                 contents.forEach(c => c.classList.remove('active'));
 
-                tab.classList.add('active');
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                     if ((targetTabId === 'details' || targetTabId === 'products' ) && bioTextElement && bioTextElement.dataset.typed === 'false' && targetContent.contains(bioTextElement)) {
-                         startTypingEffect(bioTextElement, bioTextElement.innerHTML);
-                         bioTextElement.dataset.typed = 'true';
-                     }
-                }
-            });
-        });
-
-        if(nowPlayingText) nowPlayingText.textContent = defaultTrackName;
-
-        if(playPauseBtn && audioPlayer) {
-            playPauseBtn.addEventListener('click', () => {
-                if (isPlaying) {
-                    audioPlayer.pause();
-                } else {
-                    audioPlayer.play().catch(error => {
-                        resetAudioUI();
-                    });
-                }
-            });
-        }
-
-        if (audioPlayer) {
-            audioPlayer.addEventListener('play', () => {
-                if(playPauseIcon) playPauseIcon.classList.replace('fa-play', 'fa-pause');
-                if(nowPlayingText) nowPlayingText.textContent = `Играет: ${defaultTrackName}`;
-                isPlaying = true;
-            });
-
-            audioPlayer.addEventListener('pause', () => {
-                resetAudioUI();
-            });
-
-            audioPlayer.addEventListener('error', (e) => {
-                if(nowPlayingText) nowPlayingText.textContent = "Ошибка аудио";
-                resetAudioUI();
-            });
-        }
-
-        function resetAudioUI() {
-            if(playPauseIcon) playPauseIcon.classList.replace('fa-pause', 'fa-play');
-            if(nowPlayingText) nowPlayingText.textContent = defaultTrackName;
-            isPlaying = false;
-        }
-
-         if(copyUsernameBtn && usernameTextElement && copyTooltip) {
-             copyUsernameBtn.addEventListener('click', () => {
-                 const textToCopy = usernameTextElement.textContent.trim();
-                 navigator.clipboard.writeText(textToCopy).then(() => {
-                     copyTooltip.textContent = 'Скопировано!';
-                     copyTooltip.classList.add('copied');
-                     if(copyUsernameBtn.querySelector('i')) copyUsernameBtn.querySelector('i').classList.replace('fa-copy', 'fa-check');
-
-                     setTimeout(() => {
-                         copyTooltip.textContent = 'Копировать ник';
-                         copyTooltip.classList.remove('copied');
-                        if(copyUsernameBtn.querySelector('i')) copyUsernameBtn.querySelector('i').classList.replace('fa-check', 'fa-copy');
-                     }, 1500);
-                 }).catch(err => {
-                     copyTooltip.textContent = 'Ошибка копирования';
-                      setTimeout(() => {
-                         copyTooltip.textContent = 'Копировать ник';
-                     }, 1500);
-                 });
-             });
-         }
-
-        function typeWriter(element, htmlContent, i, callback) {
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = htmlContent;
-            const text = tempDiv.textContent || tempDiv.innerText || "";
-
-            if (i < text.length) {
-                let currentText = text.substring(0, i + 1);
-                let displayHtml = "";
-                let textIndex = 0;
-
-                function reconstructHtml(node) {
-                    if (textIndex >= currentText.length) return "";
-                    if (node.nodeType === Node.TEXT_NODE) {
-                        let availableChars = currentText.length - textIndex;
-                        let nodeText = node.textContent.substring(0, availableChars);
-                        textIndex += nodeText.length;
-                        return nodeText;
-                    } else if (node.nodeType === Node.ELEMENT_NODE) {
-                        let elementHtml = `<${node.nodeName.toLowerCase()}`;
-                        for (let attr of node.attributes) {
-                            elementHtml += ` ${attr.name}="${attr.value}"`;
-                        }
-                        elementHtml += `>`;
-                        for (let child of node.childNodes) {
-                            elementHtml += reconstructHtml(child);
-                            if (textIndex >= currentText.length) break;
-                        }
-                        elementHtml += `</${node.nodeName.toLowerCase()}>`;
-                        return elementHtml;
-                    }
-                    return "";
-                }
-
-                for(let child of tempDiv.childNodes){
-                    displayHtml += reconstructHtml(child);
-                     if (textIndex >= currentText.length) break;
-                }
-
-                element.innerHTML = displayHtml + '<span class="typing-cursor"></span>';
-                typingTimeout = setTimeout(() => {
-                    typeWriter(element, htmlContent, i + 1, callback);
-                }, 38);
-            } else {
-                 element.innerHTML = htmlContent.replace(/<span class="typing-cursor"><\/span>$/, '');
-                 if (callback) callback();
+                if (targetTabButton) targetTabButton.classList.add('active');
+                if (targetContent) targetContent.classList.add('active');
             }
-        }
 
-        function startTypingEffect(element, htmlContent) {
-             clearTimeout(typingTimeout);
-             const cleanHtmlContent = htmlContent.replace(/<span class="typing-cursor"><\/span>/g, '').trim();
-             element.innerHTML = '<span class="typing-cursor"></span>';
-             typeWriter(element, cleanHtmlContent, 0);
-        }
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetTabId = tab.getAttribute('data-tab');
+                    setActiveTab(targetTabId);
+                });
+            });
 
-        const activeTabOnInit = document.querySelector('.tab-button.active');
-        if (activeTabOnInit && (activeTabOnInit.getAttribute('data-tab') === 'details' || activeTabOnInit.getAttribute('data-tab') === 'products')) {
-            if (bioTextElement && bioTextElement.dataset.typed === 'false') {
-                 const targetContent = document.getElementById(activeTabOnInit.getAttribute('data-tab') + '-content');
-                 if (targetContent && targetContent.contains(bioTextElement)) {
-                    startTypingEffect(bioTextElement, bioTextElement.innerHTML);
-                    bioTextElement.dataset.typed = 'true';
-                 }
-            }
-        }
-
-         console.log("%c smsgetter %c v3.0 CyberCore %c https://smsgetter.github.io/",
-             "background:var(--clr-accent); color:var(--clr-bg); padding:6px 12px; border-radius: 6px 0 0 6px; font-weight:bold; font-size: 1.1em;",
-             "background:#1a1f30; color:#fff; padding:6px 12px; border-radius: 0 6px 6px 0; font-size: 1.1em;",
-             "padding:5px; font-size: 1em;");
-
-         const konamiCode = [
-             'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-             'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
-             'b', 'a'
-         ];
-         let konamiIndex = 0;
-         document.addEventListener('keydown', (event) => {
-             if (event.key.toLowerCase() === konamiCode[konamiIndex].toLowerCase()) {
-                 konamiIndex++;
-                 if (konamiIndex === konamiCode.length) {
-                     document.body.classList.add('easter-egg-bg');
-                     setTimeout(() => {
-                        document.body.classList.remove('easter-egg-bg');
-                     }, 3500);
-                     konamiIndex = 0;
-                 }
-             } else {
-                 konamiIndex = 0;
-             }
-         });
-
-        let avatarClickCount = 0;
-        let avatarClickTimer = null;
-
-        if (avatarContainer && avatarImage) {
-            avatarContainer.addEventListener('click', () => {
-                avatarClickCount++;
-                avatarImage.classList.add('clicked');
-
-                clearTimeout(avatarClickTimer);
-
-                avatarClickTimer = setTimeout(() => {
-                    avatarClickCount = 0;
-                }, 650);
-
-                 setTimeout(() => {
-                     avatarImage.classList.remove('clicked');
-                 }, 190);
-
-                if (avatarClickCount === 5) {
-                    const currentTransition = avatarImage.style.transition;
-                    avatarImage.style.transition = 'transform 0.6s cubic-bezier(0.68, -0.6, 0.265, 1.65)';
-                    avatarImage.style.transform = 'rotate(720deg) scale(1.18)';
-
-                    setTimeout(() => {
-                        avatarImage.style.transform = 'rotate(0deg) scale(1)';
+            document.querySelectorAll('.tab-button-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetTabId = link.getAttribute('data-tab-link');
+                    setActiveTab(targetTabId);
+                    const targetElement = document.getElementById(targetTabId + '-content');
+                    if (targetElement) {
+                        // Ensure the tab content is visible before scrolling
                         setTimeout(() => {
-                            avatarImage.style.transition = currentTransition || 'transform 0.28s var(--transition-ease), box-shadow 0.28s var(--transition-ease)';
-                         }, 600);
-                     }, 600);
-                    avatarClickCount = 0;
-                    clearTimeout(avatarClickTimer);
-                }
+                           targetElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 100); // Small delay for content to become active
+                    }
+                });
             });
-        }
-    });
-</script>
+
+
+            if(nowPlayingText) nowPlayingText.textContent = defaultTrackName;
+            if(audioPlayer && audioPlayer.querySelector('source')) audioPlayer.querySelector('source').src = "https://raw.githubusercontent.com/smsgetter/smsgetter.github.io/main/DVRST%20-%20Close%20Eyes.mp3";
+            
+            if(playPauseBtn && audioPlayer) {
+                playPauseBtn.addEventListener('click', () => {
+                    if (audioPlayer.paused) audioPlayer.play().catch(()=>{resetAudioUI();});
+                    else audioPlayer.pause();
+                });
+            }
+
+            if (audioPlayer) {
+                audioPlayer.addEventListener('play', () => { if(playPauseIcon) playPauseIcon.classList.replace('fa-play', 'fa-pause'); if(nowPlayingText) nowPlayingText.textContent = `Играет: ${defaultTrackName}`; });
+                audioPlayer.addEventListener('pause', () => { resetAudioUI(); });
+                audioPlayer.addEventListener('ended', () => { resetAudioUI(); audioPlayer.currentTime = 0;});
+                audioPlayer.addEventListener('error', () => { if(nowPlayingText) nowPlayingText.textContent = "Ошибка аудио"; resetAudioUI(); });
+            }
+
+            function resetAudioUI() {
+                if(playPauseIcon) playPauseIcon.classList.replace('fa-pause', 'fa-play');
+                if(nowPlayingText) nowPlayingText.textContent = defaultTrackName;
+            }
+
+            console.log("%cResellWindow%c Digital Marketplace %cReady",
+                 "background: #1de9b6; color:#0c0f1a; padding:4px 8px; border-radius: 4px 0 0 4px; font-weight:bold; font-size: 1em;",
+                 "background: #7e57c2; color:#e8efff; padding:4px 8px; font-size: 1em;",
+                 "background: #0c0f1a; color:#1de9b6; padding:4px 8px; border-radius: 0 4px 4px 0; font-size: 1em;");
+        });
+    </script>
 </body>
 </html>
