@@ -13,17 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const caseOpeningScreen = document.getElementById('case-opening-screen');
     const profileScreen = document.getElementById('profile-screen');
     const depositScreen = document.getElementById('deposit-screen');
-    const stakesScreen = document.getElementById('stakes-game-screen'); // Новый экран ставок
+    const stakesScreen = document.getElementById('stakes-game-screen');
 
     // Кейсы
     const caseEmojiOpenDiv = document.getElementById('case-emoji-open');
     const caseNameOpenH2 = document.getElementById('case-name-open');
     const caseCostOpenSpan = document.getElementById('case-cost-open');
-    const userBalanceOpenSpan = document.getElementById('user-balance-open'); // Баланс на экране кейса
+    const userBalanceOpenSpan = document.getElementById('user-balance-open');
     const notEnoughFundsOpenP = document.getElementById('not-enough-funds-open');
     const openActualCaseBtn = document.getElementById('open-actual-case-btn');
     const openingStatusTextCaseP = document.getElementById('opening-status-text-case');
-    const rouletteTrackCaseDiv = caseOpeningScreen.querySelector('.roulette-track-case'); // Уточняем поиск
+    const rouletteTrackCaseDiv = caseOpeningScreen.querySelector('.roulette-track-case');
     const visualPrizeTextCaseP = document.getElementById('visual-prize-text-case');
     const casesListContainer = document.getElementById('cases-list-container');
     const backToGamesBtnFromCase = document.getElementById('back-to-games-from-case-btn');
@@ -46,47 +46,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const referralLinkHrefA = document.getElementById('referral-link-href');
     const referralCountSpan = document.getElementById('referral-count');
     const referralBonusSpan = document.getElementById('referral-bonus');
-    const helpInfoBlock = document.getElementById('help-info-block'); // Для помощи
-    const showHelpBtn = document.getElementById('show-help-btn'); // Кнопка для помощи
-
+    const helpInfoBlock = document.getElementById('help-info-block');
+    const showHelpBtn = document.getElementById('show-help-btn');
 
     // Пополнение
     const depositTgStarsWebappBtn = document.getElementById('deposit-tg-stars-webapp-btn');
     const depositManualWebappBtn = document.getElementById('deposit-manual-webapp-btn');
     
-    // Ставки (новый экран)
-    const playStakesWebappBtn = document.getElementById('play-stakes-webapp-btn'); // Кнопка перехода на экран ставок
+    // Ставки
+    const playStakesWebappBtn = document.getElementById('play-stakes-webapp-btn');
     const userBalanceStakesSpan = document.getElementById('user-balance-stakes');
     const stakesBetAmountInput = document.getElementById('stakes-bet-amount');
     const confirmStakesBetBtn = document.getElementById('confirm-stakes-bet-btn');
     const stakesResultTextP = document.getElementById('stakes-result-text');
-    const stakesAnimationContainer = document.getElementById('stakes-animation-container'); // Для анимации слотов
-    const slotEmojiSpans = [ // Элементы для эмодзи слотов
-        document.getElementById('slot-emoji-1'),
-        document.getElementById('slot-emoji-2'),
-        document.getElementById('slot-emoji-3'),
-    ];
-    const minBetStakesInfo = document.getElementById('min-bet-stakes-info'); // Отображение мин. ставки
+    const slotEmojiSpans = [
+        document.getElementById('slot-emoji-1'), document.getElementById('slot-emoji-2'), document.getElementById('slot-emoji-3'),
+    ].filter(el => el !== null); // Фильтруем null, если какой-то ID не найден
+    const minBetStakesInfo = document.getElementById('min-bet-stakes-info');
     const backToGamesBtnFromStakes = document.getElementById('back-to-games-from-stakes-btn');
-
 
     // --- Глобальные переменные ---
     let currentUserId = null;
     let currentProfileData = {}; 
     let currentFetchedGameCases = []; 
     let currentCaseDataForOpening = null;
-    let isGameInProgress = false; // Общий флаг для блокировки UI во время игры
-
-    const DEFAULT_MIN_BET_STAKES = 10; // Заглушка, если не придет из profileData
+    let isGameInProgress = false;
+    const DEFAULT_MIN_BET_STAKES = 10;
 
     // --- Инициализация ---
     function initializeApp() {
-        if (!tg) {
-            showErrorInApp("Telegram API не найдено. Пожалуйста, откройте в Telegram.");
-            hideInitialLoading(); return;
-        }
+        if (!tg) { showErrorInApp("Telegram API не найдено."); hideInitialLoading(); return; }
         tg.ready(); tg.expand(); applyTheme();
-        tg.BackButton.onClick(() => navigateToScreen('games-screen')); // Глобальная кнопка назад ТГ
+        
+        // Настройка кнопки "Назад" Telegram
+        tg.BackButton.onClick(() => {
+            const currentScreen = document.querySelector('.screen.active-screen');
+            if (currentScreen && (currentScreen.id === 'case-opening-screen' || currentScreen.id === 'stakes-game-screen')) {
+                navigateToScreen('games-screen');
+            } else {
+                // Для других экранов можно добавить свою логику или закрыть WebApp
+                // if (tg.isClosingConfirmationEnabled) tg.disableClosingConfirmation();
+                // tg.close(); 
+                // Пока просто переход на игры, если это не основной экран
+                 if (currentScreen && currentScreen.id !== 'games-screen') {
+                    navigateToScreen('games-screen');
+                 }
+            }
+        });
+
 
         const params = new URLSearchParams(window.location.search);
         currentUserId = params.get('userId');
@@ -94,32 +101,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const gameCasesStr = params.get('gameCases');
         const entrypoint = params.get('entrypoint') || 'main_hub';
 
-        if (!currentUserId) {
-            showErrorInApp("Критическая ошибка: ID пользователя не передан.");
-            hideInitialLoading(); return;
-        }
+        if (!currentUserId) { showErrorInApp("Критическая ошибка: ID пользователя не передан."); hideInitialLoading(); return; }
 
         if (profileDataStr) {
             try {
                 currentProfileData = JSON.parse(decodeURIComponent(profileDataStr));
-                updateAppBalance(currentProfileData.balance || 0);
+                updateAppBalance(currentProfileData.balance);
                 renderProfileData(currentProfileData);
-                if(minBetStakesInfo) minBetStakesInfo.textContent = currentProfileData.minBetStakes || DEFAULT_MIN_BET_STAKES;
+                if(minBetStakesInfo && currentProfileData.stakesMinBet) minBetStakesInfo.textContent = currentProfileData.stakesMinBet;
+                else if(minBetStakesInfo) minBetStakesInfo.textContent = DEFAULT_MIN_BET_STAKES;
 
             } catch (e) { console.error("Error parsing profileData:", e); showErrorInApp("Ошибка данных профиля."); }
-        } else { console.warn("profileData not in URL."); showErrorInApp("Данные профиля не загружены."); }
+        } else { console.warn("profileData not in URL."); showErrorInApp("Данные профиля не загружены. Попробуйте /start."); }
 
         if (gameCasesStr) {
             try {
                 currentFetchedGameCases = JSON.parse(decodeURIComponent(gameCasesStr));
                 renderCasesList(currentFetchedGameCases);
             } catch (e) { console.error("Error parsing gameCases:", e); showErrorInApp("Ошибка списка кейсов."); }
-        } else { console.warn("gameCases not in URL."); if(casesListContainer) casesListContainer.innerHTML = '<p>Кейсы не загружены.</p>';}
+        } else { console.warn("gameCases not in URL."); if(casesListContainer) casesListContainer.innerHTML = '<p>Кейсы не загружены. Попробуйте /start.</p>';}
         
         if (entrypoint === 'case_open') {
             const caseKey = params.get('caseKey');
             const targetCase = currentFetchedGameCases.find(c => c.key === caseKey) || 
-                                (params.get('caseName') ? { // Запасной вариант, если кейса нет в общем списке
+                                (params.get('caseName') ? { 
                                     key: caseKey, name: decodeURIComponent(params.get('caseName')), emoji: decodeURIComponent(params.get('caseEmoji') || '❓'),
                                     cost: parseInt(params.get('caseCost') || 0, 10),
                                     prizesForAnimation: JSON.parse(decodeURIComponent(params.get('prizesForAnimation') || '[{"emoji":"?"}]'))
@@ -135,22 +140,35 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyTheme() {
         if (tg && tg.themeParams) {
             const r = document.documentElement.style;
-            if (tg.themeParams.bg_color) r.setProperty('--main-bg', tg.themeParams.bg_color);
-            if (tg.themeParams.text_color) r.setProperty('--text-color-light', tg.themeParams.text_color);
-            if (tg.themeParams.button_color) r.setProperty('--secondary-yellow-matte', tg.themeParams.button_color);
-            if (tg.themeParams.button_text_color) r.setProperty('--text-color-dark', tg.themeParams.button_text_color);
-            if (tg.themeParams.secondary_bg_color) r.setProperty('--container-bg', tg.themeParams.secondary_bg_color);
-            try { tg.setHeaderColor(tg.themeParams.secondary_bg_color || '#1c1c1e'); } catch(e){} // Темная шапка
+            const theme = tg.themeParams;
+            if (theme.bg_color) r.setProperty('--main-bg', theme.bg_color);
+            if (theme.text_color) r.setProperty('--text-color-light', theme.text_color);
+            if (theme.button_color) r.setProperty('--primary-yellow', theme.button_color); // Используем основной цвет кнопки ТГ для нашего желтого
+            if (theme.button_text_color) r.setProperty('--text-color-dark', theme.button_text_color);
+            if (theme.secondary_bg_color) {
+                r.setProperty('--container-bg', theme.secondary_bg_color);
+                r.setProperty('--input-bg', theme.secondary_bg_color); // Инпуты тоже могут быть этого цвета
+            }
+             // Адаптация рамки под основной цвет кнопки
+            if (theme.button_color) {
+                // Создаем RGBA из HEX для рамки
+                let rHex = theme.button_color.substring(1,3);
+                let gHex = theme.button_color.substring(3,5);
+                let bHex = theme.button_color.substring(5,7);
+                if(rHex && gHex && bHex){
+                    r.setProperty('--border-color', `rgba(${parseInt(rHex,16)}, ${parseInt(gHex,16)}, ${parseInt(bHex,16)}, 0.4)`);
+                    r.setProperty('--accent-yellow-glow', `rgba(${parseInt(rHex,16)}, ${parseInt(gHex,16)}, ${parseInt(bHex,16)}, 0.6)`);
+                }
+            }
+            try { tg.setHeaderColor(theme.secondary_bg_color || theme.bg_color || '#1c1c1e'); } catch(e){}
         }
     }
     
     function updateAppBalance(newBalance) {
         if (typeof newBalance !== 'number' || isNaN(newBalance)) newBalance = 0;
         currentProfileData.balance = newBalance;
-        if (appBalanceSpan) appBalanceSpan.textContent = newBalance;
-        if (profileBalanceB) profileBalanceB.textContent = newBalance;
-        if (userBalanceOpenSpan) userBalanceOpenSpan.textContent = newBalance;
-        if (userBalanceStakesSpan) userBalanceStakesSpan.textContent = newBalance;
+        const balanceElements = [appBalanceSpan, profileBalanceB, userBalanceOpenSpan, userBalanceStakesSpan];
+        balanceElements.forEach(el => { if (el) el.textContent = newBalance; });
     }
 
     function hideInitialLoading() { if (initialLoadingScreen) initialLoadingScreen.style.display = 'none'; }
@@ -163,10 +181,13 @@ document.addEventListener('DOMContentLoaded', () => {
         navButtons.forEach(b => b.classList.toggle('active', b.dataset.targetscreen === screenId));
         
         if (screenId === 'case-opening-screen' || screenId === 'stakes-game-screen') {
-            tg.BackButton.show(); // Показываем кнопку "Назад" ТГ
-            navButtons.forEach(b => b.classList.remove('active')); // Деактивируем нижнюю навигацию
+            tg.BackButton.show(); 
+            navButtons.forEach(b => b.classList.remove('active'));
         } else {
             tg.BackButton.hide();
+            // Восстанавливаем активную кнопку навигации, если уходим с игровых экранов
+            const activeNavButton = Array.from(navButtons).find(b => b.dataset.targetscreen === screenId);
+            if(activeNavButton) activeNavButton.classList.add('active');
         }
     }
 
@@ -174,13 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (backToGamesBtnFromCase) backToGamesBtnFromCase.addEventListener('click', () => navigateToScreen('games-screen'));
     if (backToGamesBtnFromStakes) backToGamesBtnFromStakes.addEventListener('click', () => navigateToScreen('games-screen'));
     
-    // --- Отображение данных ---
     function renderProfileData(profile) {
         if (!profile) return;
         if (profileUserIdCode) profileUserIdCode.textContent = profile.userId || 'N/A';
         if (profileFirstNameSpan) profileFirstNameSpan.textContent = profile.firstName || 'N/A';
         if (profileUsernameSpan) profileUsernameSpan.textContent = profile.username ? `@${profile.username}` : 'N/A';
-        if (profileBalanceB) profileBalanceB.textContent = profile.balance || 0;
+        updateAppBalance(profile.balance || 0); // Обновляем баланс везде
         if (profileJoinDateSpan) profileJoinDateSpan.textContent = profile.joinDate || 'N/A';
         if (profileStakesPlayedSpan) profileStakesPlayedSpan.textContent = profile.stakesPlayed || 0;
         if (profileCasesPlayedSpan) profileCasesPlayedSpan.textContent = profile.casesPlayed || 0;
@@ -190,7 +210,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (referralLinkHrefA) { referralLinkHrefA.href = profile.referralLink || '#'; referralLinkHrefA.textContent = profile.referralLink || 'Нет ссылки';}
         if (referralCountSpan) referralCountSpan.textContent = profile.referralsCount || 0;
         if (referralBonusSpan) referralBonusSpan.textContent = profile.referralBonus || 0;
-        if (helpInfoBlock && profile.helpText) helpInfoBlock.innerHTML = profile.helpText.replace(/\n/g, '<br>');
+        if (helpInfoBlock && profile.helpText) {
+            // Убираем HTML теги из текста помощи для безопасности, если он приходит от пользователя
+            // const纯文本 = new DOMParser().parseFromString(profile.helpText, "text/html").body.textContent || "";
+            // helpInfoBlock.innerHTML =纯文本.replace(/\n/g, '<br>');
+            // Если доверяем формату от бэкенда:
+            helpInfoBlock.innerHTML = profile.helpText.replace(/\n/g, '<br>');
+        }
     }
 
     function renderCasesList(cases) {
@@ -211,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- Логика открытия кейса ---
     function setupCaseOpeningScreen() {
         if (!currentCaseDataForOpening) { showErrorInApp("Ошибка данных кейса."); navigateToScreen('games-screen'); return; }
         const { name, emoji, cost } = currentCaseDataForOpening;
@@ -223,8 +248,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (visualPrizeTextCaseP) visualPrizeTextCaseP.style.display = 'none';
         if (rouletteTrackCaseDiv) rouletteTrackCaseDiv.innerHTML = '';
         isGameInProgress = false;
-        if (openActualCaseBtn) openActualCaseBtn.disabled = (currentProfileData.balance < cost);
-        if (notEnoughFundsOpenP) notEnoughFundsOpenP.style.display = (currentProfileData.balance < cost) ? 'block' : 'none';
+        const canAfford = currentProfileData.balance >= cost;
+        if (openActualCaseBtn) openActualCaseBtn.disabled = !canAfford;
+        if (notEnoughFundsOpenP) notEnoughFundsOpenP.style.display = canAfford ? 'none' : 'block';
     }
     
     function populateRouletteTrack(trackEl, prizesAnim = [], reps = 7) {
@@ -232,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!prizesAnim || prizesAnim.length === 0) prizesAnim = [{'emoji':'❓','category':'UNKNOWN'}];
         let fullEmojis = [];
         for (let i = 0; i < reps; i++) fullEmojis.push(...prizesAnim.map(p => (p.emoji || '❓')));
-        const leadTrailCount = Math.max(5, Math.floor(prizesAnim.length * 0.7));
+        const leadTrailCount = Math.max(7, Math.floor(prizesAnim.length * 0.8)); // Увеличил для более плавной анимации
         const finalTrack = [...fullEmojis.slice(-leadTrailCount), ...fullEmojis, ...fullEmojis.slice(0, leadTrailCount)];
         finalTrack.forEach(e => { const d = document.createElement('div'); d.className = 'roulette-item'; d.textContent = e; trackEl.appendChild(d); });
         return finalTrack;
@@ -253,24 +279,32 @@ document.addEventListener('DOMContentLoaded', () => {
         if (visualPrizeTextCaseP) visualPrizeTextCaseP.style.display = 'none';
 
         const itemW = 80; const viewportW = rouletteTrackCaseDiv.parentElement.clientWidth;
-        const initialOffsetIdx = Math.floor(prizesAnim.length * 0.8); // Смещение для старта
+        const initialOffsetIdx = Math.floor(prizesAnim.length * 0.8) + Math.floor(Math.random()*3) ; // Небольшой рандом в старте
         const initialTX = -(initialOffsetIdx * itemW - (viewportW / 2) + (itemW / 2));
         rouletteTrackCaseDiv.style.transition = 'none';
         rouletteTrackCaseDiv.style.transform = `translateX(${initialTX}px)`;
 
-        const visualWinEmoji = prizesAnim[Math.floor(Math.random() * prizesAnim.length)].emoji;
+        const visualWinEmojiObj = prizesAnim[Math.floor(Math.random() * prizesAnim.length)];
+        const visualWinEmoji = visualWinEmojiObj.emoji || '❓';
         
         let targetStopIdx = -1;
-        const searchStart = Math.max(prizesAnim.length, Math.floor(trackEmojis.length * 0.6)); // Искать ближе к концу
-        for (let i = trackEmojis.length - prizesAnim.length - 5; i >= searchStart; i--) { // Ищем с конца, но не в самом хвосте
+        // Ищем ближе к концу "основной" части трека, избегая слишком ранних элементов
+        const minStopIndexConsideration = prizesAnim.length * 2; // Не останавливаться на первых двух повторениях набора
+        const maxStopIndexConsideration = trackEmojis.length - prizesAnim.length * 2; // И не на последних двух
+        
+        for (let i = maxStopIndexConsideration; i >= minStopIndexConsideration; i--) { 
             if (trackEmojis[i] === visualWinEmoji) { targetStopIdx = i; break; }
         }
-        if (targetStopIdx === -1) targetStopIdx = trackEmojis.length - prizesAnim.length - Math.floor(Math.random() * 3) - 3; // Запасной вариант
+        if (targetStopIdx === -1) { // Если не нашли (например, очень мало уникальных эмодзи в prizesAnim)
+             targetStopIdx = Math.floor(minStopIndexConsideration + Math.random() * (maxStopIndexConsideration - minStopIndexConsideration));
+             if (targetStopIdx >= trackEmojis.length) targetStopIdx = trackEmojis.length - 2; // Защита
+        }
+
 
         const finalTX = -(targetStopIdx * itemW - (viewportW / 2) + (itemW / 2));
         await new Promise(r => setTimeout(r, 100));
-        const animDur = 4500 + Math.random() * 1000;
-        rouletteTrackCaseDiv.style.transition = `transform ${animDur}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+        const animDur = 4800 + Math.random() * 1200; // Чуть дольше
+        rouletteTrackCaseDiv.style.transition = `transform ${animDur}ms cubic-bezier(0.23, 1, 0.32, 1)`; // Плавное замедление
         rouletteTrackCaseDiv.style.transform = `translateX(${finalTX}px)`;
 
         setTimeout(() => {
@@ -280,39 +314,42 @@ document.addEventListener('DOMContentLoaded', () => {
             requestDataFromBot({ action: 'open_case_request', caseKey: currentCaseDataForOpening.key });
             tg.HapticFeedback.impactOccurred('medium');
             tg.showAlert("Результат открытия кейса будет отправлен в чат с ботом.");
-            setTimeout(() => { if (tg && tg.close) tg.close(); }, 2500); // Закрываем через 2.5с
-            // isGameInProgress = false; // Не сбрасываем, т.к. WebApp закроется
-        }, animDur + 150);
+            setTimeout(() => { if (tg && tg.close) tg.close(); }, 2000);
+        }, animDur + 200);
     }
     if (openActualCaseBtn) openActualCaseBtn.addEventListener('click', startCaseRouletteAnimation);
 
     // --- Логика Ставок (Stakes) ---
     function setupStakesScreen() {
-        if (!stakesScreen.classList.contains('active-screen')) return; // Только если экран активен
+        if (!stakesScreen.classList.contains('active-screen')) return;
         if (userBalanceStakesSpan) userBalanceStakesSpan.textContent = currentProfileData.balance || 0;
         if (stakesBetAmountInput) stakesBetAmountInput.value = '';
-        if (stakesResultTextP) stakesResultTextP.textContent = 'Введите сумму и сделайте ставку!';
-        if (stakesResultTextP) stakesResultTextP.style.color = 'var(--text-color-light)';
-        slotEmojiSpans.forEach(s => { if(s) s.textContent = '❔'; });
+        if (stakesResultTextP) { stakesResultTextP.textContent = 'Введите сумму и сделайте ставку!'; stakesResultTextP.style.color = 'var(--text-color-light)';}
+        if (slotEmojiSpans.length > 0) slotEmojiSpans.forEach(s => s.textContent = '❔');
         if (confirmStakesBetBtn) confirmStakesBetBtn.disabled = false;
+        // Устанавливаем мин. ставку из профиля, если есть, иначе дефолт
+        const minBetForStakes = (currentProfileData && currentProfileData.stakesMinBet) ? currentProfileData.stakesMinBet : DEFAULT_MIN_BET_STAKES;
+        if (minBetStakesInfo) minBetStakesInfo.textContent = minBetForStakes;
+        if (stakesBetAmountInput) stakesBetAmountInput.placeholder = `Сумма ставки (мин. ${minBetForStakes})`;
+
+
         isGameInProgress = false;
     }
 
-    async function playSlotsAnimation() {
-        if (!stakesAnimationContainer || slotEmojiSpans.some(s => !s)) return; // Проверка наличия элементов
+    async function playSlotsAnimation() { // Анимация для ставок
+        if (slotEmojiSpans.length === 0) return;
         const emojis = ["🎰", "🍒", "🍓", "🍊", "🍋", "🍉", "⭐", "💎", "🎁", "💔", "🍀", "🔔", "BAR", "❼"];
         let animFrame = 0;
-        const maxFrames = 20 + Math.floor(Math.random() * 10); // 20-29 кадров
+        const maxFrames = 20 + Math.floor(Math.random() * 10); 
 
         return new Promise(resolve => {
             function animate() {
-                slotEmojiSpans.forEach(span => span.textContent = emojis[Math.floor(Math.random() * emojis.length)]);
+                slotEmojiSpans.forEach(span => { if(span) span.textContent = emojis[Math.floor(Math.random() * emojis.length)];});
                 animFrame++;
                 if (animFrame < maxFrames) {
-                    setTimeout(animate, 80 + animFrame * 2); // Замедление анимации
+                    setTimeout(animate, 70 + animFrame * 3); 
                 } else {
-                    // Финальные эмодзи (случайные, т.к. реальный результат придет от бота)
-                    slotEmojiSpans.forEach(span => span.textContent = emojis[Math.floor(Math.random() * emojis.length)]);
+                    slotEmojiSpans.forEach(span => {if(span) span.textContent = emojis[Math.floor(Math.random() * emojis.length)];});
                     resolve();
                 }
             }
@@ -323,24 +360,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (confirmStakesBetBtn) {
         confirmStakesBetBtn.addEventListener('click', async () => {
             if (isGameInProgress) return;
-            const betAmount = parseInt(stakesBetAmountInput.value, 10);
-            const minBet = currentProfileData.minBetStakes || DEFAULT_MIN_BET_STAKES;
+            const betAmountStr = stakesBetAmountInput.value;
+            if (!betAmountStr) {
+                 if (stakesResultTextP) { stakesResultTextP.textContent = `Введите сумму ставки.`; stakesResultTextP.style.color = '#E74C3C';}
+                 tg.HapticFeedback.notificationOccurred('error'); return;
+            }
+            const betAmount = parseInt(betAmountStr, 10);
+            const minBet = (currentProfileData && currentProfileData.stakesMinBet) ? currentProfileData.stakesMinBet : DEFAULT_MIN_BET_STAKES;
 
             if (isNaN(betAmount) || betAmount < minBet) {
                 if (stakesResultTextP) { stakesResultTextP.textContent = `Минимальная ставка: ${minBet} ⭐.`; stakesResultTextP.style.color = '#E74C3C';}
                 tg.HapticFeedback.notificationOccurred('error'); return;
             }
-            if (betAmount > currentProfileData.balance) {
+            if (betAmount > (currentProfileData.balance || 0) ) {
                 if (stakesResultTextP) { stakesResultTextP.textContent = "Недостаточно средств!"; stakesResultTextP.style.color = '#E74C3C';}
                 tg.HapticFeedback.notificationOccurred('error'); return;
             }
 
             isGameInProgress = true;
             if (confirmStakesBetBtn) confirmStakesBetBtn.disabled = true;
-            if (stakesResultTextP) stakesResultTextP.textContent = "Крутим барабаны...";
+            if (stakesResultTextP) stakesResultTextP.textContent = "Делаем ставку...";
             tg.HapticFeedback.impactOccurred('light');
 
-            await playSlotsAnimation();
+            await playSlotsAnimation(); // Запускаем анимацию слотов
             
             requestDataFromBot({ action: 'make_stake_request', betAmount: betAmount });
             if (stakesResultTextP) stakesResultTextP.textContent = "Ставка сделана!";
@@ -367,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (referralInfoBlock) referralInfoBlock.style.display = referralInfoBlock.style.display === 'none' ? 'block' : 'none';
         });
     }
-    if (showHelpBtn) { // Кнопка Помощь
+    if (showHelpBtn) {
         showHelpBtn.addEventListener('click', () => {
             if (helpInfoBlock) helpInfoBlock.style.display = helpInfoBlock.style.display === 'none' ? 'block' : 'none';
         });
@@ -377,34 +419,30 @@ document.addEventListener('DOMContentLoaded', () => {
         depositTgStarsWebappBtn.addEventListener('click', () => {
             requestDataFromBot({ action: 'request_deposit_method', method: 'stars' });
             tg.showAlert("Для пополнения через Telegram Stars перейдите в чат с ботом.");
-            // tg.close(); // Можно закрыть, чтобы пользователь сразу перешел в чат
         });
     }
     if (depositManualWebappBtn) {
         depositManualWebappBtn.addEventListener('click', () => {
             requestDataFromBot({ action: 'request_deposit_method', method: 'manual' });
             tg.showAlert("Для пополнения через TON/Crypto перейдите в чат с ботом.");
-            // tg.close();
         });
     }
     
-    // Кнопка "Ставки" на главном экране игр
-    if (playStakesWebappBtn) {
+    if (playStakesWebappBtn) { // Кнопка "Ставки" на экране игр
         playStakesWebappBtn.addEventListener('click', () => {
             setupStakesScreen(); // Настраиваем экран перед показом
             navigateToScreen('stakes-game-screen');
         });
     }
     
-    // --- Общая функция отправки данных боту ---
     function requestDataFromBot(data) {
         if (!tg || !currentUserId) { showErrorInApp("Ошибка отправки: нет ID или Telegram API."); return; }
         const dataToSend = JSON.stringify({ userId: currentUserId, ...data });
-        console.log("Sending to bot:", dataToSend.length > 200 ? dataToSend.substring(0,200) + "..." : dataToSend);
+        const logData = dataToSend.length > 250 ? dataToSend.substring(0,250) + "..." : dataToSend;
+        console.log("Sending to bot:", logData);
         try { tg.sendData(dataToSend); } catch (e) { console.error("tg.sendData error:", e); showErrorInApp("Ошибка связи с сервером.");}
     }
 
-    // --- Инициализация ---
     try { initializeApp(); } catch (e) {
         console.error("Fatal init error:", e);
         showErrorInApp("Критическая ошибка запуска. Перезапустите через /start.");
