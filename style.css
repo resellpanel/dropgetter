@@ -1,29 +1,30 @@
 /* style.css */
 :root {
-    --main-bg: #1a1a1d; 
-    --primary-yellow: #FFD700; 
+    --main-bg: #18191c; /* Чуть светлее, чем был */
+    --primary-yellow: #FFC107; /* Яркий желтый, как у вас на скрине */
     --secondary-yellow-matte: #E1A95F; 
-    --accent-yellow-glow: rgba(255, 215, 0, 0.7);
-    --text-color-light: #f0f0f0;
-    --text-color-dark: #1a1a1d; /* Темный для текста на светлых кнопках */
-    --container-bg: rgba(40, 40, 45, 0.85); 
-    --input-bg: rgba(60, 60, 65, 0.9);
-    --blur-intensity: 5px;
-    --border-color: rgba(225, 169, 95, 0.3);
+    --accent-yellow-glow: rgba(255, 193, 7, 0.6);
+    --text-color-light: #e0e0e0; /* Светлее для лучшего контраста */
+    --text-color-dark: #111214; 
+    --container-bg: #23272A; /* Темно-серый для контейнеров */
+    --input-bg: #2C2F33;    /* Темно-серый для инпутов */
+    --blur-intensity: 4px;
+    --border-color: rgba(255, 193, 7, 0.25); /* Желтоватая рамка */
+    --text-color-light-muted: rgba(224, 224, 224, 0.7); /* Для второстепенного текста */
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    -webkit-tap-highlight-color: transparent; /* Убираем синее выделение при тапе */
+    -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; /* Roboto как основной */
     color: var(--text-color-light);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -51,8 +52,8 @@ body {
 
 .app-header {
     padding: 12px 15px;
-    background-color: rgba(20, 20, 22, 0.9);
-    backdrop-filter: blur(var(--blur-intensity));
+    background-color: var(--container-bg); /* Используем цвет контейнера */
+    /* backdrop-filter: blur(var(--blur-intensity)); */ /* Можно убрать если тормозит */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,7 +64,7 @@ body {
 }
 
 .app-header h1 {
-    font-size: 1.4rem;
+    font-size: 1.5rem; /* Крупнее */
     color: var(--primary-yellow);
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -78,9 +79,7 @@ body {
     font-weight: 500;
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
-#app-balance {
-    font-weight: bold;
-}
+#app-balance { font-weight: bold; }
 
 .app-main-content {
     flex-grow: 1;
@@ -88,347 +87,225 @@ body {
     padding: 15px;
     position: relative;
 }
-/* Стилизация скроллбара для WebKit браузеров */
-.app-main-content::-webkit-scrollbar {
-    width: 6px;
-}
-.app-main-content::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
-}
-.app-main-content::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-yellow-matte);
-    border-radius: 3px;
-}
-
+.app-main-content::-webkit-scrollbar { width: 6px; }
+.app-main-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+.app-main-content::-webkit-scrollbar-thumb { background-color: var(--secondary-yellow-matte); border-radius: 3px; }
 
 .screen {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    animation: screenFadeIn 0.35s ease-out;
-    width: 100%;
-    min-height: 100%;
+    display: none; flex-direction: column; align-items: center;
+    animation: screenFadeIn 0.3s ease-out;
+    width: 100%; min-height: 100%;
 }
-.screen.active-screen {
-    display: flex;
-}
+.screen.active-screen { display: flex; }
 
 @keyframes screenFadeIn {
-    from { opacity: 0; transform: translateY(15px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; translateY(0); }
 }
 
-
 .screen h2 {
-    color: var(--secondary-yellow-matte);
-    margin-bottom: 25px;
-    font-size: 1.6rem;
+    color: var(--primary-yellow); /* Заголовки тоже желтые */
+    margin-bottom: 20px;
+    font-size: 1.7rem; /* Крупнее */
     font-weight: 600;
     border-bottom: 2px solid var(--accent-yellow-glow);
     padding-bottom: 8px;
     display: inline-block;
     text-align: center;
-    width: auto; /* Чтобы подчеркивание было по ширине текста */
 }
 
 .action-button, input[type="text"], input[type="number"] {
-    width: 100%;
-    padding: 14px 18px;
-    font-size: 1.05rem;
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    background-color: var(--input-bg);
-    color: var(--text-color-light);
+    width: 100%; padding: 14px 18px; font-size: 1.05rem;
+    border-radius: 10px; border: 1px solid var(--border-color);
+    background-color: var(--input-bg); color: var(--text-color-light);
     margin-bottom: 15px;
     transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
-input[type="text"]::placeholder, input[type="number"]::placeholder {
-    color: rgba(240,240,240,0.6);
-}
+input[type="text"]::placeholder, input[type="number"]::placeholder { color: var(--text-color-light-muted); }
 input[type="text"]:focus, input[type="number"]:focus {
-    outline: none;
-    border-color: var(--primary-yellow);
+    outline: none; border-color: var(--primary-yellow);
     box-shadow: 0 0 0 3px var(--accent-yellow-glow);
-    background-color: rgba(70,70,75,0.9);
+    background-color: var(--container-bg); /* Чуть светлее при фокусе */
 }
 
 .action-button {
-    font-weight: 600;
-    background-color: var(--secondary-yellow-matte);
-    color: var(--text-color-dark);
-    cursor: pointer;
-    text-align: center;
-    border: none;
+    font-weight: 600; background-color: var(--primary-yellow); /* Кнопки желтые */
+    color: var(--text-color-dark); /* Темный текст на желтом */
+    cursor: pointer; text-align: center; border: none;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 .action-button:hover {
-    background-color: var(--primary-yellow);
+    background-color: var(--secondary-yellow-matte); /* Темнее при наведении */
     box-shadow: 0 3px 7px rgba(0,0,0,0.3);
 }
-.action-button:active {
-    transform: scale(0.97);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
-}
-.action-button.destructive {
-    background-color: #d9534f; /* Bootstrap danger */
-    color: white;
-}
+.action-button:active { transform: scale(0.97); box-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+.action-button.destructive { background-color: #d9534f; color: white; }
 .action-button:disabled {
-    background-color: #555;
-    color: #888;
-    cursor: not-allowed;
-    border-color: #444;
-    box-shadow: none;
+    background-color: #44484B; /* Темнее для неактивных */
+    color: #888; cursor: not-allowed; border-color: #333; box-shadow: none;
 }
-
 
 .info-block {
-    background-color: var(--container-bg);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    border: 1px solid var(--border-color);
-    width: 100%;
+    background-color: var(--container-bg); padding: 15px;
+    border-radius: 10px; margin-bottom: 20px;
+    border: 1px solid var(--border-color); width: 100%;
     box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
-.info-block p {
-    margin-bottom: 10px;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-.info-block p:last-child {
-    margin-bottom: 0;
-}
+.info-block p { margin-bottom: 10px; line-height: 1.6; font-size: 0.95rem; }
+.info-block p:last-child { margin-bottom: 0; }
 .info-block code, .info-block b {
-    color: var(--primary-yellow);
-    font-weight: bold;
-    background-color: rgba(0,0,0,0.2);
-    padding: 2px 4px;
-    border-radius: 4px;
+    color: var(--primary-yellow); font-weight: bold;
+    background-color: var(--input-bg); /* Фон для выделения */
+    padding: 2px 5px; border-radius: 4px;
 }
-.info-block a {
-    color: var(--secondary-yellow-matte);
-    text-decoration: none;
-    font-weight: 500;
-}
-.info-block a:hover {
-    text-decoration: underline;
-    color: var(--primary-yellow);
-}
-.info-text { /* Для текста-пояснения на экране пополнения */
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-    color: rgba(240,240,240,0.8);
-    line-height: 1.5;
-}
-
+.info-block a { color: var(--secondary-yellow-matte); text-decoration: none; font-weight: 500; }
+.info-block a:hover { text-decoration: underline; color: var(--primary-yellow); }
+.info-text { text-align: center; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-color-light-muted); line-height: 1.5; }
 
 .app-bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    padding: 8px 0;
-    background-color: rgba(20, 20, 22, 0.9);
-    backdrop-filter: blur(var(--blur-intensity));
+    display: flex; justify-content: space-around; padding: 8px 0;
+    background-color: var(--container-bg);
     border-top: 1px solid var(--border-color);
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+    position: sticky; bottom: 0; left: 0; right: 0;
+    z-index: 100; box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
 }
-
 .nav-button {
-    background: none;
-    border: none;
-    color: var(--text-color-light);
-    opacity: 0.65;
-    cursor: pointer;
-    font-size: 1.6rem; 
-    padding: 6px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: none; border: none; color: var(--text-color-light); opacity: 0.7;
+    cursor: pointer; font-size: 1.6rem; padding: 6px 12px;
+    display: flex; flex-direction: column; align-items: center;
     transition: opacity 0.2s, color 0.2s, transform 0.1s;
 }
-.nav-button .nav-text {
-    font-size: 0.7rem;
-    margin-top: 3px;
-    font-weight: 500;
-}
-.nav-button.active, .nav-button:hover {
-    opacity: 1;
-    color: var(--primary-yellow);
-}
-.nav-button:active {
-    transform: scale(0.95);
-}
+.nav-button .nav-text { font-size: 0.7rem; margin-top: 3px; font-weight: 500; }
+.nav-button.active, .nav-button:hover { opacity: 1; color: var(--primary-yellow); }
+.nav-button:active { transform: scale(0.95); }
 
-/* Стили для кейсов */
+/* Кейсы */
 #cases-list-container .case-item-webapp {
-    background-color: var(--container-bg);
-    padding: 12px 18px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    border: 1px solid var(--border-color);
+    background-color: var(--input-bg); /* Инпуты как фон для кейсов */
+    padding: 15px 20px; /* Больше паддинг */
+    margin-bottom: 12px; border-radius: 12px; /* Более скругленные */
+    display: flex; flex-direction: column; /* Текст и описание друг под другом */
+    align-items: flex-start; /* Выравнивание по левому краю */
+    cursor: pointer; border: 1px solid var(--border-color);
     transition: border-color 0.2s, background-color 0.2s, transform 0.1s;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 #cases-list-container .case-item-webapp:hover {
-    border-color: var(--secondary-yellow-matte);
-    background-color: rgba(225, 169, 95, 0.1);
+    border-color: var(--primary-yellow);
+    background-color: var(--container-bg);
 }
-#cases-list-container .case-item-webapp:active {
-    transform: scale(0.98);
+#cases-list-container .case-item-webapp:active { transform: scale(0.98); }
+
+.case-item-webapp > span:first-child { /* Имя и эмодзи */
+    font-size: 1.25rem; font-weight: 600; color: var(--text-color-light); width: 100%;
+    display: flex; justify-content: space-between; align-items: center;
 }
-.case-item-webapp span {
-    font-size: 1.15rem;
-    font-weight: 500;
-}
-.case-item-webapp .cost {
-    color: var(--primary-yellow);
-    font-weight: bold;
-    font-size: 1.1rem;
+.case-item-webapp .cost { color: var(--primary-yellow); font-weight: bold; font-size: 1.15rem; }
+.case-item-description-webapp { /* Описание кейса */
+    font-size: 0.85rem; color: var(--text-color-light-muted);
+    margin-top: 8px; width: 100%;
 }
 
 
-/* Стили для экрана открытия кейса */
-#case-opening-screen {
-    padding-top: 10px; /* Меньше отступ сверху, т.к. кнопка "назад" */
-}
+/* Экран открытия кейса */
+#case-opening-screen { padding-top: 10px; }
 #case-opening-screen .case-emoji-big {
-    font-size: 5rem;
-    margin-bottom: 10px;
-    color: var(--primary-yellow); /* Эмодзи тоже можно окрасить */
-    text-shadow: 0 0 15px var(--accent-yellow-glow);
+    font-size: 5.5rem; margin-bottom: 5px; /* Меньше отступ */
+    color: var(--primary-yellow); text-shadow: 0 0 20px var(--accent-yellow-glow);
 }
-#case-opening-screen h2 { /* Имя кейса */
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-    color: var(--text-color-light);
-    border-bottom: none; /* Убираем подчеркивание здесь */
-}
-#case-opening-screen .case-info {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    color: rgba(240,240,240,0.9);
-}
-#case-opening-screen .case-info span { /* Для значений стоимости/баланса */
-    font-weight: bold;
-    color: var(--secondary-yellow-matte);
-}
+#case-opening-screen h2 { font-size: 2rem; margin-bottom: 8px; color: var(--text-color-light); border-bottom: none; }
+#case-opening-screen .case-info { font-size: 1rem; margin-bottom: 8px; color: var(--text-color-light-muted); }
+#case-opening-screen .case-info span { font-weight: bold; color: var(--secondary-yellow-matte); }
 #case-opening-screen .error-message.funds-error { 
-    margin-top: 15px; 
-    color: #E74C3C; /* Яркий красный */
-    font-weight: bold;
-    background-color: rgba(231, 76, 60, 0.15);
-    padding: 8px;
-    border-radius: 6px;
+    margin-top: 15px; color: #E74C3C; font-weight: bold;
+    background-color: rgba(231, 76, 60, 0.15); padding: 8px 12px; border-radius: 8px;
 }
 
-.roulette-container-case {
-    margin: 20px 0;
-    position: relative;
-    width: 100%;
-    max-width: 320px; /* Чуть шире */
-    user-select: none;
-}
+.roulette-container-case { margin: 15px 0; position: relative; width: 100%; max-width: 340px; user-select: none;}
 .roulette-viewport-case {
-    width: 100%;
-    height: 80px; /* Чуть выше */
-    overflow: hidden;
-    border: 2px solid var(--secondary-yellow-matte);
-    border-radius: 10px;
-    margin: 0 auto;
-    position: relative;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%);
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    width: 100%; height: 80px; overflow: hidden;
+    border: 2px solid var(--primary-yellow); /* Яркая рамка */
+    border-radius: 10px; margin: 0 auto; position: relative;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.6);
 }
-.roulette-track-case {
-    display: flex;
-    height: 100%;
-    will-change: transform; /* Оптимизация анимации */
-}
+.roulette-track-case { display: flex; height: 100%; will-change: transform; }
 .roulette-viewport-case .roulette-item { 
-    min-width: 80px; max-width: 80px; height: 80px; /* Размер под высоту viewport */
+    min-width: 80px; max-width: 80px; height: 80px;
     display: flex; justify-content: center; align-items: center;
-    font-size: 2.8rem; /* Крупнее эмодзи */
-    box-sizing: border-box;
-    /* filter: grayscale(30%); немного приглушить неактивные */
-    transition: filter 0.3s;
+    font-size: 3rem; box-sizing: border-box;
 }
-/* Можно добавить эффект для центрального элемента, но это сложнее без JS */
-
 .roulette-pointer-case {
     width: 0; height: 0;
     border-left: 10px solid transparent; border-right: 10px solid transparent;
-    border-top: 12px solid var(--primary-yellow); /* Ярче указатель */
-    position: absolute;
-    top: -12px; /* Над рамкой */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+    border-top: 12px solid var(--primary-yellow);
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%); z-index: 10;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
 }
-#opening-animation-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#opening-status-text-case { /* "Нажмите чтобы открыть", "Крутится..." */
-    font-weight: 500;
-    margin-bottom: 5px; /* Меньше отступ до рулетки */
-}
-#visual-prize-text-case { /* "Похоже, это: X" */
-    color: var(--primary-yellow);
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: 10px;
-    background-color: rgba(0,0,0,0.3);
-    padding: 5px 10px;
-    border-radius: 6px;
+#opening-animation-container { width: 100%; display: flex; flex-direction: column; align-items: center; }
+#opening-status-text-case { font-weight: 500; margin-bottom: 8px; font-size: 1.1rem; }
+#visual-prize-text-case { 
+    color: var(--primary-yellow); font-size: 1.2rem; font-weight: bold; margin-top: 12px;
+    background-color: var(--input-bg); padding: 8px 15px; border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 .back-to-games-btn {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: rgba(0,0,0,0.2);
-    border: 1px solid var(--border-color);
-    color: var(--secondary-yellow-matte);
-    font-size: 1.3rem; /* Размер стрелки */
-    cursor: pointer;
-    padding: 6px 9px;
-    border-radius: 50%;
-    z-index: 101;
-    transition: background-color 0.2s;
-    line-height: 1; /* Для лучшего центрирования стрелки */
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(0,0,0,0.3); border: 1px solid var(--border-color);
+    color: var(--secondary-yellow-matte); font-size: 1.3rem; cursor: pointer;
+    padding: 6px 9px; border-radius: 50%; z-index: 101;
+    transition: background-color 0.2s, color 0.2s; line-height: 1;
 }
-.back-to-games-btn:hover {
-    background-color: rgba(225, 169, 95, 0.2);
+.back-to-games-btn:hover { background-color: var(--input-bg); color: var(--primary-yellow); }
+
+/* Стили для экрана Ставок */
+#stakes-game-screen .info-block.stakes-info-block {
+    text-align: center; margin-bottom: 15px;
+}
+#stakes-game-screen .info-block p { margin-bottom: 5px; }
+#stakes-animation-container {
+    width: 100%; max-width: 280px; /* Ширина для 3х слотов */
+    margin: 20px auto; padding: 15px;
+    background-color: var(--input-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+}
+.slots-display-webapp {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px; /* Высота одного слота */
+}
+.slot-emoji-webapp {
+    font-size: 3rem; /* Размер эмодзи в слоте */
+    width: 70px; /* Ширина одного слота */
+    text-align: center;
+    color: var(--text-color-light);
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+.game-result-text-webapp { /* Для текста результата ставок */
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    min-height: 1.5em; /* Чтобы не прыгал интерфейс */
 }
 
 
 .spinner {
-    width: 45px;
-    height: 45px;
-    border: 5px solid rgba(255,255,255,0.15);
-    border-left-color: var(--primary-yellow);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin: 25px auto;
+    width: 45px; height: 45px; border: 5px solid rgba(255,255,255,0.15);
+    border-left-color: var(--primary-yellow); border-radius: 50%;
+    animation: spin 0.8s linear infinite; margin: 25px auto;
 }
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
+#initial-loading-screen p { margin-top: 10px; font-size: 1rem; color: var(--text-color-light-muted); }
 
-#initial-loading-screen p {
-    margin-top: 10px;
-    font-size: 1rem;
-    color: rgba(240,240,240,0.8);
+/* Для описания кейса под названием */
+.case-item-description-webapp {
+    font-size: 0.8rem !important; /* Важно, чтобы перебить другие стили */
+    color: var(--text-color-light-muted) !important;
+    margin-top: 5px !important;
+    width: 100% !important;
+    font-weight: 400 !important; /* Обычный вес */
+    line-height: 1.4;
 }
