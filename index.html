@@ -22,20 +22,17 @@
                 <p>Загрузка приложения...</p>
             </section>
 
+            <!-- ЭКРАН ИГР -->
             <section id="games-screen" class="screen">
                 <h2>Игры</h2>
                 <button class="action-button" id="play-stakes-webapp-btn">🎰 Ставки</button>
-                <!-- <div id="stakes-game-interface" style="display:none;">
-                    <p>Ваш баланс: <span class="current-balance-stakes">0</span> ⭐</p>
-                    <input type="number" id="stakes-bet-amount" placeholder="Сумма ставки (мин. 10)">
-                    <button class="action-button" id="confirm-stakes-bet-btn">Сделать ставку</button>
-                </div> -->
                 <h3>🎁 Кейсы</h3>
                 <div id="cases-list-container">
                     <p>Загрузка списка кейсов...</p>
                 </div>
             </section>
             
+            <!-- ЭКРАН ОТКРЫТИЯ КЕЙСА -->
             <section id="case-opening-screen" class="screen">
                  <button class="back-to-games-btn" id="back-to-games-from-case-btn">⬅️</button>
                  <div id="case-emoji-open" class="case-emoji-big">❓</div>
@@ -48,9 +45,7 @@
                     <p id="opening-status-text-case" class="case-info">Нажмите, чтобы открыть</p>
                     <div class="roulette-container-case">
                         <div class="roulette-viewport-case">
-                            <div class="roulette-track-case">
-                                <!-- Сюда будут вставляться эмодзи призов -->
-                            </div>
+                            <div class="roulette-track-case"></div>
                         </div>
                         <div class="roulette-pointer-case"></div>
                     </div>
@@ -59,6 +54,27 @@
                  <button id="open-actual-case-btn" class="action-button">Открыть кейс</button>
             </section>
 
+            <!-- ЭКРАН СТАВОК (НОВЫЙ) -->
+            <section id="stakes-game-screen" class="screen">
+                <button class="back-to-games-btn" id="back-to-games-from-stakes-btn">⬅️</button>
+                <h2>🎰 Ставки</h2>
+                <div class="info-block stakes-info-block">
+                    <p>Ваш баланс: <b id="user-balance-stakes">0</b> ⭐</p>
+                    <p>Мин. ставка: <span id="min-bet-stakes-info">10</span> ⭐</p> <!-- Будет обновляться из JS -->
+                </div>
+                <input type="number" id="stakes-bet-amount" placeholder="Введите сумму ставки">
+                <div id="stakes-animation-container">
+                    <div class="slots-display-webapp">
+                        <span class="slot-emoji-webapp" id="slot-emoji-1">❔</span>
+                        <span class="slot-emoji-webapp" id="slot-emoji-2">❔</span>
+                        <span class="slot-emoji-webapp" id="slot-emoji-3">❔</span>
+                    </div>
+                </div>
+                <button id="confirm-stakes-bet-btn" class="action-button">Сделать ставку!</button>
+                <p id="stakes-result-text" class="game-result-text-webapp"></p>
+            </section>
+
+            <!-- ЭКРАН ПРОФИЛЯ -->
             <section id="profile-screen" class="screen">
                 <h2>Профиль</h2>
                 <div class="info-block">
@@ -85,18 +101,23 @@
                 <button class="action-button" id="get-referral-link-btn">🔗 Реферальная ссылка</button>
                 <div id="referral-info-block" class="info-block" style="display:none;">
                     <p>Ваша реф. ссылка: <a id="referral-link-href" href="#" target="_blank" rel="noopener noreferrer"></a></p>
+                    <p>Скопируйте ссылку и поделитесь с друзьями!</p>
                     <p>Приглашено: <span id="referral-count">0</span> друзей</p>
                     <p>Бонус за реферала: <span id="referral-bonus">0</span> ⭐</p>
                 </div>
+                <button class="action-button" id="show-help-btn">❓ Помощь</button>
+                 <div id="help-info-block" class="info-block" style="display:none; text-align: left; max-height: 200px; overflow-y: auto;">
+                    <!-- Текст помощи будет вставлен из JS -->
+                </div>
             </section>
             
+            <!-- ЭКРАН ПОПОЛНЕНИЯ -->
             <section id="deposit-screen" class="screen">
                 <h2>Пополнить баланс</h2>
                 <p class="info-text">Выберите способ пополнения. После выбора вы будете перенаправлены в чат с ботом для завершения операции.</p>
                 <button class="action-button" id="deposit-tg-stars-webapp-btn">💳 Telegram Stars (Официально)</button>
                 <button class="action-button" id="deposit-manual-webapp-btn">🪙 TON / Crypto (Вручную)</button>
             </section>
-
         </main>
 
         <nav class="app-bottom-nav">
