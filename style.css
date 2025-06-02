@@ -5,9 +5,14 @@
     --light-yellow: #FFF9C4; /* Очень светлый, почти кремовый */
     --honey-color: #E1A95F;
     --dark-accent: #4A3B00; /* Темный для текста/акцентов */
-    --blur-intensity: 8px;
-    --container-bg: rgba(255, 243, 200, 0.7); /* Полупрозрачный светло-желтый для контейнера */
-    --text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    --blur-intensity: 6px; /* Немного уменьшил для производительности на слабых устройствах */
+    --container-bg: rgba(255, 248, 225, 0.75); /* Полупрозрачный светло-желтый для контейнера */
+    --text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+html, body {
+    height: 100%; /* Чтобы flex центрирование работало на всю высоту */
+    overflow: hidden; /* Предотвращаем любой скролл */
 }
 
 body {
@@ -16,67 +21,72 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     padding: 15px;
     box-sizing: border-box;
     background: linear-gradient(135deg, var(--light-yellow) 0%, var(--secondary-yellow) 100%);
     color: var(--dark-accent);
-    overflow: hidden; /* Предотвратить скролл из-за возможных выступов блюра */
 }
 
 .container {
     background-color: var(--container-bg);
-    padding: 25px;
+    padding: 20px 25px; /* Немного уменьшил вертикальный padding */
     border-radius: 18px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255,255,255,0.3) inset;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255,255,255,0.25) inset;
     text-align: center;
     width: 100%;
-    max-width: 380px;
-    backdrop-filter: blur(var(--blur-intensity)) saturate(150%);
-    border: 1px solid rgba(255, 215, 0, 0.4); /* Тонкая золотая граница */
+    max-width: 360px; /* Чуть меньше для лучшего вида на маленьких экранах */
+    backdrop-filter: blur(var(--blur-intensity)) saturate(130%);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    display: flex; /* Для управления дочерними состояниями */
+    flex-direction: column;
+    justify-content: center;
 }
 
 .state {
-    animation: fadeIn 0.5s ease-out;
+    display: none; /* Скрыты по умолчанию, JS будет показывать нужный */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    animation: fadeIn 0.4s ease-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: scale(0.98) translateY(5px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .case-emoji {
-    font-size: 4.5rem; /* 72px */
-    margin-bottom: 0.75rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+    font-size: 4rem; /* 64px */
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
 }
 
 .case-name {
-    font-size: 1.75rem; /* 28px */
+    font-size: 1.6rem; /* 26px */
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     color: var(--dark-accent);
     text-shadow: var(--text-shadow);
 }
 
 .case-info {
-    font-size: 1.1rem; /* 17-18px */
+    font-size: 1rem; /* 16px */
     color: var(--dark-accent);
-    opacity: 0.9;
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
+    opacity: 0.85;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
 }
 
 .case-info .font-semibold {
     font-weight: 600;
-    color: var(--secondary-yellow);
-    filter: brightness(0.8);
+    color: #B8860B; /* Темно-золотой, для лучшего контраста на светлом */
 }
 
 .error-title {
-    font-size: 1.6rem;
-    color: #D32F2F; /* Красный для ошибок */
+    font-size: 1.5rem;
+    color: #C62828; /* Более темный красный */
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
@@ -85,126 +95,122 @@ body {
     color: #D32F2F;
     font-weight: 500;
     margin-bottom: 1rem;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 .funds-error {
-    margin-top: 1rem;
+    margin-top: 0.8rem;
     font-weight: 600;
 }
 
 .action-button {
     width: 100%;
-    padding: 14px 20px;
-    font-size: 1.15rem; /* 18-19px */
+    padding: 12px 20px;
+    font-size: 1.1rem;
     font-weight: 600;
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out, transform 0.1s ease, box-shadow 0.2s ease;
-    margin-top: 1.25rem;
+    transition: background-color 0.15s ease-in-out, transform 0.1s ease, box-shadow 0.15s ease;
+    margin-top: 1rem;
     background-color: var(--secondary-yellow);
-    color: var(--dark-accent); /* Или белый, если фон кнопки темнее */
-    box-shadow: 0 4px 10px rgba(255, 193, 7, 0.4);
-    text-shadow: 0 1px 1px rgba(255,255,255,0.3);
+    color: var(--dark-accent);
+    box-shadow: 0 3px 8px rgba(225, 160, 0, 0.35);
+    text-shadow: 0 1px 0px rgba(255,255,255,0.2);
 }
 
 .action-button:hover {
     background-color: var(--primary-yellow);
-    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 5px 10px rgba(255, 190, 0, 0.45);
 }
 .action-button:active {
-    transform: scale(0.97) translateY(1px);
-    box-shadow: 0 2px 5px rgba(255, 193, 7, 0.3);
+    transform: scale(0.98) translateY(1px);
+    box-shadow: 0 2px 4px rgba(225, 160, 0, 0.3);
 }
 
 .action-button:disabled {
-    background-color: #BDBDBD; /* Серый для неактивной кнопки */
-    color: #757575;
+    background-color: #C5C5C5;
+    color: #818181;
     cursor: not-allowed;
     box-shadow: none;
     text-shadow: none;
 }
 
 .action-button.destructive {
-    background-color: #E57373; /* Мягкий красный для кнопки закрытия ошибки */
+    background-color: #E57373;
     color: white;
-    box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+    box-shadow: 0 3px 8px rgba(198, 40, 40, 0.25);
 }
 .action-button.destructive:hover {
     background-color: #D32F2F;
-    box-shadow: 0 6px 12px rgba(211, 47, 47, 0.4);
+    box-shadow: 0 5px 10px rgba(198, 40, 40, 0.35);
 }
-
 
 /* Стили для рулетки */
 .roulette-container {
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0.3rem;
     position: relative;
+    width: 100%;
+    max-width: 280px; /* 4 элемента по 70px */
+    user-select: none; /* Запретить выделение текста в рулетке */
 }
 .roulette-viewport {
     width: 100%;
-    max-width: 300px; /* Чтобы было видно 3-4 элемента */
     height: 70px;
     overflow: hidden;
-    border: 2px solid rgba(255, 215, 0, 0.5); /* Золотистая рамка */
-    border-radius: 10px;
+    border: 2px solid rgba(200, 150, 0, 0.4);
+    border-radius: 8px;
     margin: 0 auto;
     position: relative;
-    background-color: rgba(255, 255, 255, 0.2); /* Легкий фон для трека */
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.1);
 }
 
 .roulette-track {
     display: flex;
     height: 100%;
-    /* Анимация будет управляться через JavaScript transform: translateX() */
-    /* transition set by JS */
+    will-change: transform; /* Оптимизация для анимации transform */
 }
 
 .roulette-item {
     min-width: 70px;
+    max-width: 70px;
     height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.2rem;
+    font-size: 2rem;
     box-sizing: border-box;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
-    /* Небольшой разделитель, если нужен
-    border-right: 1px dashed rgba(255, 215, 0, 0.3); */
-}
-.roulette-item:last-child {
-    border-right: none;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
 }
 
 .roulette-pointer {
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 12px solid var(--secondary-yellow); /* Цвет указателя */
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid var(--secondary-yellow);
     position: absolute;
-    top: 50%;
+    top: -10px; /* Над рулеткой */
     left: 50%;
-    transform: translate(-50%, -50%) translateY(-45px); /* По центру над рулеткой */
+    transform: translateX(-50%);
     z-index: 10;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
 }
 .small-text {
-    font-size: 0.9em;
-    opacity: 0.7;
-    margin-top: 1rem;
+    font-size: 0.85em;
+    opacity: 0.75;
+    margin-top: 0.8rem;
 }
 
 /* Спиннер загрузки */
 .spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(0,0,0,0.1);
+    width: 36px;
+    height: 36px;
+    border: 3px solid rgba(0,0,0,0.08);
     border-left-color: var(--secondary-yellow);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 0.8s linear infinite;
     margin: 20px auto;
 }
 
