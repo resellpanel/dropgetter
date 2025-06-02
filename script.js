@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const openingStateDiv = document.getElementById('opening-state');
     const rouletteTrack = document.querySelector('.roulette-track');
     const openingStatusText = document.getElementById('opening-status-text');
+    const visualPrizeText = document.getElementById('visual-prize-text');
+
 
     let userId = null;
     let caseKey = null;
@@ -24,37 +26,42 @@ document.addEventListener('DOMContentLoaded', () => {
     let balance = 0;
     let caseName = 'Неизвестный кейс';
     let caseEmoji = '❓';
-    let possiblePrizes = ['⭐', '💣', '🎁', '❓']; // Дефолтные призы для анимации
+    let possiblePrizes = ['⭐', '💣', '🎁', '❓', '💎', '🍀', '✨']; // Дефолтные, если из URL не придут
 
     function showState(stateId) {
         ['loading-state', 'error-state', 'case-display-state', 'opening-state'].forEach(id => {
             const el = document.getElementById(id);
-            if (el) el.style.display = (id === stateId) ? 'flex' : 'none'; // Используем flex для центрирования
-            if (id === stateId && el) { // Добавим flex-direction для некоторых
-                if (id === 'loading-state' || id === 'opening-state' || id === 'error-state') {
-                    el.style.flexDirection = 'column';
+            if (el) {
+                el.style.display = (id === stateId) ? 'flex' : 'none';
+                 // Для корректного отображения flex-направления
+                if (id === stateId) {
+                     el.style.flexDirection = 'column';
+                     el.style.alignItems = 'center';
+                     el.style.justifyContent = 'center';
                 }
             }
         });
+        // Для состояния display, кнопка может быть не по центру, если описание длинное
+        if (stateId === 'case-display-state' && caseDisplayStateDiv) {
+             caseDisplayStateDiv.style.justifyContent = 'space-around';
+        }
     }
 
-    function showError(message) {
+    function showError(message, autoClose = false) {
         if (errorMessageP) errorMessageP.textContent = message;
         showState('error-state');
+        if (autoClose && tg) {
+            setTimeout(() => tg.close(), 2500);
+        }
     }
+    
+    showState('loading-state'); // Показываем загрузку по умолчанию
 
     if (tg) {
         tg.ready();
         tg.expand();
-        // document.body.style.backgroundColor = tg.themeParams.bg_color || '#FFF8E1'; // Используем CSS переменные
-        // document.body.style.color = tg.themeParams.text_color || '#4A3B00';
-        // document.documentElement.style.setProperty('--tg-theme-bg-color', tg.themeParams.bg_color || '#FFF8E1');
-        // document.documentElement.style.setProperty('--tg-theme-text-color', tg.themeParams.text_color || '#4A3B00');
-        // document.documentElement.style.setProperty('--tg-theme-hint-color', tg.themeParams.hint_color || '#B0A070');
-        // document.documentElement.style.setProperty('--tg-theme-link-color', tg.themeParams.link_color || '#D4AF37');
-        // document.documentElement.style.setProperty('--tg-theme-button-color', tg.themeParams.button_color || '#FFC107');
-        // document.documentElement.style.setProperty('--tg-theme-button-text-color', tg.themeParams.button_text_color || '#4A3B00');
-        // document.documentElement.style.setProperty('--tg-theme-secondary-bg-color', tg.themeParams.secondary_bg_color || 'rgba(255, 243, 200, 0.7)');
+        tg.setHeaderColor(tg.themeParams.secondary_bg_color || '#FFC107'); // Пример установки цвета шапки
+        // tg.setBackgroundColor(tg.themeParams.bg_color || '#FFF9C4'); // Установка цвета фона WebApp
 
 
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
@@ -62,34 +69,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const queryParams = new URLSearchParams(window.location.search);
+        console.log("Raw Query Params:", window.location.search);
+
+        const pUserIdFromUrl = queryParams.get('userId');
+        if (!userId && pUserIdFromUrl) userId = pUserIdFromUrl;
+
         caseKey = queryParams.get('caseKey');
         const pCaseCost = queryParams.get('caseCost');
         const pBalance = queryParams.get('balance');
         const pCaseName = queryParams.get('caseName');
         const pCaseEmoji = queryParams.get('caseEmoji');
-        const pUserIdFromUrl = queryParams.get('userId');
         const prizesParam = queryParams.get('prizes');
 
-        if (!userId && pUserIdFromUrl) userId = pUserIdFromUrl;
+        console.log("Parsed Params:", { userId, caseKey, pCaseCost, pBalance, pCaseName, pCaseEmoji, prizesParam});
+
 
         if (prizesParam) {
             try {
-                possiblePrizes = JSON.parse(decodeURIComponent(prizesParam));
+                let decodedPrizes = decodeURIComponent(prizesParam);
+                possiblePrizes = JSON.parse(decodedPrizes);
                 if (!Array.isArray(possiblePrizes) || possiblePrizes.length === 0) {
-                    possiblePrizes = ['⭐', '💣', '🎁', '❓', '💎', '🍀'];
+                    console.warn("Prizes data from URL is invalid or empty, using defaults.");
+                    possiblePrizes = ['⭐', '💣', '🎁', '❓', '💎', '🍀', '✨'];
                 }
             } catch (e) {
-                console.error("Error parsing prizes data:", e);
-                showError("Ошибка загрузки данных о призах для анимации.");
+                console.error("Error parsing prizes data:", e, "Raw prizes param:", prizesParam);
+                showError("Ошибка данных призов для анимации.", true);
+                return; // Прерываем выполнение, если призы критичны
             }
+        } else {
+             console.warn("Prizes data not found in URL, using defaults for animation.");
         }
 
 
-        if (caseKey && pCaseCost !== null && pBalance !== null && userId) {
+        if (userId && caseKey && pCaseCost !== null && pBalance !== null) {
             caseCost = parseInt(pCaseCost, 10);
             balance = parseInt(pBalance, 10);
-            if (pCaseName) caseName = decodeURIComponent(pCaseName);
-            if (pCaseEmoji) caseEmoji = decodeURIComponent(pCaseEmoji);
+
+            if (isNaN(caseCost) || isNaN(balance)) {
+                showError("Ошибка: некорректные числовые данные (стоимость или баланс).", true);
+                return;
+            }
+
+            caseName = pCaseName ? decodeURIComponent(pCaseName) : 'Кейс';
+            caseEmoji = pCaseEmoji ? decodeURIComponent(pCaseEmoji) : '❓';
 
             if (caseEmojiDiv) caseEmojiDiv.textContent = caseEmoji;
             if (caseNameH1) caseNameH1.textContent = caseName;
@@ -106,23 +129,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             showState('case-display-state');
         } else {
-            console.error("Missing data:", {caseKey, pCaseCost, pBalance, userId});
-            showError("Ошибка: Необходимые данные для открытия кейса отсутствуют.");
+            console.error("One or more critical parameters are missing:", { userId, caseKey, pCaseCost, pBalance });
+            showError("Ошибка: Необходимые данные для отображения кейса отсутствуют.", true);
         }
 
     } else {
         console.error("Telegram WebApp API не найдено.");
-        showError("Ошибка: Не удалось инициализировать приложение Telegram. Попробуйте открыть в Telegram.");
+        showError("Ошибка: Не удалось инициализировать приложение. Попробуйте открыть в Telegram.", true);
     }
 
-    function populateRouletteTrack() {
-        if (!rouletteTrack) return;
-        rouletteTrack.innerHTML = '';
+    function populateRouletteTrack(trackElement, prizesArray) {
+        if (!trackElement) return;
+        trackElement.innerHTML = ''; // Очищаем
 
-        const repetitionFactor = 20; // Больше повторений для длинной ленты
+        const repetitionFactor = 30; // Больше для более длинной и плавной прокрутки
         let fullTrackItems = [];
         for (let i = 0; i < repetitionFactor; i++) {
-            let shuffledPrizes = [...possiblePrizes].sort(() => 0.5 - Math.random());
+            let shuffledPrizes = [...prizesArray].sort(() => 0.5 - Math.random());
             fullTrackItems = fullTrackItems.concat(shuffledPrizes);
         }
 
@@ -130,72 +153,92 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemDiv = document.createElement('div');
             itemDiv.classList.add('roulette-item');
             itemDiv.textContent = prizeEmoji;
-            rouletteTrack.appendChild(itemDiv);
+            trackElement.appendChild(itemDiv);
         });
+        return fullTrackItems; // Возвращаем для возможного использования
     }
 
     async function startRouletteAnimation() {
-        if (!rouletteTrack || possiblePrizes.length === 0) return;
+        if (!rouletteTrack || possiblePrizes.length === 0) {
+            showError("Ошибка анимации: нет данных о призах.", true);
+            return;
+        }
 
-        populateRouletteTrack();
+        const fullTrackItems = populateRouletteTrack(rouletteTrack, possiblePrizes);
         if (openingStatusText) openingStatusText.textContent = "Крутим барабаны...";
+        if (visualPrizeText) visualPrizeText.style.display = 'none';
 
-        const itemWidth = 70; // Ширина из CSS
-        const itemsInTrack = rouletteTrack.children.length;
-        const viewportWidth = rouletteTrack.parentElement.clientWidth;
 
+        const itemWidth = 70; // Ширина из CSS .roulette-item
+        const viewportWidth = rouletteTrack.parentElement.clientWidth; // Ширина видимой области
+
+        // Начальное "быстрое" смещение, чтобы рулетка не начиналась с самого края
+        const initialOffset = (fullTrackItems.length / 2 - 5) * itemWidth; // Начнем примерно с середины
         rouletteTrack.style.transition = 'none';
-        rouletteTrack.style.transform = `translateX(0px)`; // Начальное положение
+        rouletteTrack.style.transform = `translateX(-${initialOffset}px)`;
 
-        // Целевой элемент для ВИЗУАЛЬНОЙ остановки
-        // Пусть это будет элемент где-то во второй половине трека, но не у самого конца
-        const targetStopIndex = Math.floor(itemsInTrack * 0.75) + Math.floor(Math.random() * (possiblePrizes.length * 2));
-        const finalPositionX = -(targetStopIndex * itemWidth - (viewportWidth / 2) + (itemWidth / 2));
+        // Выбираем случайный "визуальный" приз
+        const visualWinIndexInOriginalSet = Math.floor(Math.random() * possiblePrizes.length);
+        const visualWinEmoji = possiblePrizes[visualWinIndexInOriginalSet];
 
-        // Быстрая прокрутка в начало анимации (чтобы не было видно старта с 0px)
-        const initialFastScroll = -(itemsInTrack * itemWidth * 0.3); // Прокрутим на 30% трека
-        rouletteTrack.style.transform = `translateX(${initialFastScroll}px)`;
+        // Находим индекс этого приза ближе к концу трека для красивой остановки
+        // Ищем с конца (например, в последних 3-х повторениях набора)
+        let targetStopOverallIndex = -1;
+        for (let i = fullTrackItems.length - 1; i >= fullTrackItems.length - (possiblePrizes.length * 3); i--) {
+            if (fullTrackItems[i] === visualWinEmoji) {
+                targetStopOverallIndex = i;
+                break;
+            }
+        }
+        if (targetStopOverallIndex === -1) { // Если вдруг не нашли, берем случайный из последних
+            targetStopOverallIndex = fullTrackItems.length - Math.floor(possiblePrizes.length * 1.5) + visualWinIndexInOriginalSet;
+        }
+        
+        // Вычисляем позицию X для остановки так, чтобы targetStopOverallIndex был по центру указателя
+        const finalPositionX = -(targetStopOverallIndex * itemWidth - (viewportWidth / 2) + (itemWidth / 2));
 
+        // Даем браузеру время применить начальное смещение
+        await new Promise(resolve => setTimeout(resolve, 50));
 
-        await new Promise(resolve => setTimeout(resolve, 50)); // Короткая пауза
-
-        // Основная анимация
-        const animationDuration = 5000 + Math.random() * 1000; // 5-6 секунд
-        rouletteTrack.style.transition = `transform ${animationDuration}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+        const animationDuration = 5000 + Math.random() * 1500; // 5 - 6.5 секунд
+        rouletteTrack.style.transition = `transform ${animationDuration}ms cubic-bezier(0.2, 0.9, 0.3, 1.0)`; // Более плавная кривая
         rouletteTrack.style.transform = `translateX(${finalPositionX}px)`;
 
         setTimeout(() => {
-            if (openingStatusText) openingStatusText.textContent = "Результат получен!";
+            if (openingStatusText) openingStatusText.textContent = "Удача улыбнулась!";
+            if (visualPrizeText) {
+                visualPrizeText.textContent = `Похоже, это: ${visualWinEmoji}`;
+                visualPrizeText.style.display = 'block';
+            }
             
             const dataToSend = JSON.stringify({
                 action: 'open_case',
-                userId: userId,
-                caseKey: caseKey,
+                userId: userId, // Убедитесь, что userId определен глобально или передан
+                caseKey: caseKey, // Убедитесь, что caseKey определен
             });
             tg.sendData(dataToSend);
             
-            // Закрываем WebApp через некоторое время, чтобы пользователь увидел результат анимации
              setTimeout(() => {
                 if(tg) tg.close();
-             }, 1500); // Даем время на просмотр и закрываем
+             }, 2000); // Даем 2 секунды на просмотр и закрываем
 
-        }, animationDuration + 200); // +200ms на всякий случай
+        }, animationDuration + 100); // +100ms на завершение
     }
 
     function handleOpenCase() {
-        if (!tg) { showError("Ошибка Telegram API"); return; }
-        if (!caseKey || userId === null || caseCost === undefined || balance === undefined ) { // caseCost может быть 0
-            showError("Ошибка: Данные для открытия кейса неполные."); return;
+        if (!tg) { showError("Ошибка Telegram API", true); return; }
+        if (!caseKey || userId === null || typeof caseCost !== 'number' || typeof balance !== 'number' ) {
+            showError("Ошибка: Данные для открытия кейса неполные или некорректны.", true); return;
         }
         if (balance < caseCost) {
-            // Сообщение уже показывается, но можно добавить вибрацию
             if (tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('error');
+            // Сообщение о недостатке средств уже должно быть видимо
             return;
         }
 
         showState('opening-state');
         if (openCaseBtn) openCaseBtn.disabled = true;
-        if (tg.HapticFeedback) tg.HapticFeedback.impactOccurred('medium');
+        if (tg.HapticFeedback) tg.HapticFeedback.impactOccurred('heavy'); // Сильнее вибрация
 
         startRouletteAnimation();
     }
@@ -209,15 +252,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Устанавливаем CSS переменные из темы Telegram, если они есть
+    // Применение темы Telegram при загрузке
     if (tg && tg.themeParams) {
         const root = document.documentElement;
+        const themeMappings = {
+            'bg_color': '--body-bg',
+            'text_color': '--main-text',
+            'hint_color': '--hint-text',
+            'link_color': '--link-color',
+            'button_color': '--button-bg',
+            'button_text_color': '--button-text',
+            'secondary_bg_color': '--container-bg-tg' // Для фона контейнера, если он должен отличаться от body
+        };
         for (const key in tg.themeParams) {
-            if (Object.hasOwnProperty.call(tg.themeParams, key)) {
-                // Преобразуем ключи типа 'bg_color' в '--tg-theme-bg-color'
-                const cssVarName = `--tg-theme-${key.replace(/_/g, '-')}`;
-                root.style.setProperty(cssVarName, tg.themeParams[key]);
+            if (Object.hasOwnProperty.call(tg.themeParams, key) && themeMappings[key]) {
+                root.style.setProperty(themeMappings[key], tg.themeParams[key]);
             }
         }
+        // Если вы хотите, чтобы цвета из style.css были дефолтными, а тема ТГ их переопределяла,
+        // то в CSS нужно использовать эти --tg-theme-* переменные вместо ваших --primary-yellow и т.д.
+        // Либо наоборот, если ваши кастомные цвета приоритетнее, то не устанавливать их здесь или делать это с проверкой.
+        // Для примера, сейчас я оставляю ваши кастомные цвета в CSS, а тема ТГ может их переопределить, если CSS переменные используются в стилях.
+        // Чтобы это работало, ваш CSS должен использовать переменные типа var(--tg-theme-bg-color)
     }
 });
