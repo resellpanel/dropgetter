@@ -2,22 +2,23 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Открыть Кейс</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Скрипт Telegram WebApp -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="container">
         <div id="loading-state" class="state">
+            <div class="spinner"></div>
             <p>Загрузка данных кейса...</p>
         </div>
 
         <div id="error-state" class="state" style="display: none;">
-            <h1 class="error-title">Ошибка</h1>
-            <p id="error-message"></p>
-            <button id="close-error-btn">Закрыть</button>
+            <div class="case-emoji">⚠️</div>
+            <h1 class="error-title">Произошла Ошибка</h1>
+            <p id="error-message" class="case-info">Не удалось загрузить данные.</p>
+            <button id="close-error-btn" class="action-button destructive">Закрыть</button>
         </div>
 
         <div id="case-display-state" class="state" style="display: none;">
@@ -25,8 +26,8 @@
             <h1 id="case-name" class="case-name">Неизвестный кейс</h1>
             <p class="case-info">Стоимость: <span id="case-cost" class="font-semibold">0</span> ⭐</p>
             <p class="case-info">Ваш баланс: <span id="user-balance" class="font-semibold">0</span> ⭐</p>
-            
-            <p id="not-enough-funds" class="error-message" style="display: none;">Недостаточно средств!</p>
+
+            <p id="not-enough-funds" class="error-message funds-error" style="display: none;">Недостаточно средств!</p>
 
             <button id="open-case-btn" class="action-button">
                 Открыть за <span id="open-btn-cost">0</span> ⭐
@@ -34,8 +35,16 @@
         </div>
 
         <div id="opening-state" class="state" style="display: none;">
-            <p>Открываем кейс...</p>
-            <!-- Сюда можно добавить CSS-анимацию -->
+            <p id="opening-status-text" class="case-info">Открываем кейс...</p>
+            <div class="roulette-container">
+                <div class="roulette-viewport">
+                    <div class="roulette-track">
+                        <!-- Элементы рулетки будут здесь -->
+                    </div>
+                </div>
+                <div class="roulette-pointer"></div>
+            </div>
+            <p class="case-info small-text">Ожидаем результат от сервера...</p>
         </div>
     </div>
 
