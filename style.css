@@ -1,14 +1,18 @@
-/* style_v2.css */
+/* style_redesign.css */
 :root {
-    --main-bg: #1a1a1d; /* Очень темный, почти черный */
-    --primary-yellow: #FFD700; /* Золотой */
-    --secondary-yellow-matte: #E1A95F; /* Матовый медовый/желтый */
-    --accent-yellow-glow: rgba(255, 215, 0, 0.7); /* Для свечения */
-    --text-color-light: #f0f0f0;
-    --text-color-dark: #333;
-    --container-bg: rgba(40, 40, 45, 0.75); /* Темно-серый полупрозрачный */
-    --blur-intensity: 8px;
-    --input-bg: rgba(60, 60, 65, 0.8);
+    --main-bg: linear-gradient(145deg, #121212, #1c1c1c); /* Глубокий фон */
+    --primary-yellow: #FFD700;
+    --secondary-yellow-matte: #E1A95F;
+    --accent-yellow-glow: rgba(255, 215, 0, 0.5);
+    --text-color-light: #f7f7f7;
+    --text-color-muted: #aaa;
+    --container-bg: rgba(30, 30, 35, 0.8);
+    --input-bg: rgba(40, 40, 45, 0.9);
+    --blur-intensity: 10px;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-inset: inset 2px 2px 6px rgba(0, 0, 0, 0.6),
+                    inset -2px -2px 6px rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -20,73 +24,83 @@
 html, body {
     height: 100%;
     width: 100%;
-    overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--main-bg);
     color: var(--text-color-light);
+    overflow: hidden;
 }
 
 body {
-    background-color: var(--main-bg);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: env(safe-area-inset-top, 0px); /* Учет челки iPhone */
+    padding-top: env(safe-area-inset-top, 0px);
 }
 
 .app-container {
     width: 100%;
     height: 100%;
-    max-width: 420px; /* Типичная ширина мобильного устройства */
+    max-width: 430px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-intensity));
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
-    background-color: var(--main-bg); /* Фон всего приложения */
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    overflow: hidden;
     position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .app-header {
-    padding: 12px 15px;
-    background-color: rgba(20, 20, 22, 0.85);
-    backdrop-filter: blur(var(--blur-intensity));
+    padding: 14px 20px;
+    background: var(--glass-bg);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+    backdrop-filter: blur(12px);
     z-index: 100;
 }
 
 .app-header h1 {
-    font-size: 1.4rem;
-    color: var(--secondary-yellow-matte);
+    font-size: 1.5rem;
     font-weight: 600;
+    color: var(--primary-yellow);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
 }
 
 .balance-indicator {
     font-size: 0.9rem;
-    background-color: var(--input-bg);
-    padding: 5px 10px;
-    border-radius: 15px;
+    background: var(--input-bg);
+    padding: 6px 12px;
+    border-radius: 16px;
     color: var(--primary-yellow);
+    font-weight: 500;
+    box-shadow: var(--shadow-inset);
 }
+
 #app-balance {
     font-weight: bold;
+    color: var(--primary-yellow);
 }
 
 .app-main-content {
     flex-grow: 1;
-    overflow-y: auto; /* Позволяет скроллить контент секции, если он не влезает */
-    padding: 15px;
-    position: relative; /* Для позиционирования экранов */
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .screen {
-    display: none; /* Скрыты по умолчанию */
+    display: none;
     flex-direction: column;
     align-items: center;
-    /* padding-top: 20px; */ /* Отступ от шапки, если нужно */
-    animation: screenFadeIn 0.3s ease-out;
+    animation: screenFadeIn 0.4s ease;
     width: 100%;
-    min-height: 100%; /* Занимать всю доступную высоту в main-content */
+    min-height: 100%;
 }
 .screen.active-screen {
     display: flex;
@@ -94,223 +108,183 @@ body {
 
 @keyframes screenFadeIn {
     from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
 }
-
 
 .screen h2 {
-    color: var(--secondary-yellow-matte);
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    border-bottom: 1px solid var(--accent-yellow-glow);
-    padding-bottom: 5px;
-    display: inline-block;
+    font-size: 1.7rem;
+    color: var(--primary-yellow);
+    margin-bottom: 18px;
+    border-bottom: 2px solid var(--accent-yellow-glow);
+    padding-bottom: 6px;
 }
 
-.action-button, input[type="text"], input[type="number"] {
+input[type="text"], input[type="number"], .action-button {
     width: 100%;
-    padding: 12px 15px;
+    padding: 14px;
     font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--secondary-yellow-matte);
-    background-color: var(--input-bg);
+    border-radius: 12px;
+    background: var(--input-bg);
+    border: none;
     color: var(--text-color-light);
-    margin-bottom: 12px;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-inset);
+    transition: 0.3s ease;
 }
-input[type="text"]::placeholder, input[type="number"]::placeholder {
-    color: rgba(240,240,240,0.5);
-}
-input[type="text"]:focus, input[type="number"]:focus {
+input:focus {
     outline: none;
-    border-color: var(--primary-yellow);
-    box-shadow: 0 0 0 2px var(--accent-yellow-glow);
+    box-shadow: 0 0 0 3px var(--accent-yellow-glow);
+}
+::placeholder {
+    color: var(--text-color-muted);
 }
 
 .action-button {
-    font-weight: 600;
-    background-color: var(--secondary-yellow-matte);
-    color: var(--main-bg);
+    background: linear-gradient(145deg, #E1A95F, #FFD700);
+    color: #000;
+    font-weight: bold;
     cursor: pointer;
-    text-align: center;
-    border: none; /* Убираем рамку у кнопки, т.к. есть фон */
+    border: none;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
 }
 .action-button:hover {
-    background-color: var(--primary-yellow);
+    background: linear-gradient(145deg, #FFD700, #E1A95F);
 }
 .action-button:active {
-    transform: scale(0.98);
-}
-.action-button.destructive {
-    background-color: #c0392b;
-    color: white;
+    transform: scale(0.97);
 }
 .action-button:disabled {
-    background-color: #555;
-    color: #888;
+    background: #444;
+    color: #999;
+    box-shadow: none;
     cursor: not-allowed;
-    border-color: #444;
 }
 
+.action-button.destructive {
+    background: linear-gradient(145deg, #e74c3c, #c0392b);
+    color: white;
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
 
 .info-block {
-    background-color: var(--input-bg);
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border: 1px solid rgba(255,215,0,0.2);
+    background: var(--input-bg);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: var(--shadow-inset);
+    border: 1px solid rgba(255, 215, 0, 0.1);
 }
 .info-block p {
-    margin-bottom: 8px;
-    line-height: 1.5;
-}
-.info-block p:last-child {
-    margin-bottom: 0;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: var(--text-color-muted);
 }
 .info-block code, .info-block b {
     color: var(--primary-yellow);
     font-weight: bold;
 }
 .info-block a {
-    color: var(--secondary-yellow-matte);
-    text-decoration: none;
-}
-.info-block a:hover {
+    color: var(--primary-yellow);
     text-decoration: underline;
 }
-
 
 .app-bottom-nav {
     display: flex;
     justify-content: space-around;
-    padding: 8px 0;
-    background-color: rgba(20, 20, 22, 0.85);
+    padding: 10px 0;
+    background: var(--glass-bg);
     backdrop-filter: blur(var(--blur-intensity));
-    border-top: 1px solid rgba(255, 215, 0, 0.15);
-    position: sticky; /* Прилипает к низу app-container */
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
 }
 
 .nav-button {
     background: none;
     border: none;
-    color: var(--text-color-light);
-    opacity: 0.7;
+    color: var(--text-color-muted);
     cursor: pointer;
-    font-size: 1.5rem; /* Размер иконки */
-    padding: 5px 10px;
+    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: opacity 0.2s, color 0.2s;
+    transition: 0.2s;
 }
 .nav-button .nav-text {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     margin-top: 2px;
 }
 .nav-button.active, .nav-button:hover {
-    opacity: 1;
     color: var(--primary-yellow);
+    text-shadow: 0 0 4px var(--accent-yellow-glow);
 }
 
-/* Стили для кейсов и рулетки (адаптированные) */
-#cases-list-container .case-item-webapp {
-    background-color: var(--input-bg);
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
+/* Кейсы */
+.case-item-webapp {
+    background: var(--input-bg);
+    padding: 12px 16px;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    border: 1px solid transparent;
-    transition: border-color 0.2s, background-color 0.2s;
+    transition: 0.3s ease;
+    box-shadow: var(--shadow-inset);
 }
-#cases-list-container .case-item-webapp:hover {
-    border-color: var(--secondary-yellow-matte);
+.case-item-webapp:hover {
     background-color: rgba(225, 169, 95, 0.2);
+    border: 1px solid var(--secondary-yellow-matte);
 }
 .case-item-webapp span {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 .case-item-webapp .cost {
-    color: var(--primary-yellow);
     font-weight: bold;
+    color: var(--primary-yellow);
 }
 
-
-#case-opening-screen .case-emoji-big {
-    font-size: 4.5rem;
-    margin-bottom: 10px;
-}
-#case-opening-screen h2 {
-    font-size: 1.8rem;
-    margin-bottom: 5px;
-}
-#case-opening-screen .case-info {
-    font-size: 1rem;
-    margin-bottom: 5px;
-}
-#case-opening-screen .error-message { margin-top: 10px; }
-
-.roulette-container-case { /* Отдельные стили для рулетки кейса */
-    margin: 15px 0;
-    position: relative;
+/* Рулетка */
+.roulette-container-case {
+    margin: 20px 0;
+    max-width: 300px;
     width: 100%;
-    max-width: 280px;
-    user-select: none;
+    position: relative;
 }
 .roulette-viewport-case {
-    width: 100%;
     height: 70px;
     overflow: hidden;
-    border: 2px solid rgba(225, 169, 95, 0.5);
-    border-radius: 8px;
-    margin: 0 auto;
-    position: relative;
-    background-color: rgba(0,0,0, 0.2);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    background: rgba(0,0,0,0.15);
+    box-shadow: var(--shadow-inset);
 }
 .roulette-track-case {
     display: flex;
     height: 100%;
-    will-change: transform;
+    transition: transform 0.5s ease;
 }
-.roulette-viewport-case .roulette-item { /* Используем общий .roulette-item */
-    min-width: 70px; max-width: 70px; height: 70px;
-    display: flex; justify-content: center; align-items: center;
-    font-size: 2.2rem; box-sizing: border-box;
+.roulette-item {
+    min-width: 70px;
+    max-width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .roulette-pointer-case {
-    width: 0; height: 0;
-    border-left: 8px solid transparent; border-right: 8px solid transparent;
-    border-top: 10px solid var(--secondary-yellow-matte);
     position: absolute;
-    top: -10px;
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid var(--primary-yellow);
 }
 #visual-prize-text-case {
     color: var(--primary-yellow);
-    font-size: 1.1rem;
-}
-.back-to-games-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: none;
-    border: none;
-    color: var(--secondary-yellow-matte);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 5px;
-    z-index: 101;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
-
+/* Spinner */
 .spinner {
     width: 40px;
     height: 40px;
