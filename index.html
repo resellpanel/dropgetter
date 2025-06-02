@@ -2,10 +2,17 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Открыть Кейс</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Открыть Кейс - DropGetter</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        /* Дополнительные стили для фикса viewport-fit=cover, если шапка Telegram мешает */
+        body {
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -44,6 +51,7 @@
                 </div>
                 <div class="roulette-pointer"></div>
             </div>
+            <p class="case-info small-text" id="visual-prize-text" style="display:none; margin-top:10px; font-weight:bold;"></p>
             <p class="case-info small-text">Ожидаем результат от сервера...</p>
         </div>
     </div>
