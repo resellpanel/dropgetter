@@ -28,13 +28,11 @@
             <!-- ЭКРАН ИГР -->
             <section id="games-screen" class="screen">
                 <h2>Игры</h2>
-                <!-- Диагностический блок для статуса инициализации JS -->
-                <p id="games-screen-status" style="white-space: pre-wrap; border: 1px dashed #ccc; padding: 5px; margin-bottom: 10px; font-size: 12px; text-align: left; max-height: 150px; overflow-y: auto;"></p>
-                
+                <!-- Убрали games-screen-status, так как основной JS должен работать -->
                 <button class="action-button" id="play-stakes-webapp-btn">🎰 Ставки</button>
                 <h3>🎁 Кейсы</h3>
                 <div id="cases-list-container">
-                    <p>Загрузка списка кейсов...</p> <!-- Это сообщение будет заменено JS -->
+                    <p>Загрузка списка кейсов...</p>
                 </div>
             </section>
             
@@ -55,7 +53,7 @@
                                 <!-- Элементы рулетки будут добавлены JS -->
                             </div>
                         </div>
-                        <div class="roulette-pointer-case"></div> <!-- Указатель/Центральная линия -->
+                        <div class="roulette-pointer-case"></div>
                     </div>
                      <p class="case-info small-text" id="visual-prize-text-case" style="display:none;">(визуальный приз)</p>
                  </div>
@@ -96,7 +94,7 @@
                     <p><b>Статистика игр:</b></p>
                     <p>Ставки: <span id="profile-stakes-played">0</span></p>
                     <p>Кейсы: <span id="profile-cases-played">0</span></p>
-                    <p>Рулетка: <span id="profile-roulette-played">0</span></p> <!-- Если нет отдельной игры рулетки, можно убрать -->
+                    <p>Рулетка: <span id="profile-roulette-played">0</span></p>
                 </div>
                  <div class="info-block">
                     <p>Всего пополнено: <span id="profile-total-deposited">0</span> ⭐</p>
@@ -113,17 +111,17 @@
                     <p>Приглашено: <span id="referral-count">0</span> друзей</p>
                     <p>Бонус за реферала: <span id="referral-bonus">0</span> ⭐</p>
                 </div>
-                <!-- Заменили show-help-btn на request-help-text-btn -->
+                
                 <button class="action-button" id="request-help-text-btn">❓ Получить помощь в чате</button>
                  <div id="help-info-block" class="info-block" style="display:none; text-align: left; max-height: 200px; overflow-y: auto;">
-                    <p>Инструкция будет отправлена в чат с ботом.</p>
+                    <p>Инструкция будет отправлена в чат с ботом.</p> <!-- Этот блок теперь чисто информационный или для кнопки -->
                 </div>
             </section>
             
             <!-- ЭКРАН ПОПОЛНЕНИЯ -->
             <section id="deposit-screen" class="screen">
                 <h2>Пополнить баланс</h2>
-                <p class="info-text">Выберите способ пополнения. После выбора вы будете перенаправлены в чат с ботом для завершения операции.</p>
+                <p class="info-text">Выберите способ пополнения. Инструкции будут отправлены в чат с ботом.</p>
                 <button class="action-button" id="deposit-tg-stars-webapp-btn">💳 Telegram Stars (Официально)</button>
                 <button class="action-button" id="deposit-manual-webapp-btn">🪙 TON / Crypto (Вручную)</button>
             </section>
@@ -135,7 +133,6 @@
             <button class="nav-button" data-targetscreen="profile-screen">👤<span class="nav-text">Профиль</span></button>
         </nav>
     </div>
-    <!-- Убедитесь, что script.js подключается в конце body -->
     <script src="script.js"></script>
 </body>
 </html>
