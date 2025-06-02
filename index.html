@@ -3,59 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Открыть Кейс - DropGetter</title>
-    <link rel="stylesheet" href="style.css">
+    <title>DropGetter</title>
+    <link rel="stylesheet" href="style.css"> <!-- Новый CSS файл -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        /* Дополнительные стили для фикса viewport-fit=cover, если шапка Telegram мешает */
-        body {
-            padding-top: env(safe-area-inset-top, 0px);
-            padding-bottom: env(safe-area-inset-bottom, 0px);
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <div id="loading-state" class="state">
-            <div class="spinner"></div>
-            <p>Загрузка данных кейса...</p>
-        </div>
-
-        <div id="error-state" class="state" style="display: none;">
-            <div class="case-emoji">⚠️</div>
-            <h1 class="error-title">Произошла Ошибка</h1>
-            <p id="error-message" class="case-info">Не удалось загрузить данные.</p>
-            <button id="close-error-btn" class="action-button destructive">Закрыть</button>
-        </div>
-
-        <div id="case-display-state" class="state" style="display: none;">
-            <div id="case-emoji" class="case-emoji">❓</div>
-            <h1 id="case-name" class="case-name">Неизвестный кейс</h1>
-            <p class="case-info">Стоимость: <span id="case-cost" class="font-semibold">0</span> ⭐</p>
-            <p class="case-info">Ваш баланс: <span id="user-balance" class="font-semibold">0</span> ⭐</p>
-
-            <p id="not-enough-funds" class="error-message funds-error" style="display: none;">Недостаточно средств!</p>
-
-            <button id="open-case-btn" class="action-button">
-                Открыть за <span id="open-btn-cost">0</span> ⭐
-            </button>
-        </div>
-
-        <div id="opening-state" class="state" style="display: none;">
-            <p id="opening-status-text" class="case-info">Открываем кейс...</p>
-            <div class="roulette-container">
-                <div class="roulette-viewport">
-                    <div class="roulette-track">
-                        <!-- Элементы рулетки будут здесь -->
-                    </div>
-                </div>
-                <div class="roulette-pointer"></div>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>DropGetter</h1>
+            <div class="balance-indicator">
+                Баланс: <span id="app-balance">0</span> ⭐
             </div>
-            <p class="case-info small-text" id="visual-prize-text" style="display:none; margin-top:10px; font-weight:bold;"></p>
-            <p class="case-info small-text">Ожидаем результат от сервера...</p>
-        </div>
-    </div>
+        </header>
 
-    <script src="script.js"></script>
+        <main class="app-main-content">
+            <!-- Начальный экран или экран загрузки -->
+            <section id="initial-loading-screen" class="screen active-screen">
+                <div class="spinner"></div>
+                <p>Загрузка приложения...</p>
+            </section>
+
+            <!-- Главный экран с выбором секций -->
+            <section id="main-hub-screen" class="screen">
+                <!-- Сюда можно добавить приветствие или общую информацию -->
+            </section>
+
+            <!-- Секция "Пополнить баланс" -->
+            <section id="deposit-screen" class="screen">
+                <h2>Пополнить баланс</h2>
+                <button class="action-button" id="deposit-tg-stars-btn">Telegram Stars</button>
+                <div id="deposit-tg-stars-amount-input" style="display:none;">
+                    <input type="number" id="tg-stars-amount" placeholder="Сумма звезд (1-10000)">
+                    <button class="action-button" id="confirm-tg-stars-deposit">Пополнить</button>
+                </div>
+                <button class="action-button" id="deposit-manual-btn">TON / Crypto (Вручную)</button>
+                <div id="manual-deposit-info" class="info-block" style="display:none;">
+                    <p>Для пополнения через TON/Crypto, свяжитесь с администратором @{adminUsername}.</p>
+                    <p>Сообщите ваш User ID: <code id="manual-deposit-user-id"></code> и желаемую сумму.</p>
+                    <p>Текущий курс будет сообщен администратором.</p>
+                </div>
+            </section>
+
+            <!-- Секция "Игры" -->
+            <section id="games-screen" class="screen">
+                <h2>Игры</h2>
+                <button class="action-button" id="play-stakes-webapp-btn">🎰 Ставки</button>
+                <div id="stakes-game-interface" style="display:none;">
+                    <p>Ваш баланс: <span class="current-balance-stakes">0</span> ⭐</p>
+                    <input type="number" id="stakes-bet-amount" placeholder="Сумма ставки (мин. {min_bet})">
+                    <button class="action-button" id="confirm-stakes-bet-btn">Сделать ставку</button>
+                </div>
+                <h3>🎁 Кейсы</h3>
+                <div id="cases-list-container">
+                    <!-- Сюда будут загружаться кейсы -->
+                    <p>Загрузка списка кейсов...</p>
+                </div>
+            </section>
+            
+            <!-- Экран открытия кейса (модифицированный из предыдущего) -->
+            <section id="case-opening-screen" class="screen">
+                 <button class="back-to-games-btn" data-targetscreen="games-screen">⬅️ К играм</button>
+                 <div id="case-emoji-open" class="case-emoji-big">❓</div>
+                 <h2 id="case-name-open">Кейс</h2>
+                 <p class="case-info">Стоимость: <span id="case-cost-open">0</span> ⭐</p>
+                 <p class="case-info">Ваш баланс: <span id="user-balance-open">0</span> ⭐</p>
+                 <p id="not-enough-funds-open" class="error-message funds-error" style="display: none;">Недостаточно средств!</p>
+                 
+                 <div id="opening-animation-container">
+                    <p id="opening-status-text-case" class="case-info">Нажмите, чтобы открыть</p>
+                    <div class="roulette-container-case">
+                        <div class="roulette-viewport-case">
+                            <div class="roulette-track-case"></div>
+                        </div>
+                        <div class="roulette-pointer-case"></div>
+                    </div>
+                     <p class="case-info small-text" id="visual-prize-text-case" style="display:none;"></p>
+                 </div>
+                 <button id="open-actual-case-btn" class="action-button">Открыть кейс</button>
+            </section>
+
+            <!-- Секция "Профиль" -->
+            <section id="profile-screen" class="screen">
+                <h2>Профиль</h2>
+                <div class="info-block">
+                    <p>User ID: <code id="profile-user-id"></code></p>
+                    <p>Баланс: <b id="profile-balance">0</b> ⭐</p>
+                </div>
+                <input type="text" id="promocode-input" placeholder="Введите промокод">
+                <button class="action-button" id="activate-promocode-btn">Активировать промокод</button>
+                <button class="action-button" id="get-referral-link-btn">🔗 Реферальная ссылка</button>
+                <div id="referral-info-block" class="info-block" style="display:none;">
+                    <p>Ваша реф. ссылка: <a id="referral-link-href" href="#" target="_blank"></a></p>
+                    <p>Приглашено: <span id="referral-count">0</span></p>
+                </div>
+            </section>
+
+        </main>
+
+        <nav class="app-bottom-nav">
+            <button class="nav-button" data-targetscreen="deposit-screen">💰<span class="nav-text">Баланс</span></button>
+            <button class="nav-button active" data-targetscreen="games-screen">🎮<span class="nav-text">Игры</span></button>
+            <button class="nav-button" data-targetscreen="profile-screen">👤<span class="nav-text">Профиль</span></button>
+        </nav>
+    </div>
+    <script src="script.js"></script> <!-- Новый JS файл -->
 </body>
 </html>
