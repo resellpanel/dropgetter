@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>DropGetter</title>
-    <link rel="stylesheet" href="style.css"> <!-- Новый CSS файл -->
+    <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
@@ -17,52 +17,27 @@
         </header>
 
         <main class="app-main-content">
-            <!-- Начальный экран или экран загрузки -->
             <section id="initial-loading-screen" class="screen active-screen">
                 <div class="spinner"></div>
                 <p>Загрузка приложения...</p>
             </section>
 
-            <!-- Главный экран с выбором секций -->
-            <section id="main-hub-screen" class="screen">
-                <!-- Сюда можно добавить приветствие или общую информацию -->
-            </section>
-
-            <!-- Секция "Пополнить баланс" -->
-            <section id="deposit-screen" class="screen">
-                <h2>Пополнить баланс</h2>
-                <button class="action-button" id="deposit-tg-stars-btn">Telegram Stars</button>
-                <div id="deposit-tg-stars-amount-input" style="display:none;">
-                    <input type="number" id="tg-stars-amount" placeholder="Сумма звезд (1-10000)">
-                    <button class="action-button" id="confirm-tg-stars-deposit">Пополнить</button>
-                </div>
-                <button class="action-button" id="deposit-manual-btn">TON / Crypto (Вручную)</button>
-                <div id="manual-deposit-info" class="info-block" style="display:none;">
-                    <p>Для пополнения через TON/Crypto, свяжитесь с администратором @{adminUsername}.</p>
-                    <p>Сообщите ваш User ID: <code id="manual-deposit-user-id"></code> и желаемую сумму.</p>
-                    <p>Текущий курс будет сообщен администратором.</p>
-                </div>
-            </section>
-
-            <!-- Секция "Игры" -->
             <section id="games-screen" class="screen">
                 <h2>Игры</h2>
                 <button class="action-button" id="play-stakes-webapp-btn">🎰 Ставки</button>
-                <div id="stakes-game-interface" style="display:none;">
+                <!-- <div id="stakes-game-interface" style="display:none;">
                     <p>Ваш баланс: <span class="current-balance-stakes">0</span> ⭐</p>
-                    <input type="number" id="stakes-bet-amount" placeholder="Сумма ставки (мин. {min_bet})">
+                    <input type="number" id="stakes-bet-amount" placeholder="Сумма ставки (мин. 10)">
                     <button class="action-button" id="confirm-stakes-bet-btn">Сделать ставку</button>
-                </div>
+                </div> -->
                 <h3>🎁 Кейсы</h3>
                 <div id="cases-list-container">
-                    <!-- Сюда будут загружаться кейсы -->
                     <p>Загрузка списка кейсов...</p>
                 </div>
             </section>
             
-            <!-- Экран открытия кейса (модифицированный из предыдущего) -->
             <section id="case-opening-screen" class="screen">
-                 <button class="back-to-games-btn" data-targetscreen="games-screen">⬅️ К играм</button>
+                 <button class="back-to-games-btn" id="back-to-games-from-case-btn">⬅️</button>
                  <div id="case-emoji-open" class="case-emoji-big">❓</div>
                  <h2 id="case-name-open">Кейс</h2>
                  <p class="case-info">Стоимость: <span id="case-cost-open">0</span> ⭐</p>
@@ -73,7 +48,9 @@
                     <p id="opening-status-text-case" class="case-info">Нажмите, чтобы открыть</p>
                     <div class="roulette-container-case">
                         <div class="roulette-viewport-case">
-                            <div class="roulette-track-case"></div>
+                            <div class="roulette-track-case">
+                                <!-- Сюда будут вставляться эмодзи призов -->
+                            </div>
                         </div>
                         <div class="roulette-pointer-case"></div>
                     </div>
@@ -82,20 +59,42 @@
                  <button id="open-actual-case-btn" class="action-button">Открыть кейс</button>
             </section>
 
-            <!-- Секция "Профиль" -->
             <section id="profile-screen" class="screen">
                 <h2>Профиль</h2>
                 <div class="info-block">
                     <p>User ID: <code id="profile-user-id"></code></p>
+                    <p>Имя: <span id="profile-first-name"></span></p>
+                    <p>Юзернейм: <span id="profile-username"></span></p>
                     <p>Баланс: <b id="profile-balance">0</b> ⭐</p>
+                    <p>Дата регистрации: <span id="profile-join-date"></span></p>
                 </div>
+                <div class="info-block">
+                    <p><b>Статистика игр:</b></p>
+                    <p>Ставки: <span id="profile-stakes-played">0</span></p>
+                    <p>Кейсы: <span id="profile-cases-played">0</span></p>
+                    <p>Рулетка: <span id="profile-roulette-played">0</span></p>
+                </div>
+                 <div class="info-block">
+                    <p>Всего пополнено: <span id="profile-total-deposited">0</span> ⭐</p>
+                    <p>Всего выиграно: <span id="profile-total-won">0</span> ⭐</p>
+                </div>
+
                 <input type="text" id="promocode-input" placeholder="Введите промокод">
                 <button class="action-button" id="activate-promocode-btn">Активировать промокод</button>
+                
                 <button class="action-button" id="get-referral-link-btn">🔗 Реферальная ссылка</button>
                 <div id="referral-info-block" class="info-block" style="display:none;">
-                    <p>Ваша реф. ссылка: <a id="referral-link-href" href="#" target="_blank"></a></p>
-                    <p>Приглашено: <span id="referral-count">0</span></p>
+                    <p>Ваша реф. ссылка: <a id="referral-link-href" href="#" target="_blank" rel="noopener noreferrer"></a></p>
+                    <p>Приглашено: <span id="referral-count">0</span> друзей</p>
+                    <p>Бонус за реферала: <span id="referral-bonus">0</span> ⭐</p>
                 </div>
+            </section>
+            
+            <section id="deposit-screen" class="screen">
+                <h2>Пополнить баланс</h2>
+                <p class="info-text">Выберите способ пополнения. После выбора вы будете перенаправлены в чат с ботом для завершения операции.</p>
+                <button class="action-button" id="deposit-tg-stars-webapp-btn">💳 Telegram Stars (Официально)</button>
+                <button class="action-button" id="deposit-manual-webapp-btn">🪙 TON / Crypto (Вручную)</button>
             </section>
 
         </main>
@@ -106,6 +105,6 @@
             <button class="nav-button" data-targetscreen="profile-screen">👤<span class="nav-text">Профиль</span></button>
         </nav>
     </div>
-    <script src="script.js"></script> <!-- Новый JS файл -->
+    <script src="script.js"></script>
 </body>
 </html>
