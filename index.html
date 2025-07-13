@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CxsGuard - Надежная защита Java-приложений</title>
     <style>
-        /* ... (здесь будут все стили, как и раньше) ... */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
         :root {
@@ -78,11 +77,11 @@
             max-width: 650px;
             animation: fadeInDown 0.8s 0.4s ease-out forwards;
         }
-
+        
         nav {
             margin-top: 3rem;
             display: flex;
-            flex-wrap: wrap; /* Для переноса на мобильных */
+            flex-wrap: wrap;
             justify-content: center;
             gap: 1rem;
             animation: fadeInDown 0.8s 0.6s ease-out forwards;
@@ -129,7 +128,11 @@
 
         .grid-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* 
+               ИЗМЕНЕНИЕ #1: Заменено `repeat(auto-fit, minmax(300px, 1fr))` на `1fr`. 
+               Теперь по умолчанию у нас одна колонка.
+            */
+            grid-template-columns: 1fr;
             gap: 2rem;
         }
 
@@ -152,7 +155,7 @@
             gap: 1rem;
             margin-bottom: 1rem;
         }
-
+        
         .card-header .icon-feature {
             flex-shrink: 0;
             width: 32px;
@@ -170,7 +173,7 @@
             color: var(--text-secondary);
             font-size: 1rem;
         }
-
+        
         .cta-button {
             display: inline-block;
             padding: 1.25rem 3rem;
@@ -188,7 +191,7 @@
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 10px 20px rgba(255, 0, 51, 0.2);
         }
-
+        
         footer {
             text-align: center;
             padding: 4rem 1.5rem 3rem;
@@ -201,14 +204,14 @@
             align-items: center;
             gap: 1.5rem;
         }
-
+        
         .footer-contact-link {
             color: var(--accent-secondary);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s;
         }
-
+        
         .footer-contact-link:hover {
             color: var(--text-primary);
         }
@@ -244,6 +247,17 @@
                 padding: 1.5rem;
             }
         }
+        
+        /* 
+           ИЗМЕНЕНИЕ #2: Новый медиа-запрос. 
+           Когда ширина экрана БОЛЬШЕ 768px, мы включаем сетку из двух колонок.
+        */
+        @media (min-width: 769px) {
+            .grid-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -255,7 +269,6 @@
     <p>Надёжная защита Java-приложений.</p>
     <nav>
         <a href="#features">Преимущества</a>
-        <!-- Добавлена ссылка на новую страницу -->
         <a href="info.html">Информация</a>
         <a href="#contact">Связь</a>
     </nav>
@@ -266,7 +279,6 @@
     <section id="features" class="fade-in-section">
         <h2 class="section-title">Ключевые<span> возможности</span></h2>
         <div class="grid-features">
-            <!-- Карточки остались без изменений, они уже хорошо сделаны -->
             <div class="card">
                 <div class="card-header">
                     <svg class="icon-feature" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286Zm0 13.036h.008v.008h-.008v-.008Z" /></svg>
@@ -283,7 +295,7 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    <svg class="icon-feature" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>
+                     <svg class="icon-feature" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>
                     <h3>Сохранение производительности</h3>
                 </div>
                 <p>Алгоритмы защиты оптимизированы так, чтобы минимально влиять на производительность вашего приложения. Скорость работы останется на прежнем уровне.</p>
