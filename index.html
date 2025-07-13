@@ -2,137 +2,433 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>DropGetter</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CxsGuard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+        :root {
+            --accent-primary: #ff0033;
+            --accent-secondary: #ff4d6e;
+            --background: #0a0a0a;
+            --surface: #121212;
+            --text-primary: #ffffff;
+            /* Улучшенная контрастность для вторичного текста */
+            --text-secondary: #c0c0c0;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body::-webkit-scrollbar {
+          display: none;
+        }
+
+        .background-glow {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 0, 51, 0.1), transparent 30%),
+                        radial-gradient(circle at 90% 80%, rgba(255, 77, 110, 0.1), transparent 35%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-bottom: 5rem;
+        }
+
+        header h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 0.8s 0.2s ease-out forwards;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            max-width: 650px;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 0.8s 0.4s ease-out forwards;
+        }
+
+        nav {
+            margin-top: 4rem;
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 0.8s 0.6s ease-out forwards;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+            background-color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        nav a .icon {
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover .icon {
+            transform: rotate(-45deg);
+        }
+
+        main {
+            padding-top: 4rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        main section:first-child{
+             padding-top: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 4rem;
+        }
+
+        .section-title span {
+          color: var(--accent-primary);
+        }
+
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(calc(50% - 2rem), 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-header .icon-feature {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            stroke: var(--accent-secondary);
+        }
+
+        .card h3 {
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.25rem 3rem;
+            background: linear-gradient(120deg, var(--accent-primary), var(--accent-secondary));
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 0, 51, 0.2);
+        }
+
+        details {
+            background: var(--surface);
+            padding: 1.75rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        details + details {
+            margin-top: 1.25rem;
+        }
+
+        summary {
+            cursor: pointer;
+            list-style: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            position: relative;
+            padding-right: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        summary .icon-faq {
+            width: 18px;
+            height: 18px;
+            stroke: var(--text-secondary);
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        summary::after {
+            content: "+";
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.75rem;
+            color: var(--accent-primary);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        details p {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            padding-left: calc(18px + 0.75rem); /* Сдвиг текста под иконкой */
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-contact-link {
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-contact-link:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-disclaimer {
+            font-size: 0.9rem;
+            color: #666;
+            max-width: 600px;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInDown {
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
 </head>
 <body>
-    <!-- Диагностический блок для вывода ошибок JS -->
-    <div id="error-display" style="display: none; padding: 10px; background-color: #ffdddd; border: 1px solid red; color: red; text-align: center; position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; font-size: 14px; box-sizing: border-box;"></div>
 
-    <div class="app-container">
-        <header class="app-header">
-            <h1>DropGetter</h1>
-            <div class="balance-indicator">
-                Баланс: <span id="app-balance">0</span> ⭐
+<div class="background-glow"></div>
+
+<header>
+    <!-- Текст стал более спокойным -->
+    <h1>Cxs-Guard</h1>
+    <p>Надёжная защита Java-приложений.</p>
+    <nav>
+        <a href="#features">Преимущества <span class="icon">→</span></a>
+        <a href="#faq">Вопросы <span class="icon">→</span></a>
+        <a href="#contact">Связь <span class="icon">→</span></a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section id="features" class="fade-in-section">
+        <h2 class="section-title">Ключевые<span> возможности</span></h2>
+        <div class="grid-features">
+            <div class="card">
+                <div class="card-header">
+                    <!-- Иконка #1 -->
+                    <svg class="icon-feature" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286Zm0 13.036h.008v.008h-.008v-.008Z" /></svg>
+                    <h3>Надежная защита</h3>
+                </div>
+                <!-- Текст стал более простым -->
+                <p>Сочетание обфускации и ремаппинга затрудняет анализ и восстановление исходного кода, защищая вашу интеллектуальную собственность.</p>
             </div>
-        </header>
+            <div class="card">
+                <div class="card-header">
+                    <!-- Иконка #2 -->
+                    <svg class="icon-feature" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" /></svg>
+                    <h3>Удобный интерфейс</h3>
+                </div>
+                <p>Процесс защиты запускается через простое десктопное приложение. Никаких сложных настроек и командной строки, все интуитивно понятно.</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <!-- Иконка #3 -->
+                    <svg class="icon-feature" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>
+                    <h3>Сохранение производительности</h3>
+                </div>
+                <p>Алгоритмы защиты оптимизированы так, чтобы минимально влиять на производительность вашего приложения. Скорость работы останется на прежнем уровне.</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <!-- Иконка #4 -->
+                    <svg class="icon-feature" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" /></svg>
+                    <h3>Прямая поддержка</h3>
+                </div>
+                <p>Если у вас возникнут вопросы или понадобится помощь, вы можете написать напрямую разработчику. Быстрые и компетентные ответы без посредников.</p>
+            </div>
+        </div>
+    </section>
 
-        <main class="app-main-content">
-            <section id="initial-loading-screen" class="screen active-screen">
-                <div class="spinner"></div>
-                <p>Загрузка приложения...</p>
-            </section>
+    <section id="faq" class="fade-in-section">
+        <h2 class="section-title">Частые <span>вопросы</span></h2>
+        <div style="max-width: 900px; margin: 0 auto;">
+            <details>
+                <summary>
+                    <svg class="icon-faq" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9.75 6.375c0-.621.504-1.125 1.125-1.125h17.25c.621 0 1.125.504 1.125 1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5Z" /></svg>
+                    Как устроен процесс?
+                </summary>
+                <p>Вы загружаете ваш .jar файл в приложение, указываете путь для сохранения и директорию для ремаппинга. После нажатия кнопки получаете защищенный файл.</p>
+            </details>
+            <details>
+                <summary>
+                    <svg class="icon-faq" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>
+                    Можно ли протестировать?
+                </summary>
+                <p>Конечно. Рекомендуется сначала попробовать на тестовой или некритичной версии вашего продукта, чтобы убедиться, что все работает корректно.</p>
+            </details>
+            <details>
+                <summary>
+                    <svg class="icon-faq" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 11.667 0l3.181-3.183m-4.991-2.691v4.992" /></svg>
+                    Для каких версий подходит ремаппинг?
+                </summary>
+                <p>Инструмент ориентирован на популярные версии, в частности 1.16.5 и близкие к ней. Если у вас специфические требования, это можно обсудить.</p>
+            </details>
+        </div>
+    </section>
 
-            <!-- ЭКРАН ИГР -->
-            <section id="games-screen" class="screen">
-                <h2>Игры</h2>
-                <!-- Убрали games-screen-status, так как основной JS должен работать -->
-                <button class="action-button" id="play-stakes-webapp-btn">🎰 Ставки</button>
-                <h3>🎁 Кейсы</h3>
-                <div id="cases-list-container">
-                    <p>Загрузка списка кейсов...</p>
-                </div>
-            </section>
-            
-            <!-- ЭКРАН ОТКРЫТИЯ КЕЙСА -->
-            <section id="case-opening-screen" class="screen">
-                 <button class="back-to-games-btn" id="back-to-games-from-case-btn">⬅️</button>
-                 <div id="case-emoji-open" class="case-emoji-big">❓</div>
-                 <h2 id="case-name-open">Кейс</h2>
-                 <p class="case-info">Стоимость: <span id="case-cost-open">0</span> ⭐</p>
-                 <p class="case-info">Ваш баланс: <span id="user-balance-open">0</span> ⭐</p>
-                 <p id="not-enough-funds-open" class="error-message funds-error" style="display: none;">Недостаточно средств!</p>
-                 
-                 <div id="opening-animation-container">
-                    <p id="opening-status-text-case" class="case-info">Нажмите, чтобы открыть</p>
-                    <div class="roulette-container-case">
-                        <div class="roulette-viewport-case">
-                            <div class="roulette-track-case">
-                                <!-- Элементы рулетки будут добавлены JS -->
-                            </div>
-                        </div>
-                        <div class="roulette-pointer-case"></div>
-                    </div>
-                     <p class="case-info small-text" id="visual-prize-text-case" style="display:none;">(визуальный приз)</p>
-                 </div>
-                 <button id="open-actual-case-btn" class="action-button">Открыть кейс</button>
-            </section>
+    <section id="contact" class="fade-in-section" style="text-align: center;">
+        <h2 class="section-title">Готовы <span>попробовать?</span></h2>
+        <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: -2rem auto 0;">Скачайте приложение или задайте вопрос в Telegram. Я на связи.</p>
+        <a href="https://t.me/wartov1337" target="_blank" rel="noopener" class="cta-button" aria-label="Написать в Telegram">Написать в Telegram</a>
+    </section>
 
-            <!-- ЭКРАН СТАВОК -->
-            <section id="stakes-game-screen" class="screen">
-                <button class="back-to-games-btn" id="back-to-games-from-stakes-btn">⬅️</button>
-                <h2>🎰 Ставки</h2>
-                <div class="info-block stakes-info-block">
-                    <p>Ваш баланс: <b id="user-balance-stakes">0</b> ⭐</p>
-                    <p>Мин. ставка: <span id="min-bet-stakes-info">10</span> ⭐</p>
-                </div>
-                <input type="number" id="stakes-bet-amount" placeholder="Введите сумму ставки">
-                <div id="stakes-animation-container">
-                    <div class="slots-display-webapp">
-                        <span class="slot-emoji-webapp" id="slot-emoji-1">❔</span>
-                        <span class="slot-emoji-webapp" id="slot-emoji-2">❔</span>
-                        <span class="slot-emoji-webapp" id="slot-emoji-3">❔</span>
-                    </div>
-                </div>
-                <button id="confirm-stakes-bet-btn" class="action-button">Сделать ставку!</button>
-                <p id="stakes-result-text" class="game-result-text-webapp"></p>
-            </section>
+</main>
 
-            <!-- ЭКРАН ПРОФИЛЯ -->
-            <section id="profile-screen" class="screen">
-                <h2>Профиль</h2>
-                <div class="info-block">
-                    <p>User ID: <code id="profile-user-id">N/A</code></p>
-                    <p>Имя: <span id="profile-first-name">N/A</span></p>
-                    <p>Юзернейм: <span id="profile-username">N/A</span></p>
-                    <p>Баланс: <b id="profile-balance">0</b> ⭐</p>
-                    <p>Дата регистрации: <span id="profile-join-date">N/A</span></p>
-                </div>
-                <div class="info-block">
-                    <p><b>Статистика игр:</b></p>
-                    <p>Ставки: <span id="profile-stakes-played">0</span></p>
-                    <p>Кейсы: <span id="profile-cases-played">0</span></p>
-                    <p>Рулетка: <span id="profile-roulette-played">0</span></p>
-                </div>
-                 <div class="info-block">
-                    <p>Всего пополнено: <span id="profile-total-deposited">0</span> ⭐</p>
-                    <p>Всего выиграно: <span id="profile-total-won">0</span> ⭐</p>
-                </div>
-
-                <input type="text" id="promocode-input" placeholder="Введите промокод">
-                <button class="action-button" id="activate-promocode-btn">Активировать промокод</button>
-                
-                <button class="action-button" id="get-referral-link-btn">🔗 Реферальная ссылка</button>
-                <div id="referral-info-block" class="info-block" style="display:none;">
-                    <p>Ваша реф. ссылка: <a id="referral-link-href" href="#" target="_blank" rel="noopener noreferrer">Загрузка...</a></p>
-                    <p>Скопируйте ссылку и поделитесь с друзьями!</p>
-                    <p>Приглашено: <span id="referral-count">0</span> друзей</p>
-                    <p>Бонус за реферала: <span id="referral-bonus">0</span> ⭐</p>
-                </div>
-                
-                <button class="action-button" id="request-help-text-btn">❓ Получить помощь в чате</button>
-                 <div id="help-info-block" class="info-block" style="display:none; text-align: left; max-height: 200px; overflow-y: auto;">
-                    <p>Инструкция будет отправлена в чат с ботом.</p> <!-- Этот блок теперь чисто информационный или для кнопки -->
-                </div>
-            </section>
-            
-            <!-- ЭКРАН ПОПОЛНЕНИЯ -->
-            <section id="deposit-screen" class="screen">
-                <h2>Пополнить баланс</h2>
-                <p class="info-text">Выберите способ пополнения. Инструкции будут отправлены в чат с ботом.</p>
-                <button class="action-button" id="deposit-tg-stars-webapp-btn">💳 Telegram Stars (Официально)</button>
-                <button class="action-button" id="deposit-manual-webapp-btn">🪙 TON / Crypto (Вручную)</button>
-            </section>
-        </main>
-
-        <nav class="app-bottom-nav">
-            <button class="nav-button" data-targetscreen="deposit-screen">💰<span class="nav-text">Баланс</span></button>
-            <button class="nav-button active" data-targetscreen="games-screen">🎮<span class="nav-text">Игры</span></button>
-            <button class="nav-button" data-targetscreen="profile-screen">👤<span class="nav-text">Профиль</span></button>
-        </nav>
+<footer>
+    <div class="footer-content">
+        <p>
+            <a href="https://t.me/wartov1337" target="_blank" rel="noopener" class="footer-contact-link" aria-label="Связаться с разработчиком в Telegram">
+                Связаться с разработчиком
+            </a>
+        </p>
+        <p class="footer-disclaimer">
+            © 2025 CxsGuard. Данный инструмент предоставляется "как есть". Пожалуйста, всегда делайте резервные копии исходного кода перед использованием.
+        </p>
     </div>
-    <script src="script.js"></script>
+</footer>
+
+<script>
+    const sections = document.querySelectorAll('.fade-in-section');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    sections.forEach(section => observer.observe(section));
+</script>
+
 </body>
 </html>
